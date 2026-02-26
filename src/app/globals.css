@@ -1,26 +1,195 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0b1120;
+  --foreground: #e2e8f0;
+  --card-bg: #131c31;
+  --card-border: #1e293b;
+  --accent-blue: #3b82f6;
+  --accent-green: #22c55e;
+  --accent-yellow: #eab308;
+  --accent-red: #ef4444;
+  --accent-purple: #a855f7;
+  --accent-cyan: #06b6d4;
+  --muted: #64748b;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-card-bg: var(--card-bg);
+  --color-card-border: var(--card-border);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans, Arial, Helvetica, sans-serif);
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--background); }
+::-webkit-scrollbar-thumb { background: var(--card-border); border-radius: 3px; }
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+.pulse-dot { animation: pulse-dot 2s ease-in-out infinite; }
+
+/* Subtle wave animation for header */
+@keyframes wave {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(-5px); }
+}
+
+/* Gentle glow pulse for active stage indicators */
+@keyframes stage-glow {
+  0%, 100% { box-shadow: 0 0 4px rgba(99, 102, 241, 0.1); }
+  50% { box-shadow: 0 0 12px rgba(99, 102, 241, 0.25); }
+}
+
+/* Compass spin for COMPASS agent updates */
+@keyframes compass-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Subtle float animation for agent avatars on hover */
+@keyframes avatar-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-2px); }
+}
+
+/* Flywheel progress bar shimmer */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.flywheel-bar {
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.08) 50%, transparent 100%);
+  background-size: 200% 100%;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+/* Agent card hover effect */
+.agent-card:hover .agent-avatar {
+  animation: avatar-float 1.5s ease-in-out infinite;
+}
+
+/* Header wave underline */
+.header-wave {
+  background: linear-gradient(90deg, transparent, rgba(59,130,246,0.3), rgba(6,182,212,0.3), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 4s ease-in-out infinite;
+  height: 1px;
+}
+
+/* Agent profile modal entrance */
+@keyframes modal-enter {
+  from { opacity: 0; transform: scale(0.95) translateY(10px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.agent-profile-modal {
+  animation: modal-enter 0.25s ease-out;
+}
+
+/* Agent card click hint */
+.agent-card {
+  position: relative;
+}
+
+.agent-card::after {
+  content: "View Profile →";
+  position: absolute;
+  bottom: 4px;
+  right: 8px;
+  font-size: 8px;
+  color: transparent;
+  transition: color 0.2s ease;
+  font-family: monospace;
+}
+
+.agent-card:hover::after {
+  color: rgba(148, 163, 184, 0.4);
+}
+
+/* Safety beacon alert blink */
+@keyframes safety-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.safety-blink {
+  animation: safety-blink 0.8s ease-in-out infinite;
+}
+
+/* Income pulse */
+@keyframes income-glow {
+  0%, 100% { box-shadow: 0 0 4px rgba(245, 158, 11, 0.1); }
+  50% { box-shadow: 0 0 12px rgba(245, 158, 11, 0.2); }
+}
+
+/* Activity pulse for agent status — green pulsing ring (<1h since last action) */
+@keyframes activity-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.6); }
+  50% { box-shadow: 0 0 0 4px rgba(34, 197, 94, 0); }
+}
+
+.activity-pulse {
+  animation: activity-pulse 2s ease-in-out infinite;
+}
+
+/* Overdue amber pulse */
+@keyframes activity-overdue {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.5); }
+  50% { box-shadow: 0 0 0 3px rgba(245, 158, 11, 0); }
+}
+
+.activity-overdue {
+  animation: activity-overdue 1.5s ease-in-out infinite;
+}
+
+/* Fleet idle alert pulse */
+@keyframes fleet-idle-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+.fleet-idle-pulse {
+  animation: fleet-idle-pulse 2s ease-in-out infinite;
+}
+
+/* War Room speech bubble entrance */
+@keyframes bubble-enter {
+  from { opacity: 0; transform: translateX(-8px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.war-room-bubble {
+  animation: bubble-enter 0.3s ease-out;
+}
+
+/* War Room category badge colors */
+.war-cat-intel { background: rgba(234, 179, 8, 0.15); color: #eab308; border-color: rgba(234, 179, 8, 0.3); }
+.war-cat-crewing { background: rgba(6, 182, 212, 0.15); color: #06b6d4; border-color: rgba(6, 182, 212, 0.3); }
+.war-cat-legal { background: rgba(168, 85, 247, 0.15); color: #a855f7; border-color: rgba(168, 85, 247, 0.3); }
+.war-cat-flywheel { background: rgba(59, 130, 246, 0.15); color: #3b82f6; border-color: rgba(59, 130, 246, 0.3); }
+.war-cat-health { background: rgba(34, 197, 94, 0.15); color: #22c55e; border-color: rgba(34, 197, 94, 0.3); }
+.war-cat-income { background: rgba(245, 158, 11, 0.15); color: #f59e0b; border-color: rgba(245, 158, 11, 0.3); }
+.war-cat-comms { background: rgba(251, 191, 36, 0.15); color: #fbbf24; border-color: rgba(251, 191, 36, 0.3); }
+.war-cat-strategy { background: rgba(16, 185, 129, 0.15); color: #10b981; border-color: rgba(16, 185, 129, 0.3); }
+
+/* Review pipeline pulse for ideas under review */
+@keyframes review-glow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.review-pulse {
+  animation: review-glow 2s ease-in-out infinite;
 }

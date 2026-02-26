@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
+  <!-- Background circle -->
+  <circle cx="60" cy="60" r="58" fill="#0c1929" stroke="#10b981" stroke-width="2"/>
+  <!-- Glow ring -->
+  <circle cx="60" cy="60" r="52" fill="none" stroke="#10b981" stroke-width="0.5" opacity="0.4"/>
+  <!-- Head silhouette - clean, meditative (Dalio-inspired) -->
+  <ellipse cx="60" cy="46" rx="21" ry="24" fill="#1e293b"/>
+  <!-- Hair - silvery, short, receding -->
+  <path d="M42 40 Q48 24 60 22 Q72 24 78 40 Q74 30 60 28 Q46 30 42 40Z" fill="#c0c0c0" opacity="0.5"/>
+  <!-- Bald/receding top -->
+  <ellipse cx="60" cy="28" rx="12" ry="6" fill="#d4a574" opacity="0.3"/>
+  <!-- Face - calm, centered -->
+  <ellipse cx="60" cy="50" rx="17" ry="21" fill="#d4a574"/>
+  <!-- Eyes - calm, observing, reflective -->
+  <ellipse cx="52" cy="48" rx="3.5" ry="2.5" fill="white"/>
+  <ellipse cx="68" cy="48" rx="3.5" ry="2.5" fill="white"/>
+  <circle cx="52.5" cy="48" r="1.8" fill="#2d5a3d"/>
+  <circle cx="68.5" cy="48" r="1.8" fill="#2d5a3d"/>
+  <!-- Calm, thoughtful brows -->
+  <path d="M47 44 Q52 42 56 44" stroke="#8b7b6a" stroke-width="1.2" fill="none"/>
+  <path d="M73 44 Q68 42 64 44" stroke="#8b7b6a" stroke-width="1.2" fill="none"/>
+  <!-- Nose -->
+  <path d="M60 50 L58 54 L62 54" stroke="#c4956a" stroke-width="0.7" fill="none"/>
+  <!-- Gentle, knowing smile -->
+  <path d="M54 58 Q60 62 66 58" stroke="#8b6f4e" stroke-width="1" fill="none"/>
+  <!-- Slight smile dimples -->
+  <path d="M52 57 Q51 59 52 60" stroke="#c4956a" stroke-width="0.3" fill="none" opacity="0.4"/>
+  <path d="M68 57 Q69 59 68 60" stroke="#c4956a" stroke-width="0.3" fill="none" opacity="0.4"/>
+  <!-- Ears -->
+  <ellipse cx="39" cy="50" rx="3" ry="5" fill="#d4a574"/>
+  <ellipse cx="81" cy="50" rx="3" ry="5" fill="#d4a574"/>
+  <!-- Meditation-inspired collar / casual elegance -->
+  <path d="M38 72 Q42 62 52 66 L60 72 L68 66 Q78 62 82 72 L86 92 Q60 96 34 92Z" fill="#1a3a2a"/>
+  <!-- V-neck casual shirt -->
+  <path d="M52 66 L60 76 L68 66" fill="#0d2818" opacity="0.8"/>
+  <!-- Compass rose on chest (signature) -->
+  <circle cx="60" cy="82" r="5" fill="none" stroke="#10b981" stroke-width="0.8" opacity="0.6"/>
+  <!-- N/S pointer -->
+  <path d="M60 77 L58 82 L60 80 L62 82Z" fill="#10b981" opacity="0.6"/>
+  <path d="M60 87 L62 82 L60 84 L58 82Z" fill="#065f46" opacity="0.6"/>
+  <!-- E/W pointer -->
+  <path d="M65 82 L60 80 L62 82 L60 84Z" fill="#10b981" opacity="0.4"/>
+  <path d="M55 82 L60 84 L58 82 L60 80Z" fill="#065f46" opacity="0.4"/>
+  <!-- Zen circles behind (subtle) -->
+  <circle cx="30" cy="60" r="8" fill="none" stroke="#10b981" stroke-width="0.3" opacity="0.2"/>
+  <circle cx="90" cy="60" r="8" fill="none" stroke="#10b981" stroke-width="0.3" opacity="0.2"/>
+  <!-- Stage badge -->
+  <rect x="72" y="88" rx="8" ry="8" width="38" height="16" fill="#10b981"/>
+  <text x="91" y="99" text-anchor="middle" font-size="8" font-family="monospace" font-weight="bold" fill="#0c1929">S6</text>
+  <!-- Name ring -->
+  <text x="60" y="115" text-anchor="middle" font-size="7" font-family="monospace" font-weight="bold" fill="#10b981">COMPASS</text>
+</svg>

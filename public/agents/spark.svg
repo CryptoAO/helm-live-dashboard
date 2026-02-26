@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <radialGradient id="sparkBg" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#fbbf24"/>
+      <stop offset="100%" stop-color="#d97706"/>
+    </radialGradient>
+    <radialGradient id="sparkGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fef3c7" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#f59e0b" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <!-- Background circle -->
+  <circle cx="50" cy="50" r="48" fill="url(#sparkBg)"/>
+  <!-- Glow effect -->
+  <circle cx="50" cy="50" r="35" fill="url(#sparkGlow)"/>
+  <!-- Lightning bolt / spark symbol -->
+  <path d="M 55 15 L 40 48 L 52 48 L 45 85 L 65 45 L 50 45 Z" fill="#1c1917" stroke="#fef3c7" stroke-width="1.5" stroke-linejoin="round"/>
+  <!-- Small sparkles -->
+  <circle cx="25" cy="30" r="2" fill="#fef3c7" opacity="0.8"/>
+  <circle cx="75" cy="25" r="1.5" fill="#fef3c7" opacity="0.6"/>
+  <circle cx="80" cy="65" r="2" fill="#fef3c7" opacity="0.7"/>
+  <circle cx="20" cy="70" r="1.5" fill="#fef3c7" opacity="0.5"/>
+</svg>

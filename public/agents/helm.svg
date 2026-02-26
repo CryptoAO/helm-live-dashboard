@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
+  <!-- Background circle -->
+  <circle cx="60" cy="60" r="58" fill="#0c1929" stroke="#a1a1aa" stroke-width="2"/>
+  <!-- Glow ring -->
+  <circle cx="60" cy="60" r="52" fill="none" stroke="#a1a1aa" stroke-width="0.5" opacity="0.4"/>
+  <!-- Head silhouette - clean, iconic (Jobs-inspired) -->
+  <ellipse cx="60" cy="48" rx="20" ry="25" fill="#1e293b"/>
+  <!-- Hair - shorter, tidy -->
+  <path d="M40 44 Q46 24 60 22 Q74 24 80 44 Q76 34 60 32 Q44 34 40 44Z" fill="#2d2d2d"/>
+  <!-- Face - angular, focused -->
+  <ellipse cx="60" cy="50" rx="17" ry="21" fill="#d4a574"/>
+  <!-- Round glasses (iconic) -->
+  <circle cx="52" cy="48" r="6" fill="none" stroke="#555" stroke-width="1.5"/>
+  <circle cx="68" cy="48" r="6" fill="none" stroke="#555" stroke-width="1.5"/>
+  <line x1="58" y1="48" x2="62" y2="48" stroke="#555" stroke-width="1"/>
+  <line x1="46" y1="48" x2="42" y2="46" stroke="#555" stroke-width="1"/>
+  <line x1="74" y1="48" x2="78" y2="46" stroke="#555" stroke-width="1"/>
+  <!-- Eyes behind glasses -->
+  <circle cx="52" cy="48" r="1.5" fill="#1a1a2e"/>
+  <circle cx="68" cy="48" r="1.5" fill="#1a1a2e"/>
+  <!-- Focused eyebrows -->
+  <line x1="47" y1="42" x2="56" y2="41" stroke="#444" stroke-width="1.2" stroke-linecap="round"/>
+  <line x1="73" y1="42" x2="64" y2="41" stroke="#444" stroke-width="1.2" stroke-linecap="round"/>
+  <!-- Slight smile - confident -->
+  <path d="M55 58 Q60 60 65 58" stroke="#8b6f4e" stroke-width="1" fill="none"/>
+  <!-- Nose -->
+  <path d="M60 50 L58 54 L62 54" stroke="#c4956a" stroke-width="0.7" fill="none"/>
+  <!-- Black turtleneck (iconic) -->
+  <path d="M40 72 Q44 62 52 66 L60 70 L68 66 Q76 62 80 72 L84 92 Q60 96 36 92Z" fill="#111111"/>
+  <!-- Turtleneck collar -->
+  <path d="M50 66 Q55 62 60 64 Q65 62 70 66" stroke="#222" stroke-width="2" fill="none"/>
+  <!-- Ship's wheel icon on chest (subtle) -->
+  <circle cx="60" cy="82" r="5" fill="none" stroke="#a1a1aa" stroke-width="0.8" opacity="0.5"/>
+  <line x1="60" y1="77" x2="60" y2="87" stroke="#a1a1aa" stroke-width="0.5" opacity="0.5"/>
+  <line x1="55" y1="82" x2="65" y2="82" stroke="#a1a1aa" stroke-width="0.5" opacity="0.5"/>
+  <line x1="56.5" y1="78.5" x2="63.5" y2="85.5" stroke="#a1a1aa" stroke-width="0.5" opacity="0.5"/>
+  <line x1="63.5" y1="78.5" x2="56.5" y2="85.5" stroke="#a1a1aa" stroke-width="0.5" opacity="0.5"/>
+  <!-- Stage badge -->
+  <rect x="72" y="88" rx="8" ry="8" width="38" height="16" fill="#a1a1aa"/>
+  <text x="91" y="99" text-anchor="middle" font-size="8" font-family="monospace" font-weight="bold" fill="#0c1929">S2</text>
+  <!-- Name ring -->
+  <text x="60" y="115" text-anchor="middle" font-size="7" font-family="monospace" font-weight="bold" fill="#a1a1aa">HELM</text>
+</svg>

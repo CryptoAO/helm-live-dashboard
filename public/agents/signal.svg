@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
+  <!-- Background circle -->
+  <circle cx="60" cy="60" r="58" fill="#0c1929" stroke="#f59e0b" stroke-width="2"/>
+  <!-- Glow ring -->
+  <circle cx="60" cy="60" r="52" fill="none" stroke="#f59e0b" stroke-width="0.5" opacity="0.4"/>
+  <!-- Head silhouette - bald, powerful (Bezos-inspired) -->
+  <ellipse cx="60" cy="48" rx="21" ry="24" fill="#1e293b"/>
+  <!-- Bald head - smooth, powerful -->
+  <ellipse cx="60" cy="48" rx="20" ry="23" fill="#d4a574"/>
+  <!-- Head top highlight -->
+  <ellipse cx="58" cy="34" rx="10" ry="5" fill="#deb887" opacity="0.3"/>
+  <!-- Eyes - sharp, laughing, customer-focused -->
+  <ellipse cx="52" cy="48" rx="3.5" ry="2.8" fill="white"/>
+  <ellipse cx="68" cy="48" rx="3.5" ry="2.8" fill="white"/>
+  <circle cx="53" cy="47.5" r="2" fill="#3d2b1f"/>
+  <circle cx="69" cy="47.5" r="2" fill="#3d2b1f"/>
+  <!-- Smile lines around eyes -->
+  <path d="M45 47 Q44 49 45 51" stroke="#c4956a" stroke-width="0.5" fill="none"/>
+  <path d="M75 47 Q76 49 75 51" stroke="#c4956a" stroke-width="0.5" fill="none"/>
+  <!-- Expressive eyebrows -->
+  <path d="M47 44 Q52 41 56 43" stroke="#6b5b4e" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+  <path d="M73 44 Q68 41 64 43" stroke="#6b5b4e" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+  <!-- Big signature laugh/smile -->
+  <path d="M50 56 Q55 64 60 64 Q65 64 70 56" stroke="#8b6f4e" stroke-width="1.2" fill="#c96848" opacity="0.4"/>
+  <path d="M52 58 Q60 62 68 58" fill="white" opacity="0.8"/>
+  <!-- Nose -->
+  <path d="M60 50 L57 54 L63 54" stroke="#c4956a" stroke-width="0.7" fill="none"/>
+  <!-- Ears -->
+  <ellipse cx="39" cy="50" rx="3" ry="5" fill="#d4a574"/>
+  <ellipse cx="81" cy="50" rx="3" ry="5" fill="#d4a574"/>
+  <!-- Suit - sharp business -->
+  <path d="M38 72 Q42 62 52 66 L60 74 L68 66 Q78 62 82 72 L86 92 Q60 96 34 92Z" fill="#1a2744"/>
+  <!-- Suit collar -->
+  <path d="M52 66 L56 72 L60 68 L64 72 L68 66" fill="#0f1d35"/>
+  <!-- Tie -->
+  <path d="M58 72 L60 68 L62 72 L60 88Z" fill="#f59e0b" opacity="0.8"/>
+  <!-- White shirt visible -->
+  <path d="M56 72 L58 72 L60 68 L62 72 L64 72 L60 76Z" fill="white" opacity="0.3"/>
+  <!-- Arrow icon on lapel (Bezos/Amazon inspired) -->
+  <path d="M44 80 Q48 83 52 80" stroke="#f59e0b" stroke-width="1.2" fill="none" opacity="0.6"/>
+  <path d="M50 80 L52 80" stroke="#f59e0b" stroke-width="1.2" fill="none" opacity="0.6" marker-end="none"/>
+  <!-- Stage badge -->
+  <rect x="72" y="88" rx="8" ry="8" width="38" height="16" fill="#f59e0b"/>
+  <text x="91" y="99" text-anchor="middle" font-size="8" font-family="monospace" font-weight="bold" fill="#0c1929">S4</text>
+  <!-- Name ring -->
+  <text x="60" y="115" text-anchor="middle" font-size="7" font-family="monospace" font-weight="bold" fill="#f59e0b">SIGNAL</text>
+</svg>

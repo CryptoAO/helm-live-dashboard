@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
+  <!-- Background circle -->
+  <circle cx="60" cy="60" r="58" fill="#0c1929" stroke="#f97316" stroke-width="2"/>
+  <!-- Glow ring -->
+  <circle cx="60" cy="60" r="52" fill="none" stroke="#f97316" stroke-width="0.5" opacity="0.4"/>
+  <!-- Head silhouette - sharp, bold features (Musk-inspired) -->
+  <ellipse cx="60" cy="48" rx="22" ry="26" fill="#1e293b"/>
+  <!-- Hair - swept back, bold -->
+  <path d="M38 42 Q45 22 60 20 Q75 22 82 42 Q78 30 60 28 Q42 30 38 42Z" fill="#334155"/>
+  <!-- Face -->
+  <ellipse cx="60" cy="52" rx="18" ry="22" fill="#d4a574"/>
+  <!-- Eyes - intense, visionary gaze -->
+  <ellipse cx="52" cy="48" rx="4" ry="2.5" fill="white"/>
+  <ellipse cx="68" cy="48" rx="4" ry="2.5" fill="white"/>
+  <circle cx="53" cy="48" r="1.8" fill="#1a1a2e"/>
+  <circle cx="69" cy="48" r="1.8" fill="#1a1a2e"/>
+  <!-- Sharp eyebrows -->
+  <path d="M46 44 L54 42 L56 43" stroke="#334155" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  <path d="M74 44 L66 42 L64 43" stroke="#334155" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  <!-- Determined mouth -->
+  <path d="M54 58 Q60 61 66 58" stroke="#8b6f4e" stroke-width="1.2" fill="none"/>
+  <!-- Nose -->
+  <path d="M60 50 L58 55 L62 55" stroke="#c4956a" stroke-width="0.8" fill="none"/>
+  <!-- Collar - tech CEO style -->
+  <path d="M40 72 Q42 65 50 68 L60 75 L70 68 Q78 65 80 72 L85 90 Q60 95 35 90Z" fill="#1a1a2e"/>
+  <!-- Rocket icon on chest -->
+  <path d="M57 78 L60 72 L63 78 L61 78 L61 82 L59 82 L59 78Z" fill="#f97316" opacity="0.8"/>
+  <!-- Flame -->
+  <path d="M58 82 Q60 86 62 82" fill="#ef4444" opacity="0.6"/>
+  <!-- Eagle wings behind (signature) -->
+  <path d="M15 55 Q25 35 38 45" stroke="#f97316" stroke-width="1.5" fill="none" opacity="0.6"/>
+  <path d="M105 55 Q95 35 82 45" stroke="#f97316" stroke-width="1.5" fill="none" opacity="0.6"/>
+  <path d="M12 60 Q22 42 35 48" stroke="#f97316" stroke-width="1" fill="none" opacity="0.4"/>
+  <path d="M108 60 Q98 42 85 48" stroke="#f97316" stroke-width="1" fill="none" opacity="0.4"/>
+  <!-- Stage badge -->
+  <rect x="72" y="88" rx="8" ry="8" width="38" height="16" fill="#f97316"/>
+  <text x="91" y="99" text-anchor="middle" font-size="8" font-family="monospace" font-weight="bold" fill="white">S1</text>
+  <!-- Name ring -->
+  <text x="60" y="115" text-anchor="middle" font-size="7" font-family="monospace" font-weight="bold" fill="#f97316">EAGLE</text>
+</svg>

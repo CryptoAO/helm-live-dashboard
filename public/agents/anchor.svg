@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
+  <!-- Background circle -->
+  <circle cx="60" cy="60" r="58" fill="#0c1929" stroke="#06b6d4" stroke-width="2"/>
+  <!-- Glow ring -->
+  <circle cx="60" cy="60" r="52" fill="none" stroke="#06b6d4" stroke-width="0.5" opacity="0.4"/>
+  <!-- Head silhouette - elderly, wise (Munger-inspired) -->
+  <ellipse cx="60" cy="46" rx="21" ry="24" fill="#1e293b"/>
+  <!-- Hair - sparse, white/gray sides -->
+  <path d="M40 44 Q45 26 60 24 Q75 26 80 44 Q76 34 60 32 Q44 34 40 44Z" fill="#e8e0d4" opacity="0.2"/>
+  <!-- Balding top -->
+  <ellipse cx="60" cy="30" rx="14" ry="8" fill="#d4a574" opacity="0.4"/>
+  <!-- Side hair - white -->
+  <path d="M38 42 Q36 38 38 34 Q40 36 42 40Z" fill="#d4d0c8" opacity="0.7"/>
+  <path d="M82 42 Q84 38 82 34 Q80 36 78 40Z" fill="#d4d0c8" opacity="0.7"/>
+  <!-- Face - older, wise -->
+  <ellipse cx="60" cy="50" rx="17" ry="21" fill="#d4a574"/>
+  <!-- Large thick glasses (Munger signature) -->
+  <rect x="44" y="43" rx="3" ry="3" width="14" height="11" fill="none" stroke="#555" stroke-width="2"/>
+  <rect x="62" y="43" rx="3" ry="3" width="14" height="11" fill="none" stroke="#555" stroke-width="2"/>
+  <line x1="58" y1="48" x2="62" y2="48" stroke="#555" stroke-width="1.5"/>
+  <line x1="44" y1="48" x2="40" y2="46" stroke="#555" stroke-width="1.5"/>
+  <line x1="76" y1="48" x2="80" y2="46" stroke="#555" stroke-width="1.5"/>
+  <!-- Eyes behind thick lenses -->
+  <circle cx="51" cy="48" r="1.5" fill="#1a1a2e"/>
+  <circle cx="69" cy="48" r="1.5" fill="#1a1a2e"/>
+  <!-- Lens reflection -->
+  <circle cx="49" cy="46" r="1" fill="white" opacity="0.2"/>
+  <circle cx="67" y="46" r="1" fill="white" opacity="0.2"/>
+  <!-- Wise eyebrows - bushy -->
+  <path d="M44 42 Q48 39 56 41" stroke="#888" stroke-width="1.8" fill="none"/>
+  <path d="M76 42 Q72 39 64 41" stroke="#888" stroke-width="1.8" fill="none"/>
+  <!-- Nose - prominent -->
+  <path d="M60 50 L57 55 L63 55" stroke="#c4956a" stroke-width="0.8" fill="none"/>
+  <!-- Wise, slight smile -->
+  <path d="M54 60 Q60 63 66 60" stroke="#8b6f4e" stroke-width="1" fill="none"/>
+  <!-- Wrinkle lines (wisdom) -->
+  <path d="M44 55 Q46 53 48 55" stroke="#c4956a" stroke-width="0.4" fill="none" opacity="0.5"/>
+  <path d="M72 55 Q74 53 76 55" stroke="#c4956a" stroke-width="0.4" fill="none" opacity="0.5"/>
+  <!-- Suit - conservative business -->
+  <path d="M38 72 Q42 62 52 66 L60 74 L68 66 Q78 62 82 72 L86 92 Q60 96 34 92Z" fill="#1a2744"/>
+  <!-- Suit lapels -->
+  <path d="M52 66 L56 74 L60 70" fill="#0f1d35"/>
+  <path d="M68 66 L64 74 L60 70" fill="#0f1d35"/>
+  <!-- Tie -->
+  <path d="M58 70 L60 66 L62 70 L60 86Z" fill="#06b6d4" opacity="0.7"/>
+  <!-- White shirt -->
+  <path d="M56 70 L58 70 L60 66 L62 70 L64 70 L60 74Z" fill="white" opacity="0.25"/>
+  <!-- Anchor icon on lapel -->
+  <circle cx="48" cy="80" r="1.5" fill="none" stroke="#06b6d4" stroke-width="0.8" opacity="0.6"/>
+  <line x1="48" y1="78" x2="48" y2="84" stroke="#06b6d4" stroke-width="0.8" opacity="0.6"/>
+  <path d="M45 83 Q48 86 51 83" stroke="#06b6d4" stroke-width="0.8" fill="none" opacity="0.6"/>
+  <!-- Stage badge -->
+  <rect x="72" y="88" rx="8" ry="8" width="38" height="16" fill="#06b6d4"/>
+  <text x="91" y="99" text-anchor="middle" font-size="8" font-family="monospace" font-weight="bold" fill="#0c1929">S5</text>
+  <!-- Name ring -->
+  <text x="60" y="115" text-anchor="middle" font-size="7" font-family="monospace" font-weight="bold" fill="#06b6d4">ANCHOR</text>
+</svg>
