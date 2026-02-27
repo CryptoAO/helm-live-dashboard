@@ -45,7 +45,7 @@ export async function POST(req: NextRequest) {
     }
 
     const provider = model.split("/")[0];
-    const allowed = ["anthropic", "openai", "google"];
+    const allowed = ["anthropic", "openai", "google", "xai"];
     if (!allowed.includes(provider)) {
       return NextResponse.json(
         { ok: false, error: `Unknown provider: ${provider}. Allowed: ${allowed.join(", ")}` },

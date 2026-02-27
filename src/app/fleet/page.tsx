@@ -4,9 +4,10 @@ import { useDashboard } from "@/hooks/use-dashboard";
 import { useGateway } from "@/hooks/use-gateway";
 import { PageHeader } from "@/components/layout/page-header";
 import { Card, Badge, Modal, AgentAvatar } from "@/components/shared";
-import { AgentCard, CronJobRow } from "@/components/domain";
+import { AgentCard, AgentRPGCard, CronJobRow } from "@/components/domain";
 import type { AgentInfo, CronJob } from "@/lib/data/types";
 import { AGENT_COLORS } from "@/lib/data/types";
+import { AGENT_RPG_PROFILES, getStatBarColor, getTierColor } from "@/lib/data/agent-profiles";
 
 const AGENT_PROFILES: Record<string, { persona: string; description: string; strengths: string[] }> = {
   main:    { persona: "Steve Jobs", description: "Commander & Refiner — orchestrates the fleet, refines ideas into executable plans", strengths: ["Strategic vision", "Product refinement", "Fleet coordination", "Decision making"] },
@@ -92,9 +93,9 @@ export default function FleetPage() {
 
       <div className="flex-1 overflow-y-auto p-4 md:p-6 space-y-4">
         {/* Agent Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
           {data.agents.map(agent => (
-            <AgentCard key={agent.id} agent={agent} onClick={() => setSelectedAgent(agent)} />
+            <AgentRPGCard key={agent.id} agent={agent} onClick={() => setSelectedAgent(agent)} />
           ))}
         </div>
 
