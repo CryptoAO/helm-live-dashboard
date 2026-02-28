@@ -1960,13 +1960,10 @@ export function getDashboardData(): DashboardData {
     const la = lastActions[agent.id];
     const ns = nextScheduled[agent.id];
 
-    // Compute activity status — use most recent of lastAction or lastMemoryUpdate
+    // Compute activity status
     let activityStatus: AgentInfo["activityStatus"] = "idle";
-    const memTime = agent.lastMemoryUpdate ? new Date(agent.lastMemoryUpdate).getTime() : 0;
-    const actionTime = la ? new Date(la.time).getTime() : 0;
-    const latestActivity = Math.max(memTime, actionTime);
-    if (latestActivity > 0) {
-      const hoursSince = (now - latestActivity) / 3600000;
+    if (la) {
+      const hoursSince = (now - new Date(la.time).getTime()) / 3600000;
       if (hoursSince < 1) activityStatus = "active";
       else if (hoursSince < 6) activityStatus = "recent";
       else {
