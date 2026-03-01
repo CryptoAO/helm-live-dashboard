@@ -32,7 +32,16 @@ export async function GET() {
 }
 
 // POST — switch provider
+const IS_VERCEL = !!process.env.VERCEL;
+
 export async function POST(req: NextRequest) {
+  if (IS_VERCEL) {
+    return NextResponse.json(
+      { ok: false, error: "AI switching requires the local gateway.", cloudMode: true },
+      { status: 403 }
+    );
+  }
+
   try {
     const body = await req.json();
     const model = body.model as string;
@@ -45,10 +54,18 @@ export async function POST(req: NextRequest) {
     }
 
     const provider = model.split("/")[0];
-    const allowed = ["anthropic", "openai", "google", "xai"];
+    const allowed = ["anthropic", "openai", "google"];
     if (!allowed.includes(provider)) {
       return NextResponse.json(
         { ok: false, error: `Unknown provider: ${provider}. Allowed: ${allowed.join(", ")}` },
+        { status: 400 }
+      );
+    }
+
+    // Sanitize model string — only allow alphanumeric, hyphens, dots, underscores, slashes
+    if (!/^[a-zA-Z0-9._\-\/]+$/.test(model)) {
+      return NextResponse.json(
+        { ok: false, error: "Invalid characters in model name" },
         { status: 400 }
       );
     }

@@ -28,6 +28,7 @@ export function Sparkline({ data, width = 80, height = 24, color = "#3b82f6", fi
   const linePath = points.map((p, i) => `${i === 0 ? "M" : "L"} ${p.x.toFixed(1)} ${p.y.toFixed(1)}`).join(" ");
   const fillPath = `${linePath} L ${points[points.length - 1].x.toFixed(1)} ${height} L ${points[0].x.toFixed(1)} ${height} Z`;
 
+  const totalVal = data.reduce((sum, v) => sum + v, 0);
   const lastVal = data[data.length - 1];
   const prevVal = data[data.length - 2];
   const trend = lastVal > prevVal ? "up" : lastVal < prevVal ? "down" : "flat";
@@ -42,7 +43,7 @@ export function Sparkline({ data, width = 80, height = 24, color = "#3b82f6", fi
         <circle cx={points[points.length - 1].x} cy={points[points.length - 1].y} r={2} fill={trendColor} />
       </svg>
       <span className="text-[9px] font-mono" style={{ color: trendColor }}>
-        {lastVal}
+        {totalVal}
       </span>
     </div>
   );

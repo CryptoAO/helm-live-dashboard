@@ -1,4 +1,5 @@
 "use client";
+import { useState, useEffect } from "react";
 import type { CronJob } from "@/lib/data/types";
 import { AgentAvatar } from "../shared/agent-avatar";
 import { Badge } from "../shared/badge";
@@ -10,15 +11,20 @@ interface CronJobRowProps {
   showActions?: boolean;
 }
 
-function formatNextRun(nextRunAt: string | null): string {
-  if (!nextRunAt) return "—";
-  const ts = parseInt(nextRunAt);
-  if (isNaN(ts)) return nextRunAt;
-  const d = new Date(ts);
-  return d.toLocaleTimeString("en-PH", { hour: "2-digit", minute: "2-digit", hour12: false, timeZone: "Asia/Manila" });
+function useFormattedTime(nextRunAt: string | null): string {
+  const [formatted, setFormatted] = useState("—");
+  useEffect(() => {
+    if (!nextRunAt) { setFormatted("—"); return; }
+    const ts = parseInt(nextRunAt);
+    if (isNaN(ts)) { setFormatted(nextRunAt); return; }
+    const d = new Date(ts);
+    setFormatted(d.toLocaleTimeString("en-PH", { hour: "2-digit", minute: "2-digit", hour12: false, timeZone: "Asia/Manila" }));
+  }, [nextRunAt]);
+  return formatted;
 }
 
 export function CronJobRow({ job, onToggle, onTrigger, showActions = false }: CronJobRowProps) {
+  const nextRunFormatted = useFormattedTime(job.nextRunAt);
   return (
     <div className={`flex items-center gap-3 py-2 px-2 rounded hover:bg-slate-800/30 ${!job.enabled ? "opacity-40" : ""}`}>
       <AgentAvatar agentId={job.agentId} size="sm" />
@@ -35,7 +41,7 @@ export function CronJobRow({ job, onToggle, onTrigger, showActions = false }: Cr
         {job.consecutiveErrors > 0 && (
           <Badge variant="red">{job.consecutiveErrors} err</Badge>
         )}
-        <span className="text-[10px] text-slate-500 font-mono w-12 text-right">{formatNextRun(job.nextRunAt)}</span>
+        <span className="text-[10px] text-slate-500 font-mono w-12 text-right">{nextRunFormatted}</span>
         {showActions && (
           <>
             <button

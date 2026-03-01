@@ -14,15 +14,38 @@ const stateLabels = {
   error: "Error",
 };
 
+function isCloudDeploy(): boolean {
+  if (typeof window === "undefined") return false;
+  const host = window.location.hostname;
+  return host !== "localhost" && host !== "127.0.0.1";
+}
+
 export function ConnectionStatus({ state, pid, className = "" }: ConnectionStatusProps) {
-  const dotStatus = state === "connected" ? "connected" : "disconnected";
+  const cloud = isCloudDeploy();
+
+  // Cloud deploy: gateway is never reachable — show "Cloud" instead of "Offline"
+  if (cloud && (state === "disconnected" || state === "error")) {
+    return (
+      <div className={`flex items-center gap-2 text-xs ${className}`}>
+        <span className="w-2 h-2 rounded-full bg-blue-400" />
+        <span className="text-slate-400">Gateway</span>
+        <span className="text-blue-400">Cloud</span>
+      </div>
+    );
+  }
+
+  // If gateway PID exists but WS is disconnected (e.g. remote access), show "Running" not "Offline"
+  const hasProcess = !!pid;
+  const effectiveState = (state === "disconnected" && hasProcess) ? "running" : state;
+  const dotStatus = effectiveState === "connected" || effectiveState === "running" ? "connected" : "disconnected";
+  const label = effectiveState === "running" ? "Running" : stateLabels[state];
+  const labelColor = (effectiveState === "connected" || effectiveState === "running") ? "text-emerald-400" : "text-red-400";
+
   return (
     <div className={`flex items-center gap-2 text-xs ${className}`}>
       <StatusDot status={dotStatus} size="sm" />
       <span className="text-slate-400">Gateway</span>
-      <span className={state === "connected" ? "text-emerald-400" : "text-red-400"}>
-        {stateLabels[state]}
-      </span>
+      <span className={labelColor}>{label}</span>
       {pid && <span className="text-slate-600 font-mono">PID {pid}</span>}
     </div>
   );

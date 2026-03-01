@@ -9,7 +9,7 @@ import { SafetyBanner, AgentCard, CronJobRow, PipelineCard, FlywheelStage, Activ
 const STAGE_NAMES = ["Ideate", "Refine", "Build", "Ship", "Validate", "Learn"];
 
 export default function BridgePage() {
-  const { data, loading, error, lastRefresh, refresh } = useDashboard();
+  const { data, loading, error, lastRefresh, refresh, dataSource, snapshotAge } = useDashboard();
   const gateway = useGateway();
   const [selectedStage, setSelectedStage] = useState<number | null>(null);
   const [selectedItemIdx, setSelectedItemIdx] = useState<number | null>(null);
@@ -67,6 +67,16 @@ export default function BridgePage() {
         timestamp={`${lastRefresh} PHT`}
         actions={
           <div className="flex items-center gap-2">
+            {dataSource === "snapshot" && snapshotAge && (
+              <span className="text-[10px] px-2 py-1 rounded bg-amber-500/10 text-amber-400 border border-amber-500/20">
+                Snapshot {snapshotAge}
+              </span>
+            )}
+            {dataSource === "live" && (
+              <span className="text-[10px] px-2 py-1 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                LIVE
+              </span>
+            )}
             <ProviderSwitcher />
             <button onClick={refresh} className="text-xs px-3 py-1.5 rounded-lg border border-card-border text-slate-400 hover:text-slate-200 hover:border-slate-600 transition-colors">
               Refresh
@@ -133,7 +143,7 @@ export default function BridgePage() {
 
             <Card title="NEXT CRON JOBS">
               <div className="divide-y divide-slate-800">
-                {nextCron.map(job => <CronJobRow key={job.jobId} job={job} />)}
+                {nextCron.map((job, i) => <CronJobRow key={job.jobId || `cron-${i}`} job={job} />)}
               </div>
             </Card>
           </div>

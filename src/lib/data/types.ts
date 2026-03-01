@@ -75,6 +75,7 @@ export interface FlywheelItem {
   allStatusNotes: string[];
   stalenessHours: number | null;
   project: string;
+  projectName: string; // Parsed from **Project:** field (e.g. "MaritimeHub")
 }
 
 export interface ActivityEntry {
@@ -116,6 +117,15 @@ export interface ProjectInfo {
   totalTasks: number;
   progressPct: number;
   description: string;
+  // Staleness detection
+  nextDeadline?: string;
+  daysToDeadline?: number;
+  isStale?: boolean;
+  staleReason?: string;
+  lastActivity?: string;
+  // Process phase tracking
+  processPhase?: string; // e.g. "P4: Development"
+  processGate?: string;  // e.g. "Gate 3 passed"
 }
 
 export interface ReviewHistoryEntry {
@@ -129,7 +139,7 @@ export interface IncomePipelineIdea {
   title: string;
   addedBy: string;
   addedDate: string;
-  status: "PROPOSED" | "REVIEW" | "IN_PROGRESS" | "SHIPPED" | "APPROVED" | "REJECTED" | "DEFERRED" | "PARKED" | "DEPRIORITIZED" | "GO" | "MERGED" | "PLANNING";
+  status: "PROPOSED" | "REVIEW" | "IN_PROGRESS" | "SHIPPED" | "APPROVED" | "REJECTED" | "DEFERRED" | "PARKED" | "DEPRIORITIZED" | "GO" | "MERGED" | "PLANNING" | "KILLED" | "NEW";
   market: string;
   potential: string;
   effort: string;
@@ -198,6 +208,30 @@ export interface AgentSparklineData {
   agentName: string;
   daily: number[]; // last 7 days of action counts
   labels: string[]; // day labels
+}
+
+// Agent growth/leveling metrics
+export interface AgentGrowthMetrics {
+  agentId: string;
+  agentName: string;
+  // XP system - based on actual cron runs
+  totalRuns: number;        // lifetime total cron runs
+  totalTokens: number;      // lifetime total tokens used
+  successRate: number;      // percentage of successful runs (0-100)
+  avgResponseTime: number;  // average duration in seconds
+  // 7-day trends
+  runsThisWeek: number;
+  runsLastWeek: number;
+  weekOverWeekChange: number; // percentage change
+  // Daily activity for the last 7 days
+  dailyRuns: number[];      // 7 numbers
+  dailyLabels: string[];    // day names
+  // Computed level (1 run = 10 XP, level up every 100 XP)
+  level: number;
+  xp: number;
+  xpToNextLevel: number;
+  // Growth trend
+  trend: "rising" | "stable" | "declining" | "inactive";
 }
 
 // Dashboard improvement backlog (parsed from improvement-log.md)
@@ -292,10 +326,105 @@ export interface AnalyticsData {
   budgetPct: number;
 }
 
+export interface SafetyAction {
+  id: string;
+  label: string;
+  description: string;
+  severity: "info" | "warn" | "critical";
+  cronJobId?: string;
+  agentId?: string;
+  type: "retry_cron" | "reset_errors" | "delegate_helm" | "escalate";
+}
+
 export interface SafetyLevel {
   level: "green" | "amber" | "red";
   label: string;
   message: string;
+  actions?: SafetyAction[];
+}
+
+// AI Redundancy types
+export interface ProviderHealth {
+  provider: string;
+  label: string;
+  status: "online" | "degraded" | "offline" | "unknown";
+  hasCredentials: boolean;
+  models: { id: string; label: string; default?: boolean }[];
+  lastChecked: string | null;
+  lastError: string | null;
+  rateLimitHits24h: number;
+}
+
+export interface AgentFallbackChain {
+  agentId: string;
+  agentName: string;
+  primaryModel: string;
+  primaryProvider: string;
+  fallbacks: string[];
+  currentModel: string;
+  isOnFallback: boolean;
+  lastFailoverAt: string | null;
+  lastFailoverReason: string | null;
+}
+
+export interface FailoverEvent {
+  timestamp: string;
+  agentId: string;
+  agentName: string;
+  fromModel: string;
+  toModel: string;
+  reason: string;
+  automatic: boolean;
+}
+
+export interface RedundancyData {
+  providers: ProviderHealth[];
+  agentChains: AgentFallbackChain[];
+  failoverHistory: FailoverEvent[];
+  autoFailoverEnabled: boolean;
+  globalFallbackChain: string[];
+  totalProvidersOnline: number;
+  totalModelsAvailable: number;
+}
+
+// Agent Spawning types
+export interface SpawnRequest {
+  spawnId: string;
+  parentId: string;
+  name: string;
+  fullName?: string;
+  task: string;
+  skillset: string[];
+  model: string;
+  fallbackModels?: string[];
+  autonomyLevel?: "A0" | "A1" | "A2" | "A3";
+  tokenBudget: number;
+  tokensUsed: number;
+  deadline: string;
+  status: "requested" | "approved" | "queued" | "booting" | "active" | "paused" | "completed" | "recalled" | "failed" | "stalled";
+  progressPct?: number;
+  lastProgressNote?: string | null;
+  requestedAt: string;
+  approvedAt: string | null;
+  approvedBy: string | null;
+  bootedAt?: string | null;
+  completedAt?: string | null;
+  recalledAt?: string | null;
+  deliverables?: string[];
+  operation?: string | null;
+}
+
+export interface SpawnMeta {
+  dailyBudget: number;
+  dailyUsed: number;
+  maxFleetSubAgents: number;
+  activeSubAgents: number;
+}
+
+export interface SpawningData {
+  meta: SpawnMeta;
+  spawns: SpawnRequest[];
+  byParent: Record<string, { activeSpawns: number; totalTokensToday: number }>;
 }
 
 export interface DashboardData {
@@ -335,7 +464,10 @@ export interface DashboardData {
   nightWatch: boolean;
   taskboard: TaskboardTask[];
   agentSparklines: AgentSparklineData[];
+  agentGrowth: AgentGrowthMetrics[];
   dashboardMonitoring: DashboardMonitoring;
+  redundancy: RedundancyData;
+  spawning: SpawningData;
 }
 
 // Agent color/config constants

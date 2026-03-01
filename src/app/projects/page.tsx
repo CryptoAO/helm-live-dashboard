@@ -1,12 +1,14 @@
 "use client";
 import { useState } from "react";
 import { useDashboard } from "@/hooks/use-dashboard";
+import { useGateway } from "@/hooks/use-gateway";
 import { PageHeader } from "@/components/layout/page-header";
 import { Card, Badge, Modal } from "@/components/shared";
 import { ProjectCard, ProjectDetail } from "@/components/domain";
 
 export default function ProjectsPage() {
   const { data, loading, refresh } = useDashboard();
+  const gateway = useGateway();
   const [tab, setTab] = useState<"active" | "shipped">("active");
   const [selectedSlug, setSelectedSlug] = useState<string | null>(null);
 
@@ -30,6 +32,7 @@ export default function ProjectsPage() {
         title="Projects"
         subtitle={`${projects.length} total · ${activeProjects.length} active · ${shippedProjects.length} shipped`}
         icon="📦"
+        gatewayState={gateway.connectionState}
         actions={
           <button onClick={refresh} className="text-xs px-3 py-1.5 rounded-lg border border-card-border text-slate-400 hover:text-slate-200 transition-colors">
             Refresh

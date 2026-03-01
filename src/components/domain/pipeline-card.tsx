@@ -14,7 +14,7 @@ interface PipelineCardProps {
 }
 
 const statusVariant: Record<string, "green" | "amber" | "blue" | "gray" | "red" | "orange"> = {
-  PROPOSED: "gray",
+  PROPOSED: "blue",
   REVIEW: "amber",
   IN_PROGRESS: "blue",
   SHIPPED: "green",
@@ -26,6 +26,8 @@ const statusVariant: Record<string, "green" | "amber" | "blue" | "gray" | "red" 
   DEFERRED: "gray",
   PARKED: "orange",
   DEPRIORITIZED: "gray",
+  KILLED: "red",
+  NEW: "amber",
 };
 
 const effortColor: Record<string, string> = {

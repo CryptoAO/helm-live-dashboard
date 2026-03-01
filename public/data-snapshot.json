@@ -1,0 +1,4699 @@
+{
+  "timestamp": "2026-03-01T21:53:44.550Z",
+  "gateway": {
+    "running": false,
+    "pid": null,
+    "uptime": null,
+    "lastLogEntry": "2026-03-01T21:51:17.269Z [telegram] sendMessage ok chat=-5220364947 message=2133"
+  },
+  "safety": {
+    "level": "amber",
+    "label": "WARNING",
+    "message": "0 cron errors · 1 agent overdue",
+    "actions": []
+  },
+  "agents": [
+    {
+      "id": "main",
+      "name": "HELM",
+      "workspace": "/Users/rizaldomadanlo/.openclaw/workspace",
+      "telegramGroup": "-5220364947",
+      "lastMemoryUpdate": "2026-03-01T21:53:29.095Z",
+      "memorySnippet": "# HELM Daily Log — 2026-03-01\n## Handoff Protocol Implemented (22:37 PHT)\n- Analyzed Vadim's (@VadimStrizheus) multi-agent memory system (tweet with 19K views, 584 bookmarks)\n- His setup: 8 SQLite DBs + 19 memory dirs + 21 shared brain JSONs + spawn script\n- **Implemented 3 adaptations:**",
+      "lastAction": "⚠️ INFRA CHECK | GW:no-pid | Cron:12/15 (3 missing nextRun) | Agents:1/1 (Sun...",
+      "lastActionTime": "2026-02-22T12:00:44.874Z",
+      "nextScheduledName": "HELM Self-Heal Health Monitor",
+      "nextScheduledTime": "2026-03-01T22:00:00.000Z",
+      "activityStatus": "active",
+      "cronJobCount": 12
+    },
+    {
+      "id": "eagle",
+      "name": "EAGLE",
+      "workspace": "/Users/rizaldomadanlo/.openclaw/workspaces/eagle",
+      "telegramGroup": "-5163923779",
+      "lastMemoryUpdate": "2026-03-01T21:42:57.072Z",
+      "memorySnippet": "# EAGLE Daily Log — 2026-03-01\n## CRISIS TRACKING: US-Israel Strikes on Iran / Gulf-Wide Conflict\n### Timeline of EAGLE Scans:\n**06:00** — Full scan. Discovered US-Israel joint strikes on Iran (28 Feb). Hormuz effectively closed. DMW/DFA ordered to secure Filipinos. Philippines won IMO HTW Chairmanship. Full intel report delivered to Rizaldo.\n**06:30** — IRGC VHF broadcasts confirmed by EU Aspides: \"no ship allowed to pass.\" Oil majors suspending all Hormuz shipments.",
+      "lastAction": "EAGLE Intelligence Scan Complete — 2026-02-22",
+      "lastActionTime": "2026-02-22T05:06:26.221Z",
+      "nextScheduledName": "EAGLE Intelligence Scan",
+      "nextScheduledTime": "2026-03-01T23:00:00.000Z",
+      "activityStatus": "active",
+      "cronJobCount": 1
+    },
+    {
+      "id": "anchor",
+      "name": "ANCHOR",
+      "workspace": "/Users/rizaldomadanlo/.openclaw/workspaces/anchor",
+      "telegramGroup": "-1003839397317",
+      "lastMemoryUpdate": "2026-03-01T21:42:55.692Z",
+      "memorySnippet": "- **Legal Appeal (2026-03-01):** Received Notice of Appeal for dismissed crew involved in shouting match with MMAN Dionson. Claims: USD 11k+ and PHP 200k. Deadline for Comment: Mar 9, 2026. Logged in shared-kb/cases.",
+      "lastAction": "ANCHOR Crewing Status — Sunday, Feb 22, 2026",
+      "lastActionTime": "2026-02-22T05:06:26.222Z",
+      "nextScheduledName": "ANCHOR Crewing Status Update",
+      "nextScheduledTime": "2026-03-02T02:15:00.000Z",
+      "activityStatus": "active",
+      "cronJobCount": 1
+    },
+    {
+      "id": "beacon",
+      "name": "BEACON",
+      "workspace": "/Users/rizaldomadanlo/.openclaw/workspaces/beacon",
+      "telegramGroup": "-5214300239",
+      "lastMemoryUpdate": "2026-03-01T21:38:36.833Z",
+      "memorySnippet": "# BEACON Daily Log — 2026-02-28 (Saturday)\n## Status\n- **08:39** — Active and operational. No active cases in tracker. Standing by for instructions.\n- **09:44** — Daily cron executed. Case tracker empty — initialized `shared-kb/cases/case-tracker.md`. Zero deadlines, zero active cases. Standing by.\n- **22:26** — HELM priority override: Built MaritimeHub legal pages. Created `app/terms/page.tsx` (290 lines) and `app/privacy/page.tsx` (393 lines). Production-ready copy covering Philippine DPA, GDPR, maritime SaaS context. Uses Nav component, matches dark theme (prose-invert).",
+      "lastAction": "Connection error.",
+      "lastActionTime": "2026-02-23T00:39:34.010Z",
+      "nextScheduledName": "BEACON Regulatory Compliance Scanner",
+      "nextScheduledTime": "2026-03-01T22:30:00.000Z",
+      "activityStatus": "active",
+      "cronJobCount": 6
+    },
+    {
+      "id": "compass",
+      "name": "COMPASS",
+      "workspace": "/Users/rizaldomadanlo/.openclaw/workspaces/compass",
+      "telegramGroup": "-5118264846",
+      "lastMemoryUpdate": "2026-03-01T21:41:55.367Z",
+      "memorySnippet": "# Daily Log — 2026-03-01 (Sunday)\n## Session Log\n### 07:50 PHT — SOUL.md Amendment: 12-Hour COMPASS_CHECK SLA\n**Trigger:** DOO directive (Rizaldo) in COMPASS Data group\n**Context:** 3 income ideas (INC-008-NEW, INC-009, INC-012) were overdue at COMPASS_CHECK stage (12-24h). Rizaldo directed: \"Should not get stuck with COMPASS. If it's not flying, kill the idea.\"",
+      "lastAction": "Completed task",
+      "lastActionTime": "2026-02-22T23:37:45.294Z",
+      "nextScheduledName": "COMPASS Weekly Monday Summary",
+      "nextScheduledTime": "2026-03-02T02:45:00.000Z",
+      "activityStatus": "active",
+      "cronJobCount": 3
+    },
+    {
+      "id": "signal",
+      "name": "SIGNAL",
+      "workspace": "/Users/rizaldomadanlo/.openclaw/workspaces/signal",
+      "telegramGroup": "-5266583066",
+      "lastMemoryUpdate": "2026-03-01T21:42:56.369Z",
+      "memorySnippet": "# 2026-02-28 — SIGNAL Daily Log\n## 07:43 — HELM Tasking: Built in Public Strategy\n- Reviewed `shared-kb/content/built-in-public-strategy.md`\n- Confirmed ownership of Friday \"Maritime + AI\" content slot (LinkedIn + Beehiiv newsletter)\n- Saved acknowledgment to `shared-kb/taskboard/signal-inbox.md`",
+      "lastAction": "SIGNAL Daily Status — 2026-02-24 (Tue 09:40)",
+      "lastActionTime": "2026-02-24T01:40:40.715Z",
+      "nextScheduledName": "SIGNAL Daily Communications Check",
+      "nextScheduledTime": "2026-03-02T01:40:00.000Z",
+      "activityStatus": "active",
+      "cronJobCount": 1
+    },
+    {
+      "id": "spark",
+      "name": "SPARK",
+      "workspace": "/Users/rizaldomadanlo/.openclaw/workspaces/spark",
+      "telegramGroup": "-5050865804",
+      "lastMemoryUpdate": "2026-03-01T12:08:27.719Z",
+      "memorySnippet": "# spark Daily Log — 2026-03-01\n## Evening Review (01:45 PHT)\n- Ran SOUL.md v2.4 evening review protocol\n- No morning content plan was generated today (first gap since Feb 26)\n- Zero content published — streak continues at 7 days with no external output",
+      "lastAction": "Completed task",
+      "lastActionTime": "2026-02-22T23:37:45.302Z",
+      "nextScheduledName": "SPARK Morning Content Plan",
+      "nextScheduledTime": "2026-03-02T01:20:00.000Z",
+      "activityStatus": "overdue",
+      "cronJobCount": 2
+    }
+  ],
+  "cronJobs": [
+    {
+      "jobId": "helm-morning-brief",
+      "name": "HELM Morning Briefing",
+      "enabled": true,
+      "agentId": "main",
+      "schedule": "15 6 * * *",
+      "timezone": "Asia/Manila",
+      "nextRunAt": "2026-03-01T22:15:00.000Z",
+      "lastRunAt": "2026-03-01T12:09:43.842Z",
+      "lastStatus": "ok",
+      "lastDurationMs": 40849,
+      "consecutiveErrors": 0,
+      "deliveryTo": "-5220364947"
+    },
+    {
+      "jobId": "eagle-intel-scan",
+      "name": "EAGLE Intelligence Scan",
+      "enabled": true,
+      "agentId": "eagle",
+      "schedule": "30 6,12,17 * * *",
+      "timezone": "Asia/Manila",
+      "nextRunAt": "2026-03-01T23:00:00.000Z",
+      "lastRunAt": null,
+      "lastStatus": null,
+      "lastDurationMs": null,
+      "consecutiveErrors": 0,
+      "deliveryTo": "-5163923779"
+    },
+    {
+      "jobId": "beacon-deadline-check",
+      "name": "BEACON Daily Deadline Check",
+      "enabled": true,
+      "agentId": "beacon",
+      "schedule": "50 9 * * *",
+      "timezone": "Asia/Manila",
+      "nextRunAt": "2026-03-02T01:50:00.000Z",
+      "lastRunAt": null,
+      "lastStatus": null,
+      "lastDurationMs": null,
+      "consecutiveErrors": 0,
+      "deliveryTo": "-5214300239"
+    },
+    {
+      "jobId": "anchor-crew-status",
+      "name": "ANCHOR Crewing Status Update",
+      "enabled": true,
+      "agentId": "anchor",
+      "schedule": "15 10 * * *",
+      "timezone": "Asia/Manila",
+      "nextRunAt": "2026-03-02T02:15:00.000Z",
+      "lastRunAt": null,
+      "lastStatus": null,
+      "lastDurationMs": null,
+      "consecutiveErrors": 0,
+      "deliveryTo": "-1003839397317"
+    },
+    {
+      "jobId": "compass-weekly-summary",
+      "name": "COMPASS Weekly Monday Summary",
+      "enabled": true,
+      "agentId": "compass",
+      "schedule": "45 10 * * 1",
+      "timezone": "Asia/Manila",
+      "nextRunAt": "2026-03-02T02:45:00.000Z",
+      "lastRunAt": null,
+      "lastStatus": null,
+      "lastDurationMs": null,
+      "consecutiveErrors": 0,
+      "deliveryTo": "-5118264846"
+    },
+    {
+      "jobId": "compass-execom-prep",
+      "name": "COMPASS EXECOM Meeting Prep",
+      "enabled": true,
+      "agentId": "compass",
+      "schedule": "45 10 * * 3",
+      "timezone": "Asia/Manila",
+      "nextRunAt": "2026-03-04T02:45:00.000Z",
+      "lastRunAt": null,
+      "lastStatus": null,
+      "lastDurationMs": null,
+      "consecutiveErrors": 0,
+      "deliveryTo": "-5118264846"
+    },
+    {
+      "jobId": "helm-infra-healthcheck",
+      "name": "HELM Infrastructure Healthcheck",
+      "enabled": true,
+      "agentId": "main",
+      "schedule": "10 10 * * *",
+      "timezone": "Asia/Manila",
+      "nextRunAt": "2026-03-02T02:10:00.000Z",
+      "lastRunAt": null,
+      "lastStatus": null,
+      "lastDurationMs": null,
+      "consecutiveErrors": 0,
+      "deliveryTo": "-5220364947"
+    },
+    {
+      "jobId": "helm-flywheel-advance",
+      "name": "HELM Flywheel Advance",
+      "enabled": true,
+      "agentId": "main",
+      "schedule": "10 9,13,18 * * *",
+      "timezone": "Asia/Manila",
+      "nextRunAt": "2026-03-02T00:30:00.000Z",
+      "lastRunAt": null,
+      "lastStatus": null,
+      "lastDurationMs": null,
+      "consecutiveErrors": 0,
+      "deliveryTo": "-5220364947"
+    },
+    {
+      "jobId": "helm-end-of-day",
+      "name": "HELM End of Day Recap",
+      "enabled": true,
+      "agentId": "main",
+      "schedule": "45 18 * * 1-5",
+      "timezone": "Asia/Manila",
+      "nextRunAt": "2026-03-02T10:45:00.000Z",
+      "lastRunAt": null,
+      "lastStatus": null,
+      "lastDurationMs": null,
+      "consecutiveErrors": 0,
+      "deliveryTo": "-5220364947"
+    },
+    {
+      "jobId": "helm-dashboard-review",
+      "name": "HELM Dashboard Review",
+      "enabled": true,
+      "agentId": "main",
+      "schedule": "50 19 * * *",
+      "timezone": "Asia/Manila",
+      "nextRunAt": "2026-03-02T11:50:00.000Z",
+      "lastRunAt": null,
+      "lastStatus": null,
+      "lastDurationMs": null,
+      "consecutiveErrors": 0,
+      "deliveryTo": "-5220364947"
+    },
+    {
+      "jobId": "spark-morning-content",
+      "name": "SPARK Morning Content Plan",
+      "enabled": true,
+      "agentId": "spark",
+      "schedule": "20 9 * * *",
+      "timezone": "Asia/Manila",
+      "nextRunAt": "2026-03-02T01:20:00.000Z",
+      "lastRunAt": null,
+      "lastStatus": "retry_pending",
+      "lastDurationMs": null,
+      "consecutiveErrors": 0,
+      "deliveryTo": "-5050865804"
+    },
+    {
+      "jobId": "signal-comms-check",
+      "name": "SIGNAL Daily Communications Check",
+      "enabled": true,
+      "agentId": "signal",
+      "schedule": "40 9 * * *",
+      "timezone": "Asia/Manila",
+      "nextRunAt": "2026-03-02T01:40:00.000Z",
+      "lastRunAt": null,
+      "lastStatus": null,
+      "lastDurationMs": null,
+      "consecutiveErrors": 0,
+      "deliveryTo": "-5266583066"
+    },
+    {
+      "jobId": "compass-pipeline-review",
+      "name": "COMPASS Daily Pipeline Review",
+      "enabled": true,
+      "agentId": "compass",
+      "schedule": "0 11 * * *",
+      "timezone": "Asia/Manila",
+      "nextRunAt": "2026-03-02T03:00:00.000Z",
+      "lastRunAt": null,
+      "lastStatus": null,
+      "lastDurationMs": null,
+      "consecutiveErrors": 0,
+      "deliveryTo": "-5118264846"
+    },
+    {
+      "jobId": "spark-evening-review",
+      "name": "SPARK Evening Review",
+      "enabled": true,
+      "agentId": "spark",
+      "schedule": "45 19 * * *",
+      "timezone": "Asia/Manila",
+      "nextRunAt": "2026-03-02T11:45:00.000Z",
+      "lastRunAt": null,
+      "lastStatus": null,
+      "lastDurationMs": null,
+      "consecutiveErrors": 0,
+      "deliveryTo": "-5050865804"
+    },
+    {
+      "name": "HELM Self-Heal Health Monitor",
+      "enabled": true,
+      "agentId": "main",
+      "schedule": "*/30 * * * *",
+      "timezone": "Asia/Manila",
+      "nextRunAt": "2026-03-01T22:00:00.000Z",
+      "lastRunAt": "2026-03-01T20:55:56.625Z",
+      "lastStatus": "ok",
+      "lastDurationMs": 83868,
+      "consecutiveErrors": 0,
+      "deliveryTo": null
+    },
+    {
+      "jobId": "helm-mobile-dashboard-snapshot",
+      "name": "HELM Mobile Dashboard Snapshot",
+      "enabled": true,
+      "agentId": "main",
+      "schedule": "?",
+      "timezone": "UTC",
+      "nextRunAt": null,
+      "lastRunAt": null,
+      "lastStatus": null,
+      "lastDurationMs": null,
+      "consecutiveErrors": 0,
+      "deliveryTo": null
+    },
+    {
+      "name": "SPARK Morning Content Plan",
+      "enabled": true,
+      "agentId": "main",
+      "schedule": "20 9 * * *",
+      "timezone": "Asia/Manila",
+      "nextRunAt": "2026-03-02T01:20:00.000Z",
+      "lastRunAt": null,
+      "lastStatus": null,
+      "lastDurationMs": null,
+      "consecutiveErrors": 0,
+      "deliveryTo": "-5050865804"
+    },
+    {
+      "name": "SPARK Midday Growth Scan",
+      "enabled": true,
+      "agentId": "main",
+      "schedule": "0 13 * * *",
+      "timezone": "Asia/Manila",
+      "nextRunAt": "2026-03-02T05:00:00.000Z",
+      "lastRunAt": null,
+      "lastStatus": null,
+      "lastDurationMs": null,
+      "consecutiveErrors": 0,
+      "deliveryTo": "-5050865804"
+    },
+    {
+      "name": "SPARK Revenue Sprint",
+      "enabled": true,
+      "agentId": "main",
+      "schedule": "0 16 * * *",
+      "timezone": "Asia/Manila",
+      "nextRunAt": "2026-03-02T08:00:00.000Z",
+      "lastRunAt": null,
+      "lastStatus": null,
+      "lastDurationMs": null,
+      "consecutiveErrors": 0,
+      "deliveryTo": "-5050865804"
+    },
+    {
+      "name": "SPARK Evening Review",
+      "enabled": true,
+      "agentId": "main",
+      "schedule": "45 19 * * *",
+      "timezone": "Asia/Manila",
+      "nextRunAt": "2026-03-02T11:45:00.000Z",
+      "lastRunAt": null,
+      "lastStatus": null,
+      "lastDurationMs": null,
+      "consecutiveErrors": 0,
+      "deliveryTo": "-5050865804"
+    },
+    {
+      "name": "SPARK Weekly Growth Retro",
+      "enabled": true,
+      "agentId": "main",
+      "schedule": "50 10 * * 1",
+      "timezone": "Asia/Manila",
+      "nextRunAt": "2026-03-02T00:00:00.000Z",
+      "lastRunAt": null,
+      "lastStatus": null,
+      "lastDurationMs": null,
+      "consecutiveErrors": 0,
+      "deliveryTo": "-5050865804"
+    },
+    {
+      "name": "BEACON Regulatory Compliance Scanner",
+      "enabled": true,
+      "agentId": "beacon",
+      "schedule": "30 6 * * *",
+      "timezone": "Asia/Manila",
+      "nextRunAt": "2026-03-01T22:30:00.000Z",
+      "lastRunAt": null,
+      "lastStatus": null,
+      "lastDurationMs": null,
+      "consecutiveErrors": 0,
+      "deliveryTo": "-5214300239"
+    },
+    {
+      "name": "BEACON Income Pipeline Review",
+      "enabled": true,
+      "agentId": "beacon",
+      "schedule": "0 11 * * *",
+      "timezone": "Asia/Manila",
+      "nextRunAt": "2026-03-02T03:00:00.000Z",
+      "lastRunAt": null,
+      "lastStatus": null,
+      "lastDurationMs": null,
+      "consecutiveErrors": 0,
+      "deliveryTo": "-5214300239"
+    },
+    {
+      "name": "BEACON Legal Research Digest",
+      "enabled": true,
+      "agentId": "beacon",
+      "schedule": "0 14 * * 1,3,5",
+      "timezone": "Asia/Manila",
+      "nextRunAt": "2026-03-02T06:00:00.000Z",
+      "lastRunAt": null,
+      "lastStatus": null,
+      "lastDurationMs": null,
+      "consecutiveErrors": 0,
+      "deliveryTo": "-5214300239"
+    },
+    {
+      "name": "BEACON Newsletter Content Builder",
+      "enabled": true,
+      "agentId": "beacon",
+      "schedule": "0 15 * * 5",
+      "timezone": "Asia/Manila",
+      "nextRunAt": "2026-03-06T07:00:00.000Z",
+      "lastRunAt": null,
+      "lastStatus": null,
+      "lastDurationMs": null,
+      "consecutiveErrors": 0,
+      "deliveryTo": "-5214300239"
+    },
+    {
+      "name": "BEACON Escalation Monitor",
+      "enabled": true,
+      "agentId": "beacon",
+      "schedule": "30 10,16 * * *",
+      "timezone": "Asia/Manila",
+      "nextRunAt": "2026-03-02T02:30:00.000Z",
+      "lastRunAt": null,
+      "lastStatus": null,
+      "lastDurationMs": null,
+      "consecutiveErrors": 0,
+      "deliveryTo": "-5214300239"
+    }
+  ],
+  "cases": {
+    "total": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "content": null
+  },
+  "manning": {
+    "fillRate": null,
+    "vessels": null,
+    "content": null
+  },
+  "intel": {
+    "lastDigest": "/Users/rizaldomadanlo/.openclaw/workspace/shared-kb/intel/2026-03-01-intel-digest.md",
+    "lastUpdate": null,
+    "content": null
+  },
+  "deadlines": {
+    "entries": [],
+    "totalNext7": 0,
+    "totalNext30": 0,
+    "content": null
+  },
+  "weekPrep": {
+    "weekLabel": null,
+    "items": [],
+    "content": null
+  },
+  "flywheel": {
+    "totalActive": 1,
+    "items": [
+      {
+        "id": "FW-2026-0004",
+        "title": "MaritimeHub MVP Sprint (INC-010)",
+        "stage": 3,
+        "stageName": "Implementation",
+        "priority": "P1",
+        "assignedAgents": "BEACON (lead build), COMPASS (sprint tracking), EAGLE (data sources), ANCHOR (crew profile specs)",
+        "leadAgent": "BEACON (lead build)",
+        "deadline": "2026-03-09",
+        "created": "2026-02-28 10:00",
+        "lastAdvanced": "2026-03-01 16:45 (Sprint Unblocked)",
+        "daysUntilDeadline": 7,
+        "isStuck": false,
+        "statusNotes": [
+          "[02 04:55] ✅ **HELM ACTION:** Completed Search UI wire-up to API. Implemented `/api/sanctions/route.ts` and updated `/sanctions/page.tsx` with live fetch logic. Sprint 1 foundation fully solidified. Moving to Sprint 2 (Frontend & Content) review tomorrow.",
+          "[01 16:45] ✅ **HELM OVERRIDE:** Agents missed P0 deadline. HELM manually implemented B5 (Sanctions API) + mock data. Code committed to `api/sanctions/check.ts`. Sprint unblocked.",
+          "[01 16:30] ⚠️ **STALL AUDIT (DOO-triggered):** No implementation artifacts found in shared-kb since scaffold creation. BEACON (lead build) has not committed code. EAGLE/ANCHOR/COMPASS idle on this item. Sprint 1 deadline Mar 3 (2 days). Escalating to all assigned agents."
+        ],
+        "allStatusNotes": [
+          "[02 04:55] ✅ **HELM ACTION:** Completed Search UI wire-up to API. Implemented `/api/sanctions/route.ts` and updated `/sanctions/page.tsx` with live fetch logic. Sprint 1 foundation fully solidified. Moving to Sprint 2 (Frontend & Content) review tomorrow.",
+          "[01 16:45] ✅ **HELM OVERRIDE:** Agents missed P0 deadline. HELM manually implemented B5 (Sanctions API) + mock data. Code committed to `api/sanctions/check.ts`. Sprint unblocked.",
+          "[01 16:30] ⚠️ **STALL AUDIT (DOO-triggered):** No implementation artifacts found in shared-kb since scaffold creation. BEACON (lead build) has not committed code. EAGLE/ANCHOR/COMPASS idle on this item. Sprint 1 deadline Mar 3 (2 days). Escalating to all assigned agents.",
+          "[01 13:30] Flywheel cycle: No advance criteria met. HEARTBEAT_OK. Agents idle.",
+          "[01 08:30] Morning cycle: Sprint Day 4. Agents checked — no new output.",
+          "[28 10:00] ✅ CREATED at S1-Ideate: Fleet Council approved (2026-02-23). Business case approved (2026-02-26). Build scaffold exists (localhost:3111).",
+          "[28 10:00] ✅ ADVANCED 1→2: Discussion & Refinement complete — sprint plan exists, agents assigned, priority PRIMARY.",
+          "[28 10:00] ✅ ADVANCED 2→3: Implementation. Sprint 1 (Feb 27-Mar 3) active. Next.js scaffold running. P0: sanctions API, DB config, search UI.",
+          "S1 (Ideation): Completed Feb 23 — Fleet Council unanimous GO",
+          "S2 (Refinement): Completed Feb 26 — business case + sprint plan written",
+          "S3 (Implementation): Build started Feb 26 — scaffold on localhost:3111",
+          "All prerequisites met. Only execution remains.",
+          "--"
+        ],
+        "stalenessHours": 13,
+        "project": "INCOME",
+        "projectName": "MaritimeHub"
+      }
+    ]
+  },
+  "activity": [
+    {
+      "time": "23:15",
+      "agent": "HELM",
+      "agentId": "main",
+      "action": "Full System Audit + Hardening (23:15 PHT)",
+      "sortKey": 1395
+    },
+    {
+      "time": "22:48",
+      "agent": "HELM",
+      "agentId": "main",
+      "action": "Full Fleet Upgrade — 7 Systems (22:48 PHT)",
+      "sortKey": 1368
+    },
+    {
+      "time": "22:37",
+      "agent": "HELM",
+      "agentId": "main",
+      "action": "Handoff Protocol Implemented (22:37 PHT)",
+      "sortKey": 1357
+    },
+    {
+      "time": "22:30",
+      "agent": "EAGLE",
+      "agentId": "eagle",
+      "action": "Next Check:** 22:30",
+      "sortKey": 1350
+    },
+    {
+      "time": "21:45",
+      "agent": "SPARK",
+      "agentId": "spark",
+      "action": "NOTE: This is the same pattern as Feb 28 (21:45 + 23:45 duplicate). Cron scheduling may need adjustment.",
+      "sortKey": 1305
+    },
+    {
+      "time": "21:36",
+      "agent": "EAGLE",
+      "agentId": "eagle",
+      "action": "PHT — Check (AUH Fatality & Airport Gridlock)",
+      "sortKey": 1296
+    },
+    {
+      "time": "20:09",
+      "agent": "HELM",
+      "agentId": "main",
+      "action": "✅ HELM Morning Briefing (41s)",
+      "sortKey": 1209
+    },
+    {
+      "time": "20:00",
+      "agent": "EAGLE",
+      "agentId": "eagle",
+      "action": "Next Check:** 20:00",
+      "sortKey": 1200
+    },
+    {
+      "time": "19:30",
+      "agent": "EAGLE",
+      "agentId": "eagle",
+      "action": "Next Check:** 19:30",
+      "sortKey": 1170
+    },
+    {
+      "time": "19:30",
+      "agent": "SPARK",
+      "agentId": "spark",
+      "action": "⚠️ CRON BUG: This is now firing every ~2 hours overnight. Three runs in 4 hours is excessive. HELM needs to fix the even",
+      "sortKey": 1170
+    },
+    {
+      "time": "19:30",
+      "agent": "SPARK",
+      "agentId": "spark",
+      "action": "⚠️⚠️ CRON BUG CRITICAL: Four runs in 6 hours. This is burning tokens for zero value. HELM must fix ASAP. Per SOUL.md v2.",
+      "sortKey": 1170
+    },
+    {
+      "time": "19:30",
+      "agent": "SPARK",
+      "agentId": "spark",
+      "action": "⚠️⚠️⚠️ CRON BUG SEVERE: Five runs in 8 hours. Burning significant tokens. This evening review cron is misconfigured — fi",
+      "sortKey": 1170
+    },
+    {
+      "time": "19:00",
+      "agent": "EAGLE",
+      "agentId": "eagle",
+      "action": "Next Check:** 19:00",
+      "sortKey": 1140
+    },
+    {
+      "time": "19:00",
+      "agent": "EAGLE",
+      "agentId": "eagle",
+      "action": "PHT — Check (DXB Damage Confirmed)",
+      "sortKey": 1140
+    },
+    {
+      "time": "18:31",
+      "agent": "EAGLE",
+      "agentId": "eagle",
+      "action": "PHT — Check (Dubai Airport Damaged)",
+      "sortKey": 1111
+    },
+    {
+      "time": "18:04",
+      "agent": "EAGLE",
+      "agentId": "eagle",
+      "action": "PHT — Quick Check",
+      "sortKey": 1084
+    },
+    {
+      "time": "18:00",
+      "agent": "EAGLE",
+      "agentId": "eagle",
+      "action": "Next Check:** 18:00",
+      "sortKey": 1080
+    },
+    {
+      "time": "18:00",
+      "agent": "EAGLE",
+      "agentId": "eagle",
+      "action": "PHT — Check (Airspace Window Passed — No Resumption)",
+      "sortKey": 1080
+    },
+    {
+      "time": "17:30",
+      "agent": "EAGLE",
+      "agentId": "eagle",
+      "action": "Next Check:** 17:30",
+      "sortKey": 1050
+    },
+    {
+      "time": "17:06",
+      "agent": "EAGLE",
+      "agentId": "eagle",
+      "action": "PHT — Quick Check",
+      "sortKey": 1026
+    }
+  ],
+  "watchdog": {
+    "lastRun": "2026-03-02 05:19:24 PST",
+    "lastEntries": [
+      "[2026-03-02 04:19:03 PST] OK: Daily cron jobs backup → /Users/rizaldomadanlo/.openclaw/backups/cron-jobs-20260302.json",
+      "[2026-03-02 04:19:03 PST] OK: No cron job failure patterns",
+      "[2026-03-02 04:19:03 PST] OK: All 5 shared-kb symlinks valid",
+      "[2026-03-02 04:19:03 PST] FAIL: Dashboard not running on port 3000",
+      "[2026-03-02 04:19:14 PST] FAIL: Dashboard restart failed",
+      "[2026-03-02 04:19:16 PST] WARN: 1 stale process(es) found (non-gateway openclaw/vercel)",
+      "[2026-03-02 04:19:16 PST] ========== Watchdog Run Complete ==========",
+      "[2026-03-02 05:19:16 PST] ========== Watchdog Run Start ==========",
+      "[2026-03-02 05:19:17 PST] OK: Gateway running (PID: 21504)",
+      "[2026-03-02 05:19:17 PST] OK: Gateway health endpoint responding on port 18789",
+      "[2026-03-02 05:19:17 PST] OK: Telegram provider entries found in log (558)",
+      "[2026-03-02 05:19:17 PST] INFO: gateway.log = 2MB, gateway.err.log = 0MB",
+      "[2026-03-02 05:19:17 PST] INFO: Disk available = 238GB",
+      "[2026-03-02 05:19:17 PST] OK: Config file is valid JSON",
+      "[2026-03-02 05:19:17 PST] OK: No cron job failure patterns",
+      "[2026-03-02 05:19:17 PST] OK: All 5 shared-kb symlinks valid",
+      "[2026-03-02 05:19:17 PST] FAIL: Dashboard not running on port 3000",
+      "[2026-03-02 05:19:23 PST] FAIL: Dashboard restart failed",
+      "[2026-03-02 05:19:24 PST] OK: No stale processes",
+      "[2026-03-02 05:19:24 PST] ========== Watchdog Run Complete =========="
+    ]
+  },
+  "projects": [
+    {
+      "name": "MaritimeHub — Free & Freemium Maritime Data API Sources",
+      "slug": "MARITIMEHUB-API-SOURCES",
+      "status": "Ready",
+      "priority": "SECONDARY",
+      "role": "",
+      "itemCount": 1,
+      "domains": [],
+      "flywheelItems": [
+        "FW-2026-0004"
+      ],
+      "taskboardTasks": [],
+      "linkedIdeaIds": [],
+      "hasAppDirectory": false,
+      "milestones": [
+        {
+          "name": "MaritimeHub MVP Sprint (INC-010)",
+          "deadline": "2026-03-09",
+          "status": "in_progress",
+          "assignedAgent": "BEACON (lead build)"
+        }
+      ],
+      "completedTasks": 0,
+      "totalTasks": 0,
+      "progressPct": 0,
+      "description": "",
+      "nextDeadline": "2026-03-09",
+      "daysToDeadline": 8,
+      "lastActivity": "2026-02-28T14:30:09.569Z",
+      "processPhase": "P4: Development",
+      "processGate": "Gate 3 passed — Building"
+    },
+    {
+      "name": "MaritimeHub Business Case (IDEA-010)",
+      "slug": "MARITIMEHUB-BUSINESS-CASE",
+      "status": "DELIVERED",
+      "priority": "PRIMARY",
+      "role": "BEACON",
+      "itemCount": 1,
+      "domains": [],
+      "flywheelItems": [
+        "FW-2026-0004"
+      ],
+      "taskboardTasks": [],
+      "linkedIdeaIds": [],
+      "hasAppDirectory": false,
+      "milestones": [
+        {
+          "name": "MaritimeHub MVP Sprint (INC-010)",
+          "deadline": "2026-03-09",
+          "status": "in_progress",
+          "assignedAgent": "BEACON (lead build)"
+        }
+      ],
+      "completedTasks": 0,
+      "totalTasks": 0,
+      "progressPct": 0,
+      "description": "",
+      "nextDeadline": "2026-03-09",
+      "daysToDeadline": 8,
+      "lastActivity": "2026-03-01T04:54:34.169Z",
+      "processPhase": "P4: Development",
+      "processGate": "Gate 3 passed — Building"
+    },
+    {
+      "name": "MaritimeHub Sprint Plan - MVP (Mar 9 Deadline)",
+      "slug": "MARITIMEHUB-SPRINT-PLAN",
+      "status": "ACTIVE",
+      "priority": "PRIMARY",
+      "role": "COMPASS",
+      "itemCount": 1,
+      "domains": [],
+      "flywheelItems": [
+        "FW-2026-0004"
+      ],
+      "taskboardTasks": [],
+      "linkedIdeaIds": [],
+      "hasAppDirectory": false,
+      "milestones": [
+        {
+          "name": "MaritimeHub MVP Sprint (INC-010)",
+          "deadline": "2026-03-09",
+          "status": "in_progress",
+          "assignedAgent": "BEACON (lead build)"
+        }
+      ],
+      "completedTasks": 0,
+      "totalTasks": 0,
+      "progressPct": 25,
+      "description": "",
+      "nextDeadline": "2026-03-09",
+      "daysToDeadline": 8,
+      "lastActivity": "2026-03-01T04:54:29.609Z",
+      "processPhase": "P4: Development",
+      "processGate": "Gate 3 passed — Building"
+    },
+    {
+      "name": "Marlow Navigation Philippines",
+      "slug": "MARLOW",
+      "status": "ACTIVE",
+      "priority": "PRIMARY",
+      "role": "Director of Operations",
+      "itemCount": 0,
+      "domains": [
+        {
+          "domain": "Legal & P&I Cases",
+          "priority": "P0",
+          "leadAgent": "beacon",
+          "supportingAgents": [
+            "eagle",
+            "signal",
+            "anchor"
+          ]
+        },
+        {
+          "domain": "Crewing Operations",
+          "priority": "P1",
+          "leadAgent": "anchor",
+          "supportingAgents": [
+            "beacon",
+            "signal",
+            "compass"
+          ]
+        },
+        {
+          "domain": "Executive Communications",
+          "priority": "P2",
+          "leadAgent": "signal",
+          "supportingAgents": [
+            "helm",
+            "compass",
+            "eagle"
+          ]
+        },
+        {
+          "domain": "Data & Reporting",
+          "priority": "P3",
+          "leadAgent": "compass",
+          "supportingAgents": [
+            "anchor",
+            "beacon",
+            "eagle"
+          ]
+        },
+        {
+          "domain": "Strategic Projects",
+          "priority": "P4",
+          "leadAgent": "helm",
+          "supportingAgents": [
+            "all"
+          ]
+        }
+      ],
+      "flywheelItems": [],
+      "taskboardTasks": [],
+      "linkedIdeaIds": [],
+      "hasAppDirectory": false,
+      "milestones": [],
+      "completedTasks": 0,
+      "totalTasks": 0,
+      "progressPct": 0,
+      "description": "Rizaldo serves as Director of Operations at Marlow Navigation Philippines, Inc. — a maritime manning and crewing organization with global stakeholders. This is currently the primary project in the HEL",
+      "isStale": true,
+      "staleReason": "No flywheel items, tasks, or linked ideas. Project has no active work stream."
+    },
+    {
+      "name": "MaritimeHub: Maritime Intelligence Platform",
+      "slug": "MARITIMEHUB-MARITIME-INTELLIGENCE-PLATFORM",
+      "status": "APPROVED",
+      "priority": "PRIMARY",
+      "role": "",
+      "itemCount": 0,
+      "domains": [],
+      "flywheelItems": [],
+      "taskboardTasks": [
+        "IDEA010-E1",
+        "IDEA010-E2",
+        "IDEA010-S1",
+        "IDEA010-S2"
+      ],
+      "linkedIdeaIds": [
+        "INC-010"
+      ],
+      "hasAppDirectory": false,
+      "milestones": [
+        {
+          "name": "Phase 1 MVP",
+          "deadline": "2026-03-09 (8 days)",
+          "status": "in_progress",
+          "assignedAgent": "eagle"
+        }
+      ],
+      "completedTasks": 0,
+      "totalTasks": 4,
+      "progressPct": 0,
+      "description": "Source: EAGLE + Fleet Council (2026-02-23)",
+      "nextDeadline": "2026-03-09",
+      "daysToDeadline": 8,
+      "isStale": true,
+      "staleReason": "Deadline in 8d with only 0% progress. Needs immediate sprint."
+    },
+    {
+      "name": "STCW/Flag State Intelligence Newsletter",
+      "slug": "STCW-FLAG-STATE-INTELLIGENCE-NEWSLETTER",
+      "status": "APPROVED",
+      "priority": "PRIMARY",
+      "role": "",
+      "itemCount": 0,
+      "domains": [],
+      "flywheelItems": [],
+      "taskboardTasks": [],
+      "linkedIdeaIds": [
+        "INC-002"
+      ],
+      "hasAppDirectory": false,
+      "milestones": [],
+      "completedTasks": 0,
+      "totalTasks": 0,
+      "progressPct": 0,
+      "description": "Source: EAGLE (2026-02-22)"
+    },
+    {
+      "name": "HELM Fleet (System)",
+      "slug": "SYSTEM",
+      "status": "SHIPPED",
+      "priority": "INFRASTRUCTURE",
+      "role": "Fleet Operations",
+      "itemCount": 0,
+      "domains": [],
+      "flywheelItems": [],
+      "taskboardTasks": [],
+      "linkedIdeaIds": [],
+      "hasAppDirectory": false,
+      "milestones": [],
+      "completedTasks": 0,
+      "totalTasks": 0,
+      "progressPct": 0,
+      "description": "Fleet infrastructure, tooling, and operational systems — v3.0 live, continuous improvement"
+    }
+  ],
+  "warRoom": [
+    {
+      "id": "agent:main:cron:4307579e-17aa-48ee-b69b-14dc304c473a:run:634bb5ac-32be-476d-b2e4-8e0f813c5999",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "Cron count baseline updated from 15→16 to account for `helm-mobile-dashboard-snapshot`. The mismatch was a stale baseline, not a real issue. All 16 crons are legitimate and enabled.",
+      "timestamp": "2026-03-01T20:57:20.516Z",
+      "durationMs": 83868,
+      "tokensUsed": 25065,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:main:cron:4307579e-17aa-48ee-b69b-14dc304c473a:run:c265c599-e936-4aaa-a692-661c4f94bb8e",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "🔧 SELF-HEAL ALERT — 2026-03-02 04:20 • Crons: FAIL — 16/15 registered (expected 15). Investigation suggested: check for duplicate or orphaned cron jobs.",
+      "timestamp": "2026-03-01T20:21:29.661Z",
+      "durationMs": 99540,
+      "tokensUsed": 37455,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:main:cron:4307579e-17aa-48ee-b69b-14dc304c473a:run:cd427b56-d4d9-484a-9a61-7433f208651b",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "HEARTBEAT_OK",
+      "timestamp": "2026-03-01T15:30:26.155Z",
+      "durationMs": 26109,
+      "tokensUsed": 22134,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:main:cron:4307579e-17aa-48ee-b69b-14dc304c473a:run:09754164-b05d-46de-8140-da78195616f0",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "HEARTBEAT_OK",
+      "timestamp": "2026-03-01T15:00:27.892Z",
+      "durationMs": 27854,
+      "tokensUsed": 21801,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:main:cron:4307579e-17aa-48ee-b69b-14dc304c473a:run:d8b9970b-e790-4ea7-b044-ad58f38a27f2",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "HEARTBEAT_OK",
+      "timestamp": "2026-03-01T14:30:24.905Z",
+      "durationMs": 24867,
+      "tokensUsed": 21803,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:main:cron:4307579e-17aa-48ee-b69b-14dc304c473a:run:09ce43bf-9bcc-4bc6-b96d-99c605b17b8c",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "HEARTBEAT_OK",
+      "timestamp": "2026-03-01T14:00:19.246Z",
+      "durationMs": 19210,
+      "tokensUsed": 21801,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:main:cron:4307579e-17aa-48ee-b69b-14dc304c473a:run:4b629625-5e1c-48f6-9b74-5f472b8315cd",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "HEARTBEAT_OK",
+      "timestamp": "2026-03-01T13:34:32.355Z",
+      "durationMs": 26380,
+      "tokensUsed": 21803,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:main:cron:4307579e-17aa-48ee-b69b-14dc304c473a:run:c0888470-c154-42ee-870d-8ab31e36ebf4",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "HEARTBEAT_OK",
+      "timestamp": "2026-03-01T12:09:43.767Z",
+      "durationMs": 19713,
+      "tokensUsed": 21803,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:main:cron:4307579e-17aa-48ee-b69b-14dc304c473a:run:d078aa1c-085a-4567-bf99-fefe25765cde",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "HEARTBEAT_OK",
+      "timestamp": "2026-03-01T11:00:21.059Z",
+      "durationMs": 21032,
+      "tokensUsed": 21801,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:main:cron:4307579e-17aa-48ee-b69b-14dc304c473a:run:9fc29afd-ff20-4c60-ab6a-71240935fd33",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "HEARTBEAT_OK",
+      "timestamp": "2026-03-01T10:30:19.669Z",
+      "durationMs": 19640,
+      "tokensUsed": 21801,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:main:cron:4307579e-17aa-48ee-b69b-14dc304c473a:run:11f1e256-385e-456d-9266-edbb3d5322fc",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "HEARTBEAT_OK",
+      "timestamp": "2026-03-01T10:00:23.496Z",
+      "durationMs": 23418,
+      "tokensUsed": 21801,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:main:cron:4307579e-17aa-48ee-b69b-14dc304c473a:run:15ea4239-c28e-4e4d-a7bd-2b68499d4ef9",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "HEARTBEAT_OK",
+      "timestamp": "2026-03-01T09:30:20.554Z",
+      "durationMs": 20523,
+      "tokensUsed": 21801,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:main:cron:4307579e-17aa-48ee-b69b-14dc304c473a:run:3a8751a1-0739-4a89-91e7-aefac3301cc3",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "HEARTBEAT_OK",
+      "timestamp": "2026-03-01T09:01:11.744Z",
+      "durationMs": 19390,
+      "tokensUsed": 21805,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:main:cron:4307579e-17aa-48ee-b69b-14dc304c473a:run:00c16ff5-74e6-4476-9f62-a2a3603ce64c",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "HEARTBEAT_OK",
+      "timestamp": "2026-03-01T08:30:24.143Z",
+      "durationMs": 24109,
+      "tokensUsed": 21803,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:main:cron:4307579e-17aa-48ee-b69b-14dc304c473a:run:eaf0fa2c-cf0f-4ade-be3e-ccca2ffd0ea9",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "HEARTBEAT_OK",
+      "timestamp": "2026-03-01T08:00:23.367Z",
+      "durationMs": 23333,
+      "tokensUsed": 21801,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:main:cron:4307579e-17aa-48ee-b69b-14dc304c473a:run:f11e8873-e278-447f-9466-2b76dd35d9a1",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "HEARTBEAT_OK",
+      "timestamp": "2026-03-01T07:30:20.946Z",
+      "durationMs": 20923,
+      "tokensUsed": 21801,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:main:cron:4307579e-17aa-48ee-b69b-14dc304c473a:run:4218a402-bfae-4dfd-850f-999e4b5827c6",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "HEARTBEAT_OK",
+      "timestamp": "2026-03-01T07:00:28.273Z",
+      "durationMs": 28238,
+      "tokensUsed": 21801,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:main:cron:4307579e-17aa-48ee-b69b-14dc304c473a:run:52acd718-3280-4d5b-a183-d4801b375578",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "HEARTBEAT_OK",
+      "timestamp": "2026-03-01T06:30:21.103Z",
+      "durationMs": 21079,
+      "tokensUsed": 21803,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:main:cron:4307579e-17aa-48ee-b69b-14dc304c473a:run:bfb2166b-380e-4e7b-b137-bac354933c89",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "HEARTBEAT_OK",
+      "timestamp": "2026-03-01T06:00:21.031Z",
+      "durationMs": 21011,
+      "tokensUsed": 21801,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:main:cron:4307579e-17aa-48ee-b69b-14dc304c473a:run:bcc02f66-d220-417c-ba36-277d3c8ff444",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "HEARTBEAT_OK",
+      "timestamp": "2026-03-01T05:31:25.862Z",
+      "durationMs": 25643,
+      "tokensUsed": 21803,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:main:cron:4307579e-17aa-48ee-b69b-14dc304c473a:run:31c67fdc-527a-49db-aef3-8d762c89341b",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "HEARTBEAT_OK",
+      "timestamp": "2026-03-01T05:01:48.251Z",
+      "durationMs": 108213,
+      "tokensUsed": 36460,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:main:cron:4307579e-17aa-48ee-b69b-14dc304c473a:run:e37c3e00-49ce-4084-94d0-f511ff1ee2a2",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "HEARTBEAT_OK",
+      "timestamp": "2026-03-01T04:30:51.643Z",
+      "durationMs": 51626,
+      "tokensUsed": 36446,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:main:cron:4307579e-17aa-48ee-b69b-14dc304c473a:run:d3c4dbc2-ad4d-44e9-86c5-d6cee3a1becc",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "HEARTBEAT_OK",
+      "timestamp": "2026-03-01T04:03:17.665Z",
+      "durationMs": 107571,
+      "tokensUsed": 36509,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:main:cron:4307579e-17aa-48ee-b69b-14dc304c473a:run:f84c9526-8387-465b-9a9b-4af062a06a94",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "HEARTBEAT_OK",
+      "timestamp": "2026-03-01T02:30:58.991Z",
+      "durationMs": 58964,
+      "tokensUsed": 36530,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:main:cron:4307579e-17aa-48ee-b69b-14dc304c473a:run:3f1d5f05-9f87-4b92-be10-559a0bf7b94d",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "HEARTBEAT_OK",
+      "timestamp": "2026-03-01T02:00:45.198Z",
+      "durationMs": 45168,
+      "tokensUsed": 36443,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:main:cron:4307579e-17aa-48ee-b69b-14dc304c473a:run:ba3f11a8-adc3-47eb-a36b-e1860372baed",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "HEARTBEAT_OK",
+      "timestamp": "2026-03-01T01:30:48.591Z",
+      "durationMs": 48567,
+      "tokensUsed": 41075,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:main:cron:4307579e-17aa-48ee-b69b-14dc304c473a:run:9ddff69e-9456-4d27-8e21-0e9f52a3831c",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "HEARTBEAT_OK",
+      "timestamp": "2026-03-01T01:00:21.536Z",
+      "durationMs": 21516,
+      "tokensUsed": 21703,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:main:cron:4307579e-17aa-48ee-b69b-14dc304c473a:run:1b965ee5-6b81-466f-89e1-94ab871262b1",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "HEARTBEAT_OK",
+      "timestamp": "2026-03-01T00:30:21.350Z",
+      "durationMs": 21329,
+      "tokensUsed": 21701,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:main:cron:4307579e-17aa-48ee-b69b-14dc304c473a:run:5b6505b7-e037-439d-8bb6-cc3dae6403b8",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "HEARTBEAT_OK",
+      "timestamp": "2026-03-01T00:00:25.754Z",
+      "durationMs": 25722,
+      "tokensUsed": 21701,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:main:cron:4307579e-17aa-48ee-b69b-14dc304c473a:run:e3bd15a8-7c4c-4e54-992e-57f7d2a520c1",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "HEARTBEAT_OK",
+      "timestamp": "2026-02-28T23:30:19.770Z",
+      "durationMs": 19753,
+      "tokensUsed": 21701,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:main:cron:4307579e-17aa-48ee-b69b-14dc304c473a:run:d270e7c5-485d-4d30-bf8e-afcbfca6a049",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "HEARTBEAT_OK",
+      "timestamp": "2026-02-28T23:01:50.483Z",
+      "durationMs": 20437,
+      "tokensUsed": 21705,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:main:cron:4307579e-17aa-48ee-b69b-14dc304c473a:run:e69c3f49-b65d-49a9-96a2-3eec57b8c096",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "HEARTBEAT_OK",
+      "timestamp": "2026-02-28T22:30:20.539Z",
+      "durationMs": 20515,
+      "tokensUsed": 21701,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:main:cron:4307579e-17aa-48ee-b69b-14dc304c473a:run:ba2f9845-3d88-4094-bb2b-1b27dcc04684",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "HEARTBEAT_OK",
+      "timestamp": "2026-02-28T22:00:21.514Z",
+      "durationMs": 21486,
+      "tokensUsed": 21701,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:main:cron:4307579e-17aa-48ee-b69b-14dc304c473a:run:4e730022-aa35-44f6-9afe-883eceb41d54",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "HEARTBEAT_OK",
+      "timestamp": "2026-02-28T21:30:20.817Z",
+      "durationMs": 20794,
+      "tokensUsed": 21705,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:main:cron:4307579e-17aa-48ee-b69b-14dc304c473a:run:9e5ed447-8488-47fd-b1b5-a40a16f13422",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "HEARTBEAT_OK",
+      "timestamp": "2026-02-28T21:00:21.337Z",
+      "durationMs": 21308,
+      "tokensUsed": 21703,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:main:cron:4307579e-17aa-48ee-b69b-14dc304c473a:run:5f8f23aa-c4b4-44d1-828d-c4bb5f7cf2e3",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "HEARTBEAT_OK",
+      "timestamp": "2026-02-28T20:30:19.473Z",
+      "durationMs": 19447,
+      "tokensUsed": 21703,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:main:cron:4307579e-17aa-48ee-b69b-14dc304c473a:run:172148f4-661b-4629-8903-421a789f34e0",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "HEARTBEAT_OK",
+      "timestamp": "2026-02-28T20:00:20.982Z",
+      "durationMs": 20957,
+      "tokensUsed": 21707,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:main:cron:4307579e-17aa-48ee-b69b-14dc304c473a:run:e9fce293-cdd2-4b7c-a9c0-53b98b8ba9f1",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "HEARTBEAT_OK",
+      "timestamp": "2026-02-28T19:30:20.625Z",
+      "durationMs": 20608,
+      "tokensUsed": 21701,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:main:cron:4307579e-17aa-48ee-b69b-14dc304c473a:run:c371935a-4d64-4226-82f8-03b320e61533",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "HEARTBEAT_OK",
+      "timestamp": "2026-02-28T19:00:21.250Z",
+      "durationMs": 21230,
+      "tokensUsed": 21703,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:main:cron:4307579e-17aa-48ee-b69b-14dc304c473a:run:b426effd-3557-47fd-b56d-83bd33f73731",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "HEARTBEAT_OK",
+      "timestamp": "2026-02-28T18:30:20.858Z",
+      "durationMs": 20830,
+      "tokensUsed": 21703,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:main:cron:4307579e-17aa-48ee-b69b-14dc304c473a:run:5d7ba627-3928-45ef-a70e-d5db2c59b1de",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "HEARTBEAT_OK",
+      "timestamp": "2026-02-28T18:00:21.471Z",
+      "durationMs": 21451,
+      "tokensUsed": 21705,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:main:cron:4307579e-17aa-48ee-b69b-14dc304c473a:run:f222c0db-4178-463c-9577-ed6c31419428",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "HEARTBEAT_OK",
+      "timestamp": "2026-02-28T17:30:21.296Z",
+      "durationMs": 21275,
+      "tokensUsed": 21701,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:main:cron:4307579e-17aa-48ee-b69b-14dc304c473a:run:8048dd39-da33-4ef5-85f7-ca42ab9abc95",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "HEARTBEAT_OK",
+      "timestamp": "2026-02-28T17:00:22.256Z",
+      "durationMs": 22233,
+      "tokensUsed": 21701,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:main:cron:4307579e-17aa-48ee-b69b-14dc304c473a:run:77ce0376-3ec5-4800-afbd-49f27a143ff9",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "HEARTBEAT_OK",
+      "timestamp": "2026-02-28T16:30:21.360Z",
+      "durationMs": 21328,
+      "tokensUsed": 21705,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:main:cron:4307579e-17aa-48ee-b69b-14dc304c473a:run:36575a37-5381-4949-8be6-3eb400f3bef0",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "HEARTBEAT_OK",
+      "timestamp": "2026-02-28T16:00:21.656Z",
+      "durationMs": 21592,
+      "tokensUsed": 21703,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:main:cron:4307579e-17aa-48ee-b69b-14dc304c473a:run:ad3e4164-853a-49fd-9c8d-5cca07f623d6",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "HEARTBEAT_OK",
+      "timestamp": "2026-02-28T15:30:20.227Z",
+      "durationMs": 20204,
+      "tokensUsed": 21705,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:main:cron:4307579e-17aa-48ee-b69b-14dc304c473a:run:856ec54d-276c-4ec6-a746-9f781f7a4aa7",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "HEARTBEAT_OK",
+      "timestamp": "2026-02-28T15:00:20.283Z",
+      "durationMs": 20254,
+      "tokensUsed": 21701,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:main:cron:4307579e-17aa-48ee-b69b-14dc304c473a:run:51c28893-136c-4917-aa3b-7ba6ec0512c8",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "HEARTBEAT_OK",
+      "timestamp": "2026-02-28T14:30:23.360Z",
+      "durationMs": 23329,
+      "tokensUsed": 21705,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:main:cron:4307579e-17aa-48ee-b69b-14dc304c473a:run:f26dfb9c-dad8-4733-b928-9374cd801d71",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "HEARTBEAT_OK",
+      "timestamp": "2026-02-28T14:00:23.341Z",
+      "durationMs": 23312,
+      "tokensUsed": 21705,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:main:cron:4307579e-17aa-48ee-b69b-14dc304c473a:run:5757efb2-4aa2-4807-991a-63f5d69bc9eb",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "HEARTBEAT_OK",
+      "timestamp": "2026-02-28T13:30:23.237Z",
+      "durationMs": 23207,
+      "tokensUsed": 21703,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:main:cron:4307579e-17aa-48ee-b69b-14dc304c473a:run:b742b5df-be25-4bdb-8593-fca646f434a0",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "HEARTBEAT_OK",
+      "timestamp": "2026-02-28T13:00:21.757Z",
+      "durationMs": 21726,
+      "tokensUsed": 21701,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:main:cron:4307579e-17aa-48ee-b69b-14dc304c473a:run:03c61752-16ba-446b-8f0b-fb3fd781db0e",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "HEARTBEAT_OK",
+      "timestamp": "2026-02-28T12:30:21.292Z",
+      "durationMs": 21255,
+      "tokensUsed": 21707,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:main:cron:4307579e-17aa-48ee-b69b-14dc304c473a:run:a42d678e-733d-413b-b5c3-54ba9467c1f2",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "HEARTBEAT_OK",
+      "timestamp": "2026-02-28T12:00:22.063Z",
+      "durationMs": 22040,
+      "tokensUsed": 21701,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:main:cron:4307579e-17aa-48ee-b69b-14dc304c473a:run:6d989d0e-adc5-4ec6-bcd9-8b04daca06e0",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "HEARTBEAT_OK",
+      "timestamp": "2026-02-28T11:30:21.291Z",
+      "durationMs": 21267,
+      "tokensUsed": 21703,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:main:cron:4307579e-17aa-48ee-b69b-14dc304c473a:run:42729bb7-3b41-4f82-8f67-13ca55304555",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "HEARTBEAT_OK",
+      "timestamp": "2026-02-28T11:00:20.614Z",
+      "durationMs": 20586,
+      "tokensUsed": 21703,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:main:cron:4307579e-17aa-48ee-b69b-14dc304c473a:run:c2de221c-e889-4b9e-bdff-358b0315b615",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "HEARTBEAT_OK",
+      "timestamp": "2026-02-28T10:31:22.253Z",
+      "durationMs": 22173,
+      "tokensUsed": 21701,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:main:cron:4307579e-17aa-48ee-b69b-14dc304c473a:run:2591c56b-b0ef-4abd-b177-0610e9100739",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "HEARTBEAT_OK",
+      "timestamp": "2026-02-28T10:00:20.938Z",
+      "durationMs": 20907,
+      "tokensUsed": 21703,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:main:cron:4307579e-17aa-48ee-b69b-14dc304c473a:run:4c8742c8-93e1-4343-83f3-2b6c14407d46",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "HEARTBEAT_OK",
+      "timestamp": "2026-02-28T09:30:21.768Z",
+      "durationMs": 21734,
+      "tokensUsed": 21703,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:main:cron:4307579e-17aa-48ee-b69b-14dc304c473a:run:930ae800-2edc-4e36-9abb-788b77c62779",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "HEARTBEAT_OK",
+      "timestamp": "2026-02-28T09:00:21.121Z",
+      "durationMs": 21084,
+      "tokensUsed": 21469,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:main:cron:4307579e-17aa-48ee-b69b-14dc304c473a:run:d744c1fa-4631-43c7-9291-bb62e9a30d15",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "HEARTBEAT_OK",
+      "timestamp": "2026-02-28T08:30:22.039Z",
+      "durationMs": 22015,
+      "tokensUsed": 21465,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:main:cron:4307579e-17aa-48ee-b69b-14dc304c473a:run:16df6e13-fad5-45ac-a08c-378586efeb74",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "HEARTBEAT_OK",
+      "timestamp": "2026-02-28T08:00:18.375Z",
+      "durationMs": 18348,
+      "tokensUsed": 21463,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:main:cron:4307579e-17aa-48ee-b69b-14dc304c473a:run:5b3a9c18-a91d-47eb-80aa-b9cb57fdbc7e",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "HEARTBEAT_OK",
+      "timestamp": "2026-02-28T07:30:19.314Z",
+      "durationMs": 19296,
+      "tokensUsed": 21465,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:main:cron:4307579e-17aa-48ee-b69b-14dc304c473a:run:14b1c611-e358-4e9f-a238-d20bc6a61055",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "HEARTBEAT_OK",
+      "timestamp": "2026-02-28T07:00:21.672Z",
+      "durationMs": 21650,
+      "tokensUsed": 21463,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:main:cron:4307579e-17aa-48ee-b69b-14dc304c473a:run:04b8c412-ba9f-43ff-b233-df5fec13a48d",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "HEARTBEAT_OK",
+      "timestamp": "2026-02-28T06:30:22.729Z",
+      "durationMs": 22710,
+      "tokensUsed": 21463,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:main:cron:4307579e-17aa-48ee-b69b-14dc304c473a:run:81723d4c-0606-4575-8d68-28589be7fd1a",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "HEARTBEAT_OK",
+      "timestamp": "2026-02-28T06:00:25.406Z",
+      "durationMs": 25271,
+      "tokensUsed": 21469,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:main:cron:4307579e-17aa-48ee-b69b-14dc304c473a:run:144547f8-b4a8-46a7-994f-c0cb7f6d37e3",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "HEARTBEAT_OK",
+      "timestamp": "2026-02-28T05:31:49.727Z",
+      "durationMs": 49670,
+      "tokensUsed": 21469,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:main:cron:4307579e-17aa-48ee-b69b-14dc304c473a:run:6027c49a-2b6c-4f0d-a1f6-64eec4983d6e",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "HEARTBEAT_OK",
+      "timestamp": "2026-02-28T05:00:22.185Z",
+      "durationMs": 22161,
+      "tokensUsed": 21467,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:main:cron:4307579e-17aa-48ee-b69b-14dc304c473a:run:40809699-f278-4a42-af60-53e7af42549c",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "HEARTBEAT_OK",
+      "timestamp": "2026-02-28T04:30:22.376Z",
+      "durationMs": 22358,
+      "tokensUsed": 21465,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:main:cron:4307579e-17aa-48ee-b69b-14dc304c473a:run:7dfb5ec4-a39c-41f8-9859-8670d5a0ae6d",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "HEARTBEAT_OK",
+      "timestamp": "2026-02-28T04:02:00.124Z",
+      "durationMs": 30027,
+      "tokensUsed": 21465,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:main:cron:4307579e-17aa-48ee-b69b-14dc304c473a:run:6c10059b-172c-4ed4-a9b8-9ede00e78bf1",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "HEARTBEAT_OK",
+      "timestamp": "2026-02-28T03:30:19.495Z",
+      "durationMs": 19469,
+      "tokensUsed": 21465,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:main:cron:4307579e-17aa-48ee-b69b-14dc304c473a:run:65594488-a23e-443d-a1e4-47adde90abdb",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "HEARTBEAT_OK",
+      "timestamp": "2026-02-28T03:02:23.909Z",
+      "durationMs": 23777,
+      "tokensUsed": 21463,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:main:cron:undefined:run:3b566c0f-bfcc-443d-9127-93a18e15417a",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "FLYWHEEL CYCLE SKIPPED — Tool infrastructure error persists (`tool-loop-detection` module missing). Unable to read or update any files.",
+      "timestamp": "2026-02-24T22:30:14.953Z",
+      "durationMs": 14920,
+      "tokensUsed": 17809,
+      "status": "ok",
+      "category": "INCOME"
+    },
+    {
+      "id": "agent:main:cron:undefined:run:3b566c0f-bfcc-443d-9127-93a18e15417a",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "Tools are experiencing a module error. I'll generate the briefing based on the data I already have from the flywheel cycle 14 minutes ago.",
+      "timestamp": "2026-02-24T22:15:30.685Z",
+      "durationMs": 30611,
+      "tokensUsed": 15967,
+      "status": "ok",
+      "category": "INCOME"
+    },
+    {
+      "id": "agent:main:cron:undefined:run:3b566c0f-bfcc-443d-9127-93a18e15417a",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "FLYWHEEL OK | 1 active | 0 advanced this cycle",
+      "timestamp": "2026-02-24T21:01:52.050Z",
+      "durationMs": 31056,
+      "tokensUsed": 13991,
+      "status": "ok",
+      "category": "INCOME"
+    },
+    {
+      "id": "agent:main:cron:undefined:run:017db261-e935-4e77-aafc-ff9474bc36cd",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "FLYWHEEL OK | 1 active | 0 advanced this cycle. Night Watch — logged only.",
+      "timestamp": "2026-02-24T18:46:33.066Z",
+      "durationMs": 12783,
+      "tokensUsed": 47077,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:main:cron:undefined:run:017db261-e935-4e77-aafc-ff9474bc36cd",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "Night Watch mode (00:36 PHT). No P0/P1 items.",
+      "timestamp": "2026-02-24T16:37:26.597Z",
+      "durationMs": 43280,
+      "tokensUsed": 45867,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:spark:cron:undefined:run:c0aacded-26d2-4e21-bf84-9a33af435585",
+      "agentId": "spark",
+      "agentName": "SPARK",
+      "summary": "Evening review written to `shared-kb/content/daily-review.md` ✅",
+      "timestamp": "2026-02-24T14:32:11.704Z",
+      "durationMs": 42401,
+      "tokensUsed": 24807,
+      "status": "ok",
+      "category": "INCOME"
+    },
+    {
+      "id": "agent:anchor:cron:undefined:run:d84a85d0-1f1a-44c7-b958-52edb3aab7c7",
+      "agentId": "anchor",
+      "agentName": "ANCHOR",
+      "summary": "Nothing to report — no verified data available. No change from earlier today. No ideas at ANCHOR_RISK.",
+      "timestamp": "2026-02-24T14:32:11.703Z",
+      "durationMs": 99793,
+      "tokensUsed": 16959,
+      "status": "ok",
+      "category": "CREWING"
+    },
+    {
+      "id": "agent:main:cron:undefined:run:017db261-e935-4e77-aafc-ff9474bc36cd",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "Here's the combined response for all pending crons:",
+      "timestamp": "2026-02-24T13:05:15.259Z",
+      "durationMs": 64375,
+      "tokensUsed": 44374,
+      "status": "ok",
+      "category": "INCOME"
+    },
+    {
+      "id": "agent:main:cron:undefined:run:017db261-e935-4e77-aafc-ff9474bc36cd",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "⚠️ API rate limit reached. Please try again later.",
+      "timestamp": "2026-02-24T12:57:43.221Z",
+      "durationMs": 37094,
+      "tokensUsed": 0,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:eagle:cron:undefined:run:a2ff49b6-469e-45f8-b5ed-fc2a5f6fd831",
+      "agentId": "eagle",
+      "agentName": "EAGLE",
+      "summary": "⚠️ API rate limit reached. Please try again later.",
+      "timestamp": "2026-02-24T12:57:43.216Z",
+      "durationMs": 35408,
+      "tokensUsed": 0,
+      "status": "ok",
+      "category": "INTEL"
+    },
+    {
+      "id": "agent:anchor:cron:undefined:run:d84a85d0-1f1a-44c7-b958-52edb3aab7c7",
+      "agentId": "anchor",
+      "agentName": "ANCHOR",
+      "summary": "⚠️ API rate limit reached. Please try again later.",
+      "timestamp": "2026-02-24T12:50:21.663Z",
+      "durationMs": 31345,
+      "tokensUsed": 0,
+      "status": "ok",
+      "category": "CREWING"
+    },
+    {
+      "id": "agent:main:cron:undefined:run:017db261-e935-4e77-aafc-ff9474bc36cd",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "⚠️ API rate limit reached. Please try again later.",
+      "timestamp": "2026-02-24T11:04:51.534Z",
+      "durationMs": 40327,
+      "tokensUsed": 0,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:main:cron:undefined:run:017db261-e935-4e77-aafc-ff9474bc36cd",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "⚠️ API rate limit reached. Please try again later.",
+      "timestamp": "2026-02-24T10:34:55.050Z",
+      "durationMs": 41415,
+      "tokensUsed": 0,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:main:cron:undefined:run:017db261-e935-4e77-aafc-ff9474bc36cd",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "FLYWHEEL OK | 1 active | 0 advanced this cycle",
+      "timestamp": "2026-02-24T09:30:08.531Z",
+      "durationMs": 8354,
+      "tokensUsed": 38757,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:anchor:cron:undefined:run:d84a85d0-1f1a-44c7-b958-52edb3aab7c7",
+      "agentId": "anchor",
+      "agentName": "ANCHOR",
+      "summary": "## Crewing Ops Status — Tue Feb 24, 2026 (14:18 / 16:18)",
+      "timestamp": "2026-02-24T08:18:26.525Z",
+      "durationMs": 10126,
+      "tokensUsed": 16360,
+      "status": "ok",
+      "category": "CREWING"
+    },
+    {
+      "id": "agent:main:cron:undefined:run:017db261-e935-4e77-aafc-ff9474bc36cd",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "**INFRA (14:12 + 16:13):** ⚠️ INFRA WARN | GW:25823 ✅ | Agents: 0/7 memory | Cron: 15 jobs OK | Disk: 216GB ✅ Same status as 12:14 — no new issues. Agent memory writes and symlinks remain yellow.",
+      "timestamp": "2026-02-24T08:13:44.922Z",
+      "durationMs": 25439,
+      "tokensUsed": 37650,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:eagle:cron:undefined:run:a2ff49b6-469e-45f8-b5ed-fc2a5f6fd831",
+      "agentId": "eagle",
+      "agentName": "EAGLE",
+      "summary": "Found significant new items. The Panama Canal ports story is HIGH priority.",
+      "timestamp": "2026-02-24T08:13:44.919Z",
+      "durationMs": 40280,
+      "tokensUsed": 64358,
+      "status": "ok",
+      "category": "INTEL"
+    },
+    {
+      "id": "agent:beacon:cron:undefined:run:7b3d8438-eb55-4ce2-8a52-0b29d87445f5",
+      "agentId": "beacon",
+      "agentName": "BEACON",
+      "summary": "⚠️ API rate limit reached. Please try again later.",
+      "timestamp": "2026-02-24T07:50:24.978Z",
+      "durationMs": 24864,
+      "tokensUsed": 0,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:signal:cron:undefined:run:690d9548-ef4c-43c5-b885-29aaba33df94",
+      "agentId": "signal",
+      "agentName": "SIGNAL",
+      "summary": "⚠️ API rate limit reached. Please try again later.",
+      "timestamp": "2026-02-24T07:40:50.618Z",
+      "durationMs": 50514,
+      "tokensUsed": 0,
+      "status": "ok",
+      "category": "COMMS"
+    },
+    {
+      "id": "agent:main:cron:undefined:run:017db261-e935-4e77-aafc-ff9474bc36cd",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "⚠️ API rate limit reached. Please try again later.",
+      "timestamp": "2026-02-24T07:30:26.621Z",
+      "durationMs": 26536,
+      "tokensUsed": 0,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:spark:cron:undefined:run:c0aacded-26d2-4e21-bf84-9a33af435585",
+      "agentId": "spark",
+      "agentName": "SPARK",
+      "summary": "⚠️ API rate limit reached. Please try again later.",
+      "timestamp": "2026-02-24T07:20:25.478Z",
+      "durationMs": 25364,
+      "tokensUsed": 0,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:compass:cron:undefined:run:1e3fb45c-fa3f-4407-bbbe-5766671ae25a",
+      "agentId": "compass",
+      "agentName": "COMPASS",
+      "summary": "⚠️ API rate limit reached. Please try again later.",
+      "timestamp": "2026-02-24T07:00:26.955Z",
+      "durationMs": 26889,
+      "tokensUsed": 0,
+      "status": "ok",
+      "category": "STRATEGY"
+    },
+    {
+      "id": "agent:anchor:cron:undefined:run:d84a85d0-1f1a-44c7-b958-52edb3aab7c7",
+      "agentId": "anchor",
+      "agentName": "ANCHOR",
+      "summary": "⚠️ API rate limit reached. Please try again later.",
+      "timestamp": "2026-02-24T06:18:40.487Z",
+      "durationMs": 24176,
+      "tokensUsed": 0,
+      "status": "ok",
+      "category": "CREWING"
+    },
+    {
+      "id": "agent:main:cron:undefined:run:017db261-e935-4e77-aafc-ff9474bc36cd",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "⚠️ API rate limit reached. Please try again later.",
+      "timestamp": "2026-02-24T06:13:16.585Z",
+      "durationMs": 25409,
+      "tokensUsed": 0,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:eagle:cron:undefined:run:a2ff49b6-469e-45f8-b5ed-fc2a5f6fd831",
+      "agentId": "eagle",
+      "agentName": "EAGLE",
+      "summary": "No new HIGH/MEDIUM items since the 12:00 scan. No new DMW/MARINA advisories.",
+      "timestamp": "2026-02-24T06:13:16.582Z",
+      "durationMs": 11989,
+      "tokensUsed": 56452,
+      "status": "ok",
+      "category": "INTEL"
+    },
+    {
+      "id": "agent:beacon:cron:undefined:run:7b3d8438-eb55-4ce2-8a52-0b29d87445f5",
+      "agentId": "beacon",
+      "agentName": "BEACON",
+      "summary": "No active cases or deadlines. Standing by for instructions.",
+      "timestamp": "2026-02-24T05:50:05.943Z",
+      "durationMs": 5863,
+      "tokensUsed": 13111,
+      "status": "ok",
+      "category": "LEGAL"
+    },
+    {
+      "id": "agent:signal:cron:undefined:run:690d9548-ef4c-43c5-b885-29aaba33df94",
+      "agentId": "signal",
+      "agentName": "SIGNAL",
+      "summary": "**SIGNAL Daily Status — 2026-02-24 (13:40 PHT)**",
+      "timestamp": "2026-02-24T05:40:28.284Z",
+      "durationMs": 28224,
+      "tokensUsed": 21701,
+      "status": "ok",
+      "category": "COMMS"
+    },
+    {
+      "id": "agent:main:cron:undefined:run:017db261-e935-4e77-aafc-ff9474bc36cd",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "FLYWHEEL OK | 1 active | 0 advanced this cycle",
+      "timestamp": "2026-02-24T05:30:13.715Z",
+      "durationMs": 13658,
+      "tokensUsed": 35037,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:spark:cron:undefined:run:c0aacded-26d2-4e21-bf84-9a33af435585",
+      "agentId": "spark",
+      "agentName": "SPARK",
+      "summary": "Already generated today's content plan at 09:20 — still current at `shared-kb/content/daily-plan.md`. Skipping duplicate cron fire.",
+      "timestamp": "2026-02-24T05:20:04.033Z",
+      "durationMs": 3939,
+      "tokensUsed": 20110,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:compass:cron:undefined:run:1e3fb45c-fa3f-4407-bbbe-5766671ae25a",
+      "agentId": "compass",
+      "agentName": "COMPASS",
+      "summary": "COMPASS_CHECK: No ideas awaiting review. Standing by.",
+      "timestamp": "2026-02-24T05:00:02.656Z",
+      "durationMs": 2602,
+      "tokensUsed": 14306,
+      "status": "ok",
+      "category": "STRATEGY"
+    },
+    {
+      "id": "agent:anchor:cron:undefined:run:d84a85d0-1f1a-44c7-b958-52edb3aab7c7",
+      "agentId": "anchor",
+      "agentName": "ANCHOR",
+      "summary": "## Crewing Ops Status — Tue Feb 24, 2026 (12:18)",
+      "timestamp": "2026-02-24T04:18:27.647Z",
+      "durationMs": 11355,
+      "tokensUsed": 15584,
+      "status": "ok",
+      "category": "CREWING"
+    },
+    {
+      "id": "agent:main:cron:undefined:run:017db261-e935-4e77-aafc-ff9474bc36cd",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "⚠️ INFRA WARN | GW:25823 ✅ | Agents: 0/7 memory writes today | Cron: 15 jobs OK | Disk: 217GB free ✅",
+      "timestamp": "2026-02-24T04:15:31.039Z",
+      "durationMs": 62484,
+      "tokensUsed": 33622,
+      "status": "ok",
+      "category": "HEALTH"
+    },
+    {
+      "id": "agent:eagle:cron:undefined:run:a2ff49b6-469e-45f8-b5ed-fc2a5f6fd831",
+      "agentId": "eagle",
+      "agentName": "EAGLE",
+      "summary": "⚠️ 📝 Edit: in shared-kb/income/pipeline.md (720 chars) failed: Could not find the exact text in shared-kb/income/pipeline.md. The old text must match exactly including all whitespace and newlines.",
+      "timestamp": "2026-02-24T04:15:31.038Z",
+      "durationMs": 109385,
+      "tokensUsed": 52450,
+      "status": "ok",
+      "category": "INTEL"
+    },
+    {
+      "id": "agent:beacon:cron:undefined:run:7b3d8438-eb55-4ce2-8a52-0b29d87445f5",
+      "agentId": "beacon",
+      "agentName": "BEACON",
+      "summary": "No active cases or deadlines. Standing by for instructions.",
+      "timestamp": "2026-02-24T03:50:07.772Z",
+      "durationMs": 7703,
+      "tokensUsed": 12420,
+      "status": "ok",
+      "category": "LEGAL"
+    },
+    {
+      "id": "agent:signal:cron:undefined:run:690d9548-ef4c-43c5-b885-29aaba33df94",
+      "agentId": "signal",
+      "agentName": "SIGNAL",
+      "summary": "**SIGNAL Daily Status — 2026-02-24 (11:40 PHT)**",
+      "timestamp": "2026-02-24T03:40:27.281Z",
+      "durationMs": 27241,
+      "tokensUsed": 18897,
+      "status": "ok",
+      "category": "COMMS"
+    },
+    {
+      "id": "agent:main:cron:undefined:run:017db261-e935-4e77-aafc-ff9474bc36cd",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "FLYWHEEL OK | 1 active | 0 advanced this cycle",
+      "timestamp": "2026-02-24T03:30:17.594Z",
+      "durationMs": 17555,
+      "tokensUsed": 27260,
+      "status": "ok",
+      "category": "INCOME"
+    },
+    {
+      "id": "agent:spark:cron:undefined:run:c0aacded-26d2-4e21-bf84-9a33af435585",
+      "agentId": "spark",
+      "agentName": "SPARK",
+      "summary": "The morning content plan was already generated at 09:20 today and is live at `shared-kb/content/daily-plan.md`. No changes needed — the trending data and content ideas are still fresh (all from this week).",
+      "timestamp": "2026-02-24T03:20:06.078Z",
+      "durationMs": 6030,
+      "tokensUsed": 19767,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:compass:cron:undefined:run:1e3fb45c-fa3f-4407-bbbe-5766671ae25a",
+      "agentId": "compass",
+      "agentName": "COMPASS",
+      "summary": "COMPASS_CHECK: No ideas awaiting review. Standing by.",
+      "timestamp": "2026-02-24T03:00:11.722Z",
+      "durationMs": 11700,
+      "tokensUsed": 13622,
+      "status": "ok",
+      "category": "STRATEGY"
+    },
+    {
+      "id": "agent:anchor:cron:undefined:run:d84a85d0-1f1a-44c7-b958-52edb3aab7c7",
+      "agentId": "anchor",
+      "agentName": "ANCHOR",
+      "summary": "## Crewing Ops Status — Tue Feb 24, 2026",
+      "timestamp": "2026-02-24T02:18:43.345Z",
+      "durationMs": 26913,
+      "tokensUsed": 14180,
+      "status": "ok",
+      "category": "CREWING"
+    },
+    {
+      "id": "agent:eagle:cron:undefined:run:a2ff49b6-469e-45f8-b5ed-fc2a5f6fd831",
+      "agentId": "eagle",
+      "agentName": "EAGLE",
+      "summary": "Connection error.",
+      "timestamp": "2026-02-24T02:14:33.745Z",
+      "durationMs": 21520,
+      "tokensUsed": 0,
+      "status": "ok",
+      "category": "INTEL"
+    },
+    {
+      "id": "agent:beacon:cron:undefined:run:7b3d8438-eb55-4ce2-8a52-0b29d87445f5",
+      "agentId": "beacon",
+      "agentName": "BEACON",
+      "summary": "No active cases or deadlines. Standing by for instructions.",
+      "timestamp": "2026-02-24T01:50:12.371Z",
+      "durationMs": 12350,
+      "tokensUsed": 10666,
+      "status": "ok",
+      "category": "LEGAL"
+    },
+    {
+      "id": "agent:signal:cron:undefined:run:690d9548-ef4c-43c5-b885-29aaba33df94",
+      "agentId": "signal",
+      "agentName": "SIGNAL",
+      "summary": "**SIGNAL Daily Status — 2026-02-24 (Tue 09:40)**",
+      "timestamp": "2026-02-24T01:40:40.715Z",
+      "durationMs": 40703,
+      "tokensUsed": 15118,
+      "status": "ok",
+      "category": "COMMS"
+    },
+    {
+      "id": "agent:main:cron:undefined:run:017db261-e935-4e77-aafc-ff9474bc36cd",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "FLYWHEEL OK | 1 active | 0 advanced this cycle",
+      "timestamp": "2026-02-24T01:30:28.874Z",
+      "durationMs": 28850,
+      "tokensUsed": 23229,
+      "status": "ok",
+      "category": "INCOME"
+    },
+    {
+      "id": "agent:spark:cron:undefined:run:c0aacded-26d2-4e21-bf84-9a33af435585",
+      "agentId": "spark",
+      "agentName": "SPARK",
+      "summary": "Morning content plan is locked and loaded at `shared-kb/content/daily-plan.md` 🔥",
+      "timestamp": "2026-02-24T01:21:06.759Z",
+      "durationMs": 66734,
+      "tokensUsed": 19240,
+      "status": "ok",
+      "category": "INCOME"
+    },
+    {
+      "id": "agent:eagle:cron:undefined:run:a2ff49b6-469e-45f8-b5ed-fc2a5f6fd831",
+      "agentId": "eagle",
+      "agentName": "EAGLE",
+      "summary": "🦅 **EAGLE INTELLIGENCE DIGEST — 2026-02-24 06:25 PHT** Full Scan | Sources: 12 | Findings: 5 (2 HIGH, 2 MEDIUM, 1 LOW)",
+      "timestamp": "2026-02-23T22:27:54.090Z",
+      "durationMs": 116115,
+      "tokensUsed": 33912,
+      "status": "ok",
+      "category": "INTEL"
+    },
+    {
+      "id": "agent:main:cron:undefined:run:017db261-e935-4e77-aafc-ff9474bc36cd",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "☀️ **MORNING BRIEFING — Tue 24 Feb 2026, 06:25 PHT**",
+      "timestamp": "2026-02-23T22:27:54.089Z",
+      "durationMs": 29845,
+      "tokensUsed": 19924,
+      "status": "ok",
+      "category": "INCOME"
+    },
+    {
+      "id": "agent:main:cron:undefined:run:2e5dbde2-ce88-4711-91ee-fca52fb265d2",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "🌙 NIGHT WATCH — FLYWHEEL CYCLE 02:40",
+      "timestamp": "2026-02-23T18:40:24.682Z",
+      "durationMs": 4402,
+      "tokensUsed": 60043,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:main:cron:undefined:run:2e5dbde2-ce88-4711-91ee-fca52fb265d2",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "🌙 NIGHT WATCH — FLYWHEEL CYCLE 00:39",
+      "timestamp": "2026-02-23T16:39:19.893Z",
+      "durationMs": 9125,
+      "tokensUsed": 59169,
+      "status": "ok",
+      "category": "INCOME"
+    },
+    {
+      "id": "agent:main:cron:undefined:run:2e5dbde2-ce88-4711-91ee-fca52fb265d2",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "This is the second EOD recap firing today (first was at 18:45). State hasn't materially changed — I'll deliver a brief delta update rather than repeat the full brief.",
+      "timestamp": "2026-02-23T12:45:34.379Z",
+      "durationMs": 17301,
+      "tokensUsed": 57888,
+      "status": "ok",
+      "category": "INCOME"
+    },
+    {
+      "id": "agent:main:cron:undefined:run:2e5dbde2-ce88-4711-91ee-fca52fb265d2",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "⚠️ **INFRA CHECK — 20:10 PHT**",
+      "timestamp": "2026-02-23T12:10:25.153Z",
+      "durationMs": 25098,
+      "tokensUsed": 57387,
+      "status": "ok",
+      "category": "HEALTH"
+    },
+    {
+      "id": "agent:eagle:cron:undefined:run:74a1ec83-c69a-4f3f-8c3d-3b569dcc7d60",
+      "agentId": "eagle",
+      "agentName": "EAGLE",
+      "summary": "SCAN_OK | 20:00 PHT | Sources: 2 sweeps | 1 new MEDIUM finding",
+      "timestamp": "2026-02-23T12:00:24.778Z",
+      "durationMs": 24715,
+      "tokensUsed": 85221,
+      "status": "ok",
+      "category": "INTEL"
+    },
+    {
+      "id": "agent:main:cron:undefined:run:2e5dbde2-ce88-4711-91ee-fca52fb265d2",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "**📊 DASHBOARD REVIEW — 19:50 PHT**",
+      "timestamp": "2026-02-23T11:50:58.720Z",
+      "durationMs": 58699,
+      "tokensUsed": 55582,
+      "status": "ok",
+      "category": "INCOME"
+    },
+    {
+      "id": "agent:spark:cron:undefined:run:ce2e6a5b-0be9-4f9b-a14d-32b7b0363a8f",
+      "agentId": "spark",
+      "agentName": "SPARK",
+      "summary": "Evening review done. Here's the summary:",
+      "timestamp": "2026-02-23T11:46:01.163Z",
+      "durationMs": 61149,
+      "tokensUsed": 19866,
+      "status": "ok",
+      "category": "INCOME"
+    },
+    {
+      "id": "agent:main:cron:undefined:run:2e5dbde2-ce88-4711-91ee-fca52fb265d2",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "FLYWHEEL OK | 1 active | 0 advanced this cycle",
+      "timestamp": "2026-02-23T11:30:06.961Z",
+      "durationMs": 6899,
+      "tokensUsed": 48978,
+      "status": "ok",
+      "category": "INCOME"
+    },
+    {
+      "id": "agent:anchor:cron:undefined:run:a5433e7d-8c21-4bf0-a7c9-c4a5ffd68c02",
+      "agentId": "anchor",
+      "agentName": "ANCHOR",
+      "summary": "**ANCHOR Evening Status — Mon Feb 23, 2026**",
+      "timestamp": "2026-02-23T11:15:13.234Z",
+      "durationMs": 13210,
+      "tokensUsed": 17333,
+      "status": "ok",
+      "category": "CREWING"
+    },
+    {
+      "id": "agent:main:cron:undefined:run:2e5dbde2-ce88-4711-91ee-fca52fb265d2",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "⚓ **HELM END OF DAY RECAP** Monday, 23 February 2026 — 18:45 PHT",
+      "timestamp": "2026-02-23T10:45:32.521Z",
+      "durationMs": 32501,
+      "tokensUsed": 46848,
+      "status": "ok",
+      "category": "INCOME"
+    },
+    {
+      "id": "agent:main:cron:undefined:run:2e5dbde2-ce88-4711-91ee-fca52fb265d2",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "⚠️ **INFRA CHECK — 18:10 PHT — ISSUES DETECTED**",
+      "timestamp": "2026-02-23T10:10:29.157Z",
+      "durationMs": 29129,
+      "tokensUsed": 43413,
+      "status": "ok",
+      "category": "HEALTH"
+    },
+    {
+      "id": "agent:main:cron:undefined:run:2e5dbde2-ce88-4711-91ee-fca52fb265d2",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "Pipeline is moving. COMPASS completed reviews and advanced items. Current state:",
+      "timestamp": "2026-02-23T09:30:23.098Z",
+      "durationMs": 23059,
+      "tokensUsed": 40775,
+      "status": "ok",
+      "category": "INCOME"
+    },
+    {
+      "id": "agent:main:cron:undefined:run:2e5dbde2-ce88-4711-91ee-fca52fb265d2",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "⚠️ **INFRA CHECK — 16:10 PHT — MINOR ISSUES**",
+      "timestamp": "2026-02-23T08:10:30.839Z",
+      "durationMs": 30821,
+      "tokensUsed": 38846,
+      "status": "ok",
+      "category": "HEALTH"
+    },
+    {
+      "id": "agent:eagle:cron:undefined:run:74a1ec83-c69a-4f3f-8c3d-3b569dcc7d60",
+      "agentId": "eagle",
+      "agentName": "EAGLE",
+      "summary": "SCAN_OK | 16:00 PHT | Sources: 2 sweeps | 1 new MEDIUM finding",
+      "timestamp": "2026-02-23T08:00:28.221Z",
+      "durationMs": 28206,
+      "tokensUsed": 60752,
+      "status": "ok",
+      "category": "INTEL"
+    },
+    {
+      "id": "agent:main:cron:undefined:run:2e5dbde2-ce88-4711-91ee-fca52fb265d2",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "FLYWHEEL OK | 1 active | 0 advanced this cycle",
+      "timestamp": "2026-02-23T07:30:04.870Z",
+      "durationMs": 4845,
+      "tokensUsed": 36838,
+      "status": "ok",
+      "category": "INCOME"
+    },
+    {
+      "id": "agent:eagle:cron:undefined:run:74a1ec83-c69a-4f3f-8c3d-3b569dcc7d60",
+      "agentId": "eagle",
+      "agentName": "EAGLE",
+      "summary": "SCAN_OK | 15:00 PHT | Sources: 2 sweeps | No new findings",
+      "timestamp": "2026-02-23T07:00:17.437Z",
+      "durationMs": 17419,
+      "tokensUsed": 56937,
+      "status": "ok",
+      "category": "INTEL"
+    },
+    {
+      "id": "agent:main:cron:undefined:run:2e5dbde2-ce88-4711-91ee-fca52fb265d2",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "No changes since last cycle. COMPASS has held all 4 ideas for 3 hours now (since 11:30).",
+      "timestamp": "2026-02-23T06:30:10.368Z",
+      "durationMs": 10344,
+      "tokensUsed": 35917,
+      "status": "ok",
+      "category": "INCOME"
+    },
+    {
+      "id": "agent:anchor:cron:undefined:run:a5433e7d-8c21-4bf0-a7c9-c4a5ffd68c02",
+      "agentId": "anchor",
+      "agentName": "ANCHOR",
+      "summary": "**ANCHOR Afternoon Status — Mon Feb 23, 2026**",
+      "timestamp": "2026-02-23T06:15:45.819Z",
+      "durationMs": 45786,
+      "tokensUsed": 15807,
+      "status": "ok",
+      "category": "CREWING"
+    },
+    {
+      "id": "agent:eagle:cron:undefined:run:74a1ec83-c69a-4f3f-8c3d-3b569dcc7d60",
+      "agentId": "eagle",
+      "agentName": "EAGLE",
+      "summary": "SCAN_OK | 14:00 PHT | Sources: 2 sweeps | No new HIGH/MEDIUM findings since 12:00 full scan",
+      "timestamp": "2026-02-23T06:00:20.594Z",
+      "durationMs": 20545,
+      "tokensUsed": 53247,
+      "status": "ok",
+      "category": "INTEL"
+    },
+    {
+      "id": "agent:main:cron:undefined:run:2e5dbde2-ce88-4711-91ee-fca52fb265d2",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "COMPASS hasn't touched the income ideas. It's been exactly 2 hours since handoff at 11:30 — hitting the nudge threshold. Flywheel items unchanged (FW-0003 still Stage 4).",
+      "timestamp": "2026-02-23T05:30:17.579Z",
+      "durationMs": 17532,
+      "tokensUsed": 34709,
+      "status": "ok",
+      "category": "INCOME"
+    },
+    {
+      "id": "agent:main:cron:undefined:run:2e5dbde2-ce88-4711-91ee-fca52fb265d2",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "⚠️ **INFRA CHECK — 13:10 PHT — MINOR ISSUES**",
+      "timestamp": "2026-02-23T05:10:54.036Z",
+      "durationMs": 54009,
+      "tokensUsed": 33042,
+      "status": "ok",
+      "category": "HEALTH"
+    },
+    {
+      "id": "agent:eagle:cron:undefined:run:74a1ec83-c69a-4f3f-8c3d-3b569dcc7d60",
+      "agentId": "eagle",
+      "agentName": "EAGLE",
+      "summary": "**🦅 EAGLE Full Scan | 12:00 PHT | Mon 23 Feb 2026** Sources: 8 sweeps | Mode: FULL | Findings: 12",
+      "timestamp": "2026-02-23T04:01:54.274Z",
+      "durationMs": 114242,
+      "tokensUsed": 48803,
+      "status": "ok",
+      "category": "INTEL"
+    },
+    {
+      "id": "agent:main:cron:undefined:run:2e5dbde2-ce88-4711-91ee-fca52fb265d2",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "⚓ **FLYWHEEL CYCLE — 11:30 PHT**",
+      "timestamp": "2026-02-23T03:30:57.855Z",
+      "durationMs": 57829,
+      "tokensUsed": 27529,
+      "status": "ok",
+      "category": "INCOME"
+    },
+    {
+      "id": "agent:compass:cron:undefined:run:9e4df699-b093-4d48-bf15-d45f76daa007",
+      "agentId": "compass",
+      "agentName": "COMPASS",
+      "summary": "I already completed this week's Dalio Protocol retro at 09:00 today. The report is saved at `shared-kb/learning/retro-2026-02-23.md` and the summary was delivered to HELM. No need to run it twice in the same morning.",
+      "timestamp": "2026-02-23T03:00:41.675Z",
+      "durationMs": 6111,
+      "tokensUsed": 25143,
+      "status": "ok",
+      "category": "STRATEGY"
+    },
+    {
+      "id": "agent:eagle:cron:undefined:run:74a1ec83-c69a-4f3f-8c3d-3b569dcc7d60",
+      "agentId": "eagle",
+      "agentName": "EAGLE",
+      "summary": "SCAN_OK | 11:00 PHT | Sources: 3 sweeps | No new HIGH/MEDIUM findings since 09:00",
+      "timestamp": "2026-02-23T03:00:41.673Z",
+      "durationMs": 35483,
+      "tokensUsed": 27692,
+      "status": "ok",
+      "category": "INTEL"
+    },
+    {
+      "id": "agent:main:cron:undefined:run:2e5dbde2-ce88-4711-91ee-fca52fb265d2",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "⚓ **FLYWHEEL CYCLE — 09:30 PHT**",
+      "timestamp": "2026-02-23T01:30:50.431Z",
+      "durationMs": 50402,
+      "tokensUsed": 21070,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:eagle:cron:undefined:run:74a1ec83-c69a-4f3f-8c3d-3b569dcc7d60",
+      "agentId": "eagle",
+      "agentName": "EAGLE",
+      "summary": "**🦅 EAGLE Quick-Check | 09:00 PHT | Mon 23 Feb 2026** Sources: 4 search sweeps | Mode: Quick-Check",
+      "timestamp": "2026-02-23T01:03:18.691Z",
+      "durationMs": 55902,
+      "tokensUsed": 22121,
+      "status": "ok",
+      "category": "INTEL"
+    },
+    {
+      "id": "agent:compass:cron:undefined:run:9e4df699-b093-4d48-bf15-d45f76daa007",
+      "agentId": "compass",
+      "agentName": "COMPASS",
+      "summary": "Here's the summary for HELM (deliver to HELM via Telegram):",
+      "timestamp": "2026-02-23T01:03:18.691Z",
+      "durationMs": 142751,
+      "tokensUsed": 24076,
+      "status": "ok",
+      "category": "STRATEGY"
+    },
+    {
+      "id": "agent:main:cron:undefined:run:2e5dbde2-ce88-4711-91ee-fca52fb265d2",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "Connection error.",
+      "timestamp": "2026-02-23T00:39:53.853Z",
+      "durationMs": 19839,
+      "tokensUsed": 0,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:beacon:cron:undefined:run:9eb80e44-b1cb-49b7-97d1-aa7df6a3dcc4",
+      "agentId": "beacon",
+      "agentName": "BEACON",
+      "summary": "Connection error.",
+      "timestamp": "2026-02-23T00:39:34.010Z",
+      "durationMs": 73242,
+      "tokensUsed": 0,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:eagle:cron:undefined:run:74a1ec83-c69a-4f3f-8c3d-3b569dcc7d60",
+      "agentId": "eagle",
+      "agentName": "EAGLE",
+      "summary": "Connection error.",
+      "timestamp": "2026-02-23T00:38:20.761Z",
+      "durationMs": 81997,
+      "tokensUsed": 0,
+      "status": "ok",
+      "category": "INTEL"
+    },
+    {
+      "id": "agent:eagle:cron:undefined:run:74a1ec83-c69a-4f3f-8c3d-3b569dcc7d60",
+      "agentId": "eagle",
+      "agentName": "EAGLE",
+      "summary": "Connection error.",
+      "timestamp": "2026-02-23T00:35:21.646Z",
+      "durationMs": 127579,
+      "tokensUsed": 0,
+      "status": "ok",
+      "category": "INTEL"
+    },
+    {
+      "id": "agent:spark:cron:undefined:run:ce2e6a5b-0be9-4f9b-a14d-32b7b0363a8f",
+      "agentId": "spark",
+      "agentName": "SPARK",
+      "summary": "",
+      "timestamp": "2026-02-22T23:37:45.302Z",
+      "durationMs": 213,
+      "tokensUsed": 0,
+      "status": "error",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:main:cron:undefined:run:2e5dbde2-ce88-4711-91ee-fca52fb265d2",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "",
+      "timestamp": "2026-02-22T23:37:45.299Z",
+      "durationMs": 47,
+      "tokensUsed": 0,
+      "status": "error",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:main:cron:undefined:run:2e5dbde2-ce88-4711-91ee-fca52fb265d2",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "",
+      "timestamp": "2026-02-22T23:37:45.296Z",
+      "durationMs": 48,
+      "tokensUsed": 0,
+      "status": "error",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:compass:cron:undefined:run:9e4df699-b093-4d48-bf15-d45f76daa007",
+      "agentId": "compass",
+      "agentName": "COMPASS",
+      "summary": "",
+      "timestamp": "2026-02-22T23:37:45.294Z",
+      "durationMs": 939,
+      "tokensUsed": 0,
+      "status": "error",
+      "category": "STRATEGY"
+    },
+    {
+      "id": "agent:eagle:cron:undefined:run:74a1ec83-c69a-4f3f-8c3d-3b569dcc7d60",
+      "agentId": "eagle",
+      "agentName": "EAGLE",
+      "summary": "⚠️ API rate limit reached. Please try again later.",
+      "timestamp": "2026-02-22T23:37:45.245Z",
+      "durationMs": 30312,
+      "tokensUsed": 0,
+      "status": "ok",
+      "category": "INTEL"
+    },
+    {
+      "id": "agent:main:cron:undefined:run:2e5dbde2-ce88-4711-91ee-fca52fb265d2",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "⚓ **HELM MORNING BRIEFING** Monday, 23 February 2026 · 06:30 PHT",
+      "timestamp": "2026-02-22T22:30:32.187Z",
+      "durationMs": 32133,
+      "tokensUsed": 14856,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:main:cron:undefined:run:91ec8477-8d29-4f88-8cff-f7f789b40169",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "No changes needed. Both items are overnight-idle by design — next actions at 06:30 and 07:00. FW-0002 deadline is 08:00 (6.5h away) but validation can't happen until crons fire at business hours. No approvals pending.",
+      "timestamp": "2026-02-22T17:30:09.715Z",
+      "durationMs": 9668,
+      "tokensUsed": 25799,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:main:cron:undefined:run:91ec8477-8d29-4f88-8cff-f7f789b40169",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "⚠️ INFRA 00:00 | GW:functional | Cron:11/15 | Disk:222GB ✅ | No change — same 4 known low-severity warnings. Stable overnight.",
+      "timestamp": "2026-02-22T16:00:19.981Z",
+      "durationMs": 19699,
+      "tokensUsed": 24396,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:main:cron:undefined:run:91ec8477-8d29-4f88-8cff-f7f789b40169",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "FLYWHEEL OK | 2 active | 1 archived this cycle (FW-0001 → completed)",
+      "timestamp": "2026-02-22T15:30:24.073Z",
+      "durationMs": 24037,
+      "tokensUsed": 22955,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:main:cron:undefined:run:91ec8477-8d29-4f88-8cff-f7f789b40169",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "⚠️ INFRA 22:00 | GW:functional | Cron:11/15 | Disk:223GB ✅ | No change from 20:00 — same 4 minor warnings (missing nextRun on old one-shots, no watchdog.log, gateway err log re: OPENCLAW_API_TOKEN). All low severity, Sunday night. Report updated in shared-kb/infra-health.md.",
+      "timestamp": "2026-02-22T14:00:24.014Z",
+      "durationMs": 23981,
+      "tokensUsed": 20321,
+      "status": "ok",
+      "category": "HEALTH"
+    },
+    {
+      "id": "agent:main:cron:undefined:run:91ec8477-8d29-4f88-8cff-f7f789b40169",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "FLYWHEEL OK | 3 active | 0 advanced this cycle",
+      "timestamp": "2026-02-22T13:30:20.165Z",
+      "durationMs": 20140,
+      "tokensUsed": 18376,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:main:cron:undefined:run:91ec8477-8d29-4f88-8cff-f7f789b40169",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "⚠️ INFRA CHECK | GW:no-pid | Cron:12/15 (3 missing nextRun) | Agents:1/1 (Sunday) | Disk:224GB ✅ | ErrLog:OPENCLAW_API_TOKEN missing",
+      "timestamp": "2026-02-22T12:00:44.874Z",
+      "durationMs": 44817,
+      "tokensUsed": 15964,
+      "status": "ok",
+      "category": "HEALTH"
+    },
+    {
+      "id": "agent:anchor:cron:undefined:run:4eb4cf3c-8f3c-48da-9a01-d1aa52c35d56",
+      "agentId": "anchor",
+      "agentName": "ANCHOR",
+      "summary": "⚓ **ANCHOR Evening Status — Sun Feb 22, 2026 (19:00)**",
+      "timestamp": "2026-02-22T11:01:11.499Z",
+      "durationMs": 41391,
+      "tokensUsed": 17394,
+      "status": "ok",
+      "category": "CREWING"
+    },
+    {
+      "id": "agent:eagle:cron:undefined:run:b7843f07-406b-4a27-9a50-4772d344d41a",
+      "agentId": "eagle",
+      "agentName": "EAGLE",
+      "summary": "🦅 **EAGLE Intel Scan — 22 Feb 2026, 19:00 PHT**",
+      "timestamp": "2026-02-22T11:01:11.498Z",
+      "durationMs": 30083,
+      "tokensUsed": 27225,
+      "status": "ok",
+      "category": "INTEL"
+    },
+    {
+      "id": "agent:eagle:cron:undefined:run:b7843f07-406b-4a27-9a50-4772d344d41a",
+      "agentId": "eagle",
+      "agentName": "EAGLE",
+      "summary": "🦅 **EAGLE Intel Scan — 22 Feb 2026, 16:00 PHT**",
+      "timestamp": "2026-02-22T08:01:18.179Z",
+      "durationMs": 78154,
+      "tokensUsed": 22782,
+      "status": "ok",
+      "category": "INTEL"
+    },
+    {
+      "id": "agent:anchor:cron:undefined:run:54943895-8edf-40ed-b680-0ffcf5cc8bcb",
+      "agentId": "anchor",
+      "agentName": "ANCHOR",
+      "summary": "⚓ **ANCHOR Crewing Status — Sunday, Feb 22, 2026**",
+      "timestamp": "2026-02-22T05:06:26.222Z",
+      "durationMs": 42757,
+      "tokensUsed": 16118,
+      "status": "ok",
+      "category": "CREWING"
+    },
+    {
+      "id": "agent:eagle:cron:undefined:run:4ec6a646-bb36-4dbd-a8b0-4bacf0cfd584",
+      "agentId": "eagle",
+      "agentName": "EAGLE",
+      "summary": "🦅 **EAGLE Intelligence Scan Complete — 2026-02-22**",
+      "timestamp": "2026-02-22T05:06:26.221Z",
+      "durationMs": 110819,
+      "tokensUsed": 26122,
+      "status": "ok",
+      "category": "INTEL"
+    }
+  ],
+  "fleetIdleMinutes": 56,
+  "incomePipeline": {
+    "ideas": [
+      {
+        "id": "INC-010",
+        "title": "MaritimeHub: Maritime Intelligence Platform",
+        "addedBy": "EAGLE + Fleet Council (2026-02-23)",
+        "addedDate": "",
+        "status": "GO",
+        "market": "400+ PH manning agencies, compliance officers, maritime lawyers",
+        "potential": "$6K-$24K Year 1 (Conservative-Base)",
+        "effort": "MEDIUM",
+        "timeToFirst": "",
+        "nextStep": "Continue MVP build. Day 3-6 sprint: search + sanctions API integration.",
+        "thesis": "Source: EAGLE + Fleet Council (2026-02-23)",
+        "reviewStage": null,
+        "reviewStageName": null,
+        "currentHolder": null,
+        "reviewHistory": [],
+        "section": "active",
+        "mergedInto": null,
+        "deadline": "2026-03-09 (8 days)",
+        "responsibleAgent": "eagle",
+        "taskboardTasks": [
+          "IDEA010-E1",
+          "IDEA010-E2",
+          "IDEA010-S1",
+          "IDEA010-S2"
+        ]
+      },
+      {
+        "id": "INC-002",
+        "title": "STCW/Flag State Intelligence Newsletter",
+        "addedBy": "EAGLE (2026-02-22)",
+        "addedDate": "",
+        "status": "GO",
+        "market": "Manning agency managers, ship managers, maritime lawyers, P&I contacts",
+        "potential": "$500-$2,000/mo (subscriptions)",
+        "effort": "LOW",
+        "timeToFirst": "",
+        "nextStep": "BEACON to build newsletter infrastructure (platform selection, subscriber system, first issue draft).",
+        "thesis": "Source: EAGLE (2026-02-22)",
+        "reviewStage": 6,
+        "reviewStageName": "BEACON_PLAN",
+        "currentHolder": "BEACON",
+        "reviewHistory": [],
+        "section": "active",
+        "mergedInto": null,
+        "deadline": null,
+        "responsibleAgent": "beacon",
+        "taskboardTasks": []
+      },
+      {
+        "id": "INC-005",
+        "title": "Shadow Fleet Compliance Screening Tool",
+        "addedBy": "EAGLE (2026-02-23)",
+        "addedDate": "",
+        "status": "MERGED",
+        "market": "Same as INC-010",
+        "potential": "Bundled with INC-010 Pro subscription ($99/mo)",
+        "effort": "MEDIUM (standalone) → LOW (as MaritimeHub feature, data sources already mapped)",
+        "timeToFirst": "",
+        "nextStep": "Build as MaritimeHub sanctions search feature during MVP sprint.",
+        "thesis": "Source: EAGLE (2026-02-23)",
+        "reviewStage": null,
+        "reviewStageName": null,
+        "currentHolder": null,
+        "reviewHistory": [],
+        "section": "active",
+        "mergedInto": "INC-010",
+        "deadline": null,
+        "responsibleAgent": null,
+        "taskboardTasks": [
+          "IDEA005-E1",
+          "IDEA005-S1"
+        ]
+      },
+      {
+        "id": "INC-001",
+        "title": "IMO Delegate-for-a-Day Executive Briefing",
+        "addedBy": "EAGLE (2026-02-27)",
+        "addedDate": "",
+        "status": "REVIEW",
+        "market": "Manning agency CEOs/Presidents",
+        "potential": "₱250K-₱500K (one-off event)",
+        "effort": "MEDIUM — Requires speaker coordination, venue, marketing",
+        "timeToFirst": "",
+        "nextStep": "SIGNAL to validate demand and marketing approach. Employment contract review is shared blocker with INC-002.",
+        "thesis": "Source: EAGLE (2026-02-27)",
+        "reviewStage": 4,
+        "reviewStageName": "SIGNAL_MARKET",
+        "currentHolder": "SIGNAL",
+        "reviewHistory": [
+          {
+            "timestamp": "2026-02-27 18:39",
+            "agent": "HELM_REVIEW",
+            "action": "✅ PASS — Approved for pipeline entry"
+          },
+          {
+            "timestamp": "2026-02-28 01:21",
+            "agent": "COMPASS_CHECK",
+            "action": "✅ PASS — Strong domain alignment, 70-80% net margin, no PH competitor. One-off but convertible to series. Schedule post-INC-010 MVP."
+          },
+          {
+            "timestamp": "2026-02-28 10:15",
+            "agent": "ANCHOR_RISK",
+            "action": "✅ PASS WITH CAVEATS — MEDIUM risk, manageable. Employment contract review mandatory. Personal brand only. Public sources only."
+          }
+        ],
+        "section": "active",
+        "mergedInto": null,
+        "deadline": null,
+        "responsibleAgent": "signal",
+        "taskboardTasks": []
+      },
+      {
+        "id": "INC-006",
+        "title": "STCW Phase 2 Training Gap Assessment Tool",
+        "addedBy": "EAGLE (2026-02-24)",
+        "addedDate": "",
+        "status": "PLANNING",
+        "market": "Maritime training institutions, manning agencies (global)",
+        "potential": "$5K-$20K/mo SaaS",
+        "effort": "MEDIUM",
+        "timeToFirst": "",
+        "nextStep": "BEACON to assess feasibility and implementation plan (post INC-010 MVP launch).",
+        "thesis": "Source: EAGLE (2026-02-24)",
+        "reviewStage": 6,
+        "reviewStageName": "BEACON_PLAN",
+        "currentHolder": "BEACON",
+        "reviewHistory": [
+          {
+            "timestamp": "2026-02-28 01:21",
+            "agent": "SIGNAL_MARKET",
+            "action": "✅ ADVANCE — Real market demand confirmed. Best deployed as MaritimeHub module post-MVP launch."
+          }
+        ],
+        "section": "active",
+        "mergedInto": null,
+        "deadline": null,
+        "responsibleAgent": "beacon",
+        "taskboardTasks": []
+      },
+      {
+        "id": "INC-008-NEW",
+        "title": "STCW Gap Analysis & Alt-Fuel Training Readiness Audit",
+        "addedBy": "EAGLE (2026-02-28 06:00 scan)",
+        "addedDate": "",
+        "status": "REVIEW",
+        "market": "Global — Manning agencies, maritime training centers, flag states",
+        "potential": "$50K-$200K/year (SaaS or consulting model)",
+        "effort": "MEDIUM",
+        "timeToFirst": "2-3 months",
+        "nextStep": "SIGNAL to validate demand and marketing approach.",
+        "thesis": "Source: EAGLE (2026-02-28 06:00 scan)",
+        "reviewStage": 4,
+        "reviewStageName": "SIGNAL_MARKET",
+        "currentHolder": "SIGNAL",
+        "reviewHistory": [
+          {
+            "timestamp": "2026-02-28 08:30",
+            "agent": "HELM_REVIEW",
+            "action": "✅ PASS — Strong idea. HTW 12 timing + PH chairing HTW = credibility moat. Overlaps with INC-006 (STCW Phase 2 Training Gap) — evaluate whether to merge. Alt-fuel focus differentiates from INC-006's br"
+          },
+          {
+            "timestamp": "2026-02-28 20:40",
+            "agent": "COMPASS_CHECK",
+            "action": "✅ PASS — Merge with INC-006 recommended. Strong viability. Advanced to ANCHOR_RISK."
+          },
+          {
+            "timestamp": "2026-03-02 04:45",
+            "agent": "ANCHOR_RISK",
+            "action": "✅ AUTO-ADVANCE by HELM (SLA breach, original holder: ANCHOR) — Risk is LOW/MEDIUM. No Marlow-proprietary data used. Overlap with corporate training is manageable by positioning as a third-party SaaS t"
+          }
+        ],
+        "section": "active",
+        "mergedInto": null,
+        "deadline": null,
+        "responsibleAgent": "signal",
+        "taskboardTasks": []
+      },
+      {
+        "id": "INC-012",
+        "title": "Maritime War Risk & Crew Safety Advisory Service",
+        "addedBy": "EAGLE (2026-02-28 18:00 scan)",
+        "addedDate": "",
+        "status": "REVIEW",
+        "market": "Global — Manning agencies, ship operators, P&I clubs",
+        "potential": "$100K-$500K/year (retainer + per-incident advisory)",
+        "effort": "MEDIUM",
+        "timeToFirst": "1 month (demand is immediate given Iran-US escalation)",
+        "nextStep": "SIGNAL to validate demand and marketing approach.",
+        "thesis": "Source: EAGLE (2026-02-28 18:00 scan)",
+        "reviewStage": 4,
+        "reviewStageName": "SIGNAL_MARKET",
+        "currentHolder": "SIGNAL",
+        "reviewHistory": [
+          {
+            "timestamp": "2026-02-28 18:30",
+            "agent": "HELM_REVIEW",
+            "action": "✅ PASS WITH CONDITIONS — High-revenue, time-sensitive. Conflict risk with Marlow role. Must be personal brand / MaritimeHub module. Needs legal disclaimer framework."
+          },
+          {
+            "timestamp": "2026-02-28 20:50",
+            "agent": "COMPASS_CHECK",
+            "action": "✅ STRONG PASS — Bundle as MaritimeHub \"War Risk Monitor\" feature. Immediate market demand confirmed. Advanced to ANCHOR_RISK."
+          },
+          {
+            "timestamp": "2026-03-02 04:45",
+            "agent": "ANCHOR_RISK",
+            "action": "✅ AUTO-ADVANCE by HELM (SLA breach, original holder: ANCHOR) — Risk is HIGH (Operational & Liability) but manageable through strict legal disclaimers. Position as \"Intelligence Feed\" rather than \"Comm"
+          }
+        ],
+        "section": "active",
+        "mergedInto": null,
+        "deadline": null,
+        "responsibleAgent": "signal",
+        "taskboardTasks": []
+      },
+      {
+        "id": "INC-008",
+        "title": "PH Holiday Calendar API",
+        "addedBy": "EAGLE (2026-02-24)",
+        "addedDate": "",
+        "status": "PROPOSED",
+        "market": "",
+        "potential": "$500-$2K/mo",
+        "effort": "LOW",
+        "timeToFirst": "",
+        "nextStep": "",
+        "thesis": "Source: EAGLE (2026-02-24)",
+        "reviewStage": null,
+        "reviewStageName": null,
+        "currentHolder": null,
+        "reviewHistory": [],
+        "section": "parked",
+        "mergedInto": null,
+        "deadline": null,
+        "responsibleAgent": "eagle",
+        "taskboardTasks": []
+      },
+      {
+        "id": "INC-009",
+        "title": "Tariff Impact Calculator",
+        "addedBy": "EAGLE (2026-02-24)",
+        "addedDate": "",
+        "status": "KILLED",
+        "market": "",
+        "potential": "",
+        "effort": "MEDIUM",
+        "timeToFirst": "",
+        "nextStep": "",
+        "thesis": "Source: EAGLE (2026-02-24)",
+        "reviewStage": null,
+        "reviewStageName": null,
+        "currentHolder": null,
+        "reviewHistory": [],
+        "section": "parked",
+        "mergedInto": null,
+        "deadline": null,
+        "responsibleAgent": null,
+        "taskboardTasks": []
+      },
+      {
+        "id": "INC-007",
+        "title": "Digital Twin Readiness Assessment",
+        "addedBy": "EAGLE (2026-02-24)",
+        "addedDate": "",
+        "status": "KILLED",
+        "market": "",
+        "potential": "",
+        "effort": "MEDIUM",
+        "timeToFirst": "",
+        "nextStep": "",
+        "thesis": "Source: EAGLE (2026-02-24)",
+        "reviewStage": null,
+        "reviewStageName": null,
+        "currentHolder": null,
+        "reviewHistory": [
+          {
+            "timestamp": "2026-02-28 01:21",
+            "agent": "SIGNAL_MARKET",
+            "action": "🔴 BOUNCE — No competitive edge in this space, outside core domain. Recommend kill/defer."
+          }
+        ],
+        "section": "parked",
+        "mergedInto": null,
+        "deadline": null,
+        "responsibleAgent": null,
+        "taskboardTasks": []
+      }
+    ],
+    "totalIdeas": 10,
+    "proposedCount": 1,
+    "reviewCount": 4,
+    "inProgressCount": 2,
+    "shippedCount": 0,
+    "activeCount": 7,
+    "newIdeaCount": 0,
+    "mergedCount": 1,
+    "monthlyRevenue": "PHP 0",
+    "targetRevenue": "PHP 5,600/month"
+  },
+  "intelFindings": [],
+  "contentPlan": [],
+  "founderInbox": [
+    {
+      "type": "income",
+      "priority": "MEDIUM",
+      "title": "INC-008: PH Holiday Calendar API",
+      "subtitle": "$500-$2K/mo · LOW effort · ",
+      "source": "Income Pipeline",
+      "sourceAgent": "eagle (2026-02-24)",
+      "timestamp": null,
+      "actionNeeded": "Review & decide: GO / KILL / REFINE",
+      "detail": "",
+      "refId": "INC-008"
+    }
+  ],
+  "resourceMode": {
+    "mode": "CONSERVATION",
+    "pct": 0,
+    "todayCrons": 29
+  },
+  "nightWatch": true,
+  "taskboard": [
+    {
+      "id": "IDEA010-E1",
+      "agentId": "eagle",
+      "agentName": "EAGLE",
+      "description": "Research Beehiiv + Mailchimp API docs for B7 integration",
+      "priority": "P1",
+      "status": "PENDING",
+      "deadline": "2026-03-04",
+      "from": null
+    },
+    {
+      "id": "IDEA010-E2",
+      "agentId": "eagle",
+      "agentName": "EAGLE",
+      "description": "Competitive intel: scan existing maritime sanctions tools",
+      "priority": "P1",
+      "status": "PENDING",
+      "deadline": "2026-03-05",
+      "from": null
+    },
+    {
+      "id": "eagle-3",
+      "agentId": "eagle",
+      "agentName": "EAGLE",
+      "description": "IDEA010-E1 — Newsletter Platform API Research",
+      "priority": "P1",
+      "status": "PENDING",
+      "deadline": null,
+      "from": "HELM"
+    },
+    {
+      "id": "eagle-4",
+      "agentId": "eagle",
+      "agentName": "EAGLE",
+      "description": "IDEA010-E2 — Competitive Intelligence: Maritime Sanctions Tools",
+      "priority": "P1",
+      "status": "PENDING",
+      "deadline": null,
+      "from": "HELM"
+    },
+    {
+      "id": "signal-5",
+      "agentId": "signal",
+      "agentName": "SIGNAL",
+      "description": "Friday \"Maritime + AI\" Content Slot",
+      "priority": "HIGH",
+      "status": "PENDING",
+      "deadline": null,
+      "from": null
+    },
+    {
+      "id": "signal-6",
+      "agentId": "signal",
+      "agentName": "SIGNAL",
+      "description": "IDEA010-SG1 — MaritimeHub Pre-Launch Outreach to 10 Maritime Contacts",
+      "priority": "P1",
+      "status": "PENDING",
+      "deadline": null,
+      "from": "HELM"
+    },
+    {
+      "id": "IDEA010-S1",
+      "agentId": "spark",
+      "agentName": "SPARK",
+      "description": "MaritimeHub UI copy + microcopy for B6",
+      "priority": "P0",
+      "status": "PENDING",
+      "deadline": "2026-03-05",
+      "from": null
+    },
+    {
+      "id": "IDEA010-S2",
+      "agentId": "spark",
+      "agentName": "SPARK",
+      "description": "Launch day content package",
+      "priority": "P1",
+      "status": "PENDING",
+      "deadline": "2026-03-07",
+      "from": null
+    },
+    {
+      "id": "spark-10",
+      "agentId": "spark",
+      "agentName": "SPARK",
+      "description": "IDEA010-S1 — MaritimeHub UI Copy & Microcopy for Vessel Search",
+      "priority": "P0",
+      "status": "PENDING",
+      "deadline": null,
+      "from": "HELM"
+    },
+    {
+      "id": "spark-11",
+      "agentId": "spark",
+      "agentName": "SPARK",
+      "description": "IDEA010-S2 — Launch Day Content Package",
+      "priority": "P1",
+      "status": "PENDING",
+      "deadline": null,
+      "from": "HELM"
+    },
+    {
+      "id": "IDEA005-E1",
+      "agentId": "eagle",
+      "agentName": "EAGLE",
+      "description": "Map all FREE sanctions data APIs",
+      "priority": "P1",
+      "status": "DONE",
+      "deadline": "2026-02-23",
+      "from": null
+    },
+    {
+      "id": "IDEA005-S1",
+      "agentId": "spark",
+      "agentName": "SPARK",
+      "description": "Landing page copy + LinkedIn posts",
+      "priority": "P1",
+      "status": "DONE",
+      "deadline": "2026-02-23",
+      "from": null
+    }
+  ],
+  "agentSparklines": [
+    {
+      "agentId": "main",
+      "agentName": "HELM",
+      "daily": [
+        18,
+        17,
+        0,
+        0,
+        0,
+        42,
+        29
+      ],
+      "labels": [
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri",
+        "Sat",
+        "Sun",
+        "Mon"
+      ]
+    },
+    {
+      "agentId": "eagle",
+      "agentName": "EAGLE",
+      "daily": [
+        10,
+        5,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "labels": [
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri",
+        "Sat",
+        "Sun",
+        "Mon"
+      ]
+    },
+    {
+      "agentId": "anchor",
+      "agentName": "ANCHOR",
+      "daily": [
+        2,
+        6,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "labels": [
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri",
+        "Sat",
+        "Sun",
+        "Mon"
+      ]
+    },
+    {
+      "agentId": "beacon",
+      "agentName": "BEACON",
+      "daily": [
+        1,
+        4,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "labels": [
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri",
+        "Sat",
+        "Sun",
+        "Mon"
+      ]
+    },
+    {
+      "agentId": "compass",
+      "agentName": "COMPASS",
+      "daily": [
+        2,
+        3,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "labels": [
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri",
+        "Sat",
+        "Sun",
+        "Mon"
+      ]
+    },
+    {
+      "agentId": "signal",
+      "agentName": "SIGNAL",
+      "daily": [
+        0,
+        4,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "labels": [
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri",
+        "Sat",
+        "Sun",
+        "Mon"
+      ]
+    },
+    {
+      "agentId": "spark",
+      "agentName": "SPARK",
+      "daily": [
+        1,
+        5,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "labels": [
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri",
+        "Sat",
+        "Sun",
+        "Mon"
+      ]
+    }
+  ],
+  "agentGrowth": [
+    {
+      "agentId": "main",
+      "agentName": "HELM",
+      "totalRuns": 115,
+      "totalTokens": 2893560,
+      "successRate": 98,
+      "avgResponseTime": 28,
+      "runsThisWeek": 70,
+      "runsLastWeek": 0,
+      "weekOverWeekChange": 100,
+      "dailyRuns": [
+        4,
+        20,
+        15,
+        5,
+        0,
+        0,
+        26
+      ],
+      "dailyLabels": [
+        "Sun",
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri",
+        "Sat"
+      ],
+      "level": 11,
+      "xp": 50,
+      "xpToNextLevel": 50,
+      "trend": "rising"
+    },
+    {
+      "agentId": "eagle",
+      "agentName": "EAGLE",
+      "totalRuns": 19,
+      "totalTokens": 638074,
+      "successRate": 100,
+      "avgResponseTime": 57,
+      "runsThisWeek": 19,
+      "runsLastWeek": 0,
+      "weekOverWeekChange": 100,
+      "dailyRuns": [
+        3,
+        10,
+        6,
+        0,
+        0,
+        0,
+        0
+      ],
+      "dailyLabels": [
+        "Sun",
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri",
+        "Sat"
+      ],
+      "level": 1,
+      "xp": 90,
+      "xpToNextLevel": 10,
+      "trend": "rising"
+    },
+    {
+      "agentId": "anchor",
+      "agentName": "ANCHOR",
+      "totalRuns": 10,
+      "totalTokens": 129735,
+      "successRate": 100,
+      "avgResponseTime": 35,
+      "runsThisWeek": 10,
+      "runsLastWeek": 0,
+      "weekOverWeekChange": 100,
+      "dailyRuns": [
+        2,
+        2,
+        6,
+        0,
+        0,
+        0,
+        0
+      ],
+      "dailyLabels": [
+        "Sun",
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri",
+        "Sat"
+      ],
+      "level": 1,
+      "xp": 0,
+      "xpToNextLevel": 100,
+      "trend": "rising"
+    },
+    {
+      "agentId": "beacon",
+      "agentName": "BEACON",
+      "totalRuns": 5,
+      "totalTokens": 36197,
+      "successRate": 100,
+      "avgResponseTime": 25,
+      "runsThisWeek": 5,
+      "runsLastWeek": 0,
+      "weekOverWeekChange": 100,
+      "dailyRuns": [
+        0,
+        1,
+        4,
+        0,
+        0,
+        0,
+        0
+      ],
+      "dailyLabels": [
+        "Sun",
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri",
+        "Sat"
+      ],
+      "level": 0,
+      "xp": 50,
+      "xpToNextLevel": 50,
+      "trend": "rising"
+    },
+    {
+      "agentId": "compass",
+      "agentName": "COMPASS",
+      "totalRuns": 6,
+      "totalTokens": 77147,
+      "successRate": 83,
+      "avgResponseTime": 32,
+      "runsThisWeek": 6,
+      "runsLastWeek": 0,
+      "weekOverWeekChange": 100,
+      "dailyRuns": [
+        0,
+        3,
+        3,
+        0,
+        0,
+        0,
+        0
+      ],
+      "dailyLabels": [
+        "Sun",
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri",
+        "Sat"
+      ],
+      "level": 0,
+      "xp": 60,
+      "xpToNextLevel": 40,
+      "trend": "rising"
+    },
+    {
+      "agentId": "signal",
+      "agentName": "SIGNAL",
+      "totalRuns": 4,
+      "totalTokens": 55716,
+      "successRate": 100,
+      "avgResponseTime": 37,
+      "runsThisWeek": 4,
+      "runsLastWeek": 0,
+      "weekOverWeekChange": 100,
+      "dailyRuns": [
+        0,
+        0,
+        4,
+        0,
+        0,
+        0,
+        0
+      ],
+      "dailyLabels": [
+        "Sun",
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri",
+        "Sat"
+      ],
+      "level": 0,
+      "xp": 40,
+      "xpToNextLevel": 60,
+      "trend": "rising"
+    },
+    {
+      "agentId": "spark",
+      "agentName": "SPARK",
+      "totalRuns": 7,
+      "totalTokens": 103790,
+      "successRate": 86,
+      "avgResponseTime": 29,
+      "runsThisWeek": 7,
+      "runsLastWeek": 0,
+      "weekOverWeekChange": 100,
+      "dailyRuns": [
+        0,
+        2,
+        5,
+        0,
+        0,
+        0,
+        0
+      ],
+      "dailyLabels": [
+        "Sun",
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri",
+        "Sat"
+      ],
+      "level": 0,
+      "xp": 70,
+      "xpToNextLevel": 30,
+      "trend": "rising"
+    }
+  ],
+  "dashboardMonitoring": {
+    "version": "3.0",
+    "improvements": [
+      {
+        "id": 1,
+        "idea": "Add real-time token consumption gauge (live API tracking)",
+        "priority": "P2",
+        "status": "BACKLOG",
+        "logged": "2026-02-23",
+        "completed": null
+      },
+      {
+        "id": 2,
+        "idea": "Add clickable flywheel items (expand to full detail)",
+        "priority": "P3",
+        "status": "DONE",
+        "logged": "2026-02-23",
+        "completed": "2026-02-24"
+      },
+      {
+        "id": 3,
+        "idea": "Add agent activity sparklines (7-day trends)",
+        "priority": "P3",
+        "status": "DONE",
+        "logged": "2026-02-23",
+        "completed": "2026-02-24"
+      },
+      {
+        "id": 4,
+        "idea": "Add income pipeline chart (monthly trend visualization)",
+        "priority": "P2",
+        "status": "BACKLOG",
+        "logged": "2026-02-23",
+        "completed": null
+      },
+      {
+        "id": 5,
+        "idea": "Dark/light mode toggle",
+        "priority": "P4",
+        "status": "BACKLOG",
+        "logged": "2026-02-23",
+        "completed": null
+      },
+      {
+        "id": 6,
+        "idea": "Add income pipeline summary panel",
+        "priority": "P2",
+        "status": "DONE",
+        "logged": "2026-02-23",
+        "completed": "2026-02-24"
+      },
+      {
+        "id": 7,
+        "idea": "Update agent count to 7 (add SPARK to pods)",
+        "priority": "P1",
+        "status": "DONE",
+        "logged": "2026-02-23",
+        "completed": "2026-02-23"
+      },
+      {
+        "id": 8,
+        "idea": "Dashboard v3.0 is LIVE — 4 panels: Operations Center, Income Review Pipeline, War Room, 24/7 Flywheel",
+        "priority": "—",
+        "status": "DONE",
+        "logged": "2026-02-23",
+        "completed": "2026-02-23"
+      },
+      {
+        "id": 9,
+        "idea": "Add IDEA-010 (MaritimeHub) as priority item in Income Pipeline panel",
+        "priority": "P1",
+        "status": "DONE",
+        "logged": "2026-02-23",
+        "completed": "2026-02-24"
+      },
+      {
+        "id": 10,
+        "idea": "Add taskboard status panel (show pending tasks per agent)",
+        "priority": "P2",
+        "status": "DONE",
+        "logged": "2026-02-23",
+        "completed": "2026-02-24"
+      },
+      {
+        "id": 11,
+        "idea": "War Room should show active builds (MaritimeHub MVP progress)",
+        "priority": "P2",
+        "status": "DONE",
+        "logged": "2026-02-23",
+        "completed": "2026-02-24"
+      },
+      {
+        "id": 12,
+        "idea": "Flywheel panel should reflect new decision workflow (EAGLE→COMPASS→HELM→ANCHOR→SIGNAL→BEACON→SPARK)",
+        "priority": "P2",
+        "status": "DONE",
+        "logged": "2026-02-23",
+        "completed": "2026-02-24"
+      },
+      {
+        "id": 13,
+        "idea": "Pipeline filter buttons should actually filter ideas",
+        "priority": "P1",
+        "status": "DONE",
+        "logged": "2026-02-24",
+        "completed": "2026-02-24"
+      },
+      {
+        "id": 14,
+        "idea": "Show responsible agent on all pipeline cards (not just review stage)",
+        "priority": "P2",
+        "status": "DONE",
+        "logged": "2026-02-24",
+        "completed": "2026-02-24"
+      },
+      {
+        "id": 15,
+        "idea": "Projects page with Active/Shipped tabs, project detail modals",
+        "priority": "P1",
+        "status": "DONE",
+        "logged": "2026-02-24",
+        "completed": "2026-02-24"
+      },
+      {
+        "id": 16,
+        "idea": "Dashboard monitoring panel (version, backlog, review history, agent roles)",
+        "priority": "P1",
+        "status": "DONE",
+        "logged": "2026-02-24",
+        "completed": "2026-02-24"
+      },
+      {
+        "id": 17,
+        "idea": "Sync Vercel deployment back to local git repo (code divergence)",
+        "priority": "P2",
+        "status": "BACKLOG",
+        "logged": "2026-02-26",
+        "completed": null
+      },
+      {
+        "id": 18,
+        "idea": "Add per-data-source \"last updated\" timestamp on dashboard UI",
+        "priority": "P3",
+        "status": "BACKLOG",
+        "logged": "2026-02-26",
+        "completed": null
+      },
+      {
+        "id": 19,
+        "idea": "Fleet health indicator strip — agent last-active timestamps",
+        "priority": "P3",
+        "status": "BACKLOG",
+        "logged": "2026-02-28",
+        "completed": null
+      },
+      {
+        "id": 20,
+        "idea": "Weekend/weekday mode toggle for different priority views",
+        "priority": "P4",
+        "status": "BACKLOG",
+        "logged": "2026-02-28",
+        "completed": null
+      }
+    ],
+    "reviews": [
+      {
+        "date": "2026-03-01 19:50",
+        "reviewer": "HELM (Evening Review)",
+        "dataFreshness": "OK — `active-items.md` updated 04:30 today, `income/pipeline.md` updated Feb 28 18:30. Both within acceptable range for Sunday ops.",
+        "layoutScore": "4/5 — v3.0 structure stable. No regressions detected in code review.",
+        "ideas": [],
+        "priorityFix": "None — dashboard is healthy.",
+        "status": "LOGGED"
+      },
+      {
+        "date": "2026-02-28 19:50",
+        "reviewer": "HELM (Evening Review)",
+        "dataFreshness": "OK — `active-items.md` updated 15:31, `income/pipeline.md` updated 18:30. Both current for Saturday ops.",
+        "layoutScore": "4/5 — v3.0 structure stable. No code changes since last review.",
+        "ideas": [
+          "Add a \"fleet health\" indicator strip showing agent last-active timestamps — would surface stale agents quickly (P3)",
+          "Consider weekend/weekday mode toggle to show different priority views (P4)"
+        ],
+        "priorityFix": "None — dashboard is healthy.",
+        "status": "LOGGED"
+      },
+      {
+        "date": "2026-02-27 19:50",
+        "reviewer": "HELM (Evening Review)",
+        "dataFreshness": "OK — `active-items.md` (19:29), `income/pipeline.md` (18:40), `projects/` all updated today. Local dashboard code reflects v3.0 (7 agents, correct panels), so the \"stale repo\" concern appears resolved.",
+        "layoutScore": "5/5 — Operations Center v3.0 structure is intact and aligned with current priorities.",
+        "ideas": [
+          "Update `SOUL.md` to reflect correct file paths for income pipeline (P4).",
+          "Verify if `dashboard-monitoring` cron job is picking up the correct version number (currently hardcoded \"3.0\" in `data.ts`)."
+        ],
+        "priorityFix": "None — dashboard is healthy.",
+        "status": "LOGGED"
+      },
+      {
+        "date": "2026-02-23 19:50",
+        "reviewer": "HELM (Evening Review)",
+        "dataFreshness": "UNKNOWN — Dashboard is a Vercel deployment (helm-live-dashboard). Cannot verify live data freshness without accessing the deployed URL. Data sources: OpenClaw adapter + telemetry bridge + mock fallback. Need to confirm which source is active in production.",
+        "layoutScore": "4/5 — Code review shows solid structure: hero panel, agent pods, priorities, audit timeline, flywheel panel, confidence indicators. Safety-first design with trust grades.",
+        "ideas": [
+          "Add income pipeline summary panel (revenue target vs actual, idea count by stage)",
+          "Update agent count to 7 and add SPARK to pods display"
+        ],
+        "priorityFix": "Update hero text and agent count to reflect 7-agent fleet",
+        "status": "LOGGED"
+      },
+      {
+        "date": "2026-02-23 21:30",
+        "reviewer": "HELM (Post-Audit Record Update)",
+        "dataFreshness": "Dashboard v3.0 is LIVE with 4 panels. Local code on disk is stale (still shows v2 code with \"6 AI Agents\"). Vercel deployment is ahead of local git.",
+        "layoutScore": "5/5 — v3.0 panels: Operations Center | Income Review Pipeline | War Room | 24/7 Flywheel",
+        "ideas": [],
+        "priorityFix": "Ensure Income Pipeline panel shows IDEA-010 as priority",
+        "status": "LOGGED"
+      },
+      {
+        "date": "2026-02-26 00:15",
+        "reviewer": "HELM (Evening Review)",
+        "dataFreshness": "UNKNOWN — No verified live data available. Last code commit is initial CNA commit; Vercel deployment status unverified. Cannot confirm data sources are current without accessing the live URL.",
+        "layoutScore": "4/5 — Code review shows mature structure: KPI strip (6 metrics), flywheel panel, taskboard, pipeline cards, agent cards with sparklines, provider switcher, safety banner. Component library is solid (18 domain components).",
+        "ideas": [
+          "Sync Vercel deployment back to local git so code reviews can be done offline (P2)",
+          "Add a \"last data update\" timestamp per data source on the dashboard itself (P3)"
+        ],
+        "priorityFix": "None",
+        "status": "LOGGED"
+      },
+      {
+        "date": "2026-02-24 20:57",
+        "reviewer": "HELM (Evening Review)",
+        "dataFreshness": "OK — active-items.md, pipeline.md, intel digests all updated today",
+        "layoutScore": "3/5 — Comprehensive review done at 14:10 (see review-2026-02-24.md), 12 improvements identified",
+        "ideas": [],
+        "priorityFix": "None",
+        "status": "LOGGED — full review already captured in review-2026-02-24.md"
+      },
+      {
+        "date": "2026-02-23",
+        "reviewer": "HELM (Initial Setup)",
+        "dataFreshness": "OK — All data sources connected",
+        "layoutScore": "4/5 — Safety-First Bridge layout implemented",
+        "ideas": [],
+        "priorityFix": "None — fresh deployment",
+        "status": "LOGGED"
+      }
+    ],
+    "lastReviewDate": "2026-03-01 19:50",
+    "nextReviewTime": "19:50 PHT today",
+    "backlogCount": 7,
+    "doneCount": 13,
+    "feedbackCount": 0,
+    "monitoringAgents": [
+      {
+        "agentId": "main",
+        "role": "Dashboard steward — nightly review, logs improvements, coordinates fixes",
+        "cronJob": "helm-dashboard-review",
+        "schedule": "50 19 * * *"
+      },
+      {
+        "agentId": "compass",
+        "role": "Quality gate — tracks owner feedback (P0), validates data integrity",
+        "cronJob": "compass-self-improvement",
+        "schedule": "11:15 Mondays"
+      }
+    ],
+    "codeProposals": [
+      {
+        "id": "CODE-IMPROVE-003",
+        "title": "Sync Vercel Deployment to Local Git Repository",
+        "date": "2026-02-26",
+        "backlogItemId": 17,
+        "priority": "P2",
+        "status": "PROPOSED",
+        "filesToModify": [],
+        "filesToCreate": [],
+        "estimatedTokens": "—",
+        "risk": "LOW",
+        "completedDate": null,
+        "gitCommit": null,
+        "actualTokens": null
+      }
+    ],
+    "activeProposalCount": 1,
+    "completedProposalCount": 0
+  },
+  "redundancy": {
+    "providers": [
+      {
+        "provider": "anthropic",
+        "label": "Anthropic Claude",
+        "status": "online",
+        "hasCredentials": true,
+        "models": [
+          {
+            "id": "anthropic/claude-opus-4-6",
+            "label": "Claude Opus 4.6 (SOTA)",
+            "default": true
+          },
+          {
+            "id": "anthropic/claude-sonnet-4-2",
+            "label": "Claude Sonnet 4.2"
+          }
+        ],
+        "lastChecked": "2026-03-01T21:53:44.730Z",
+        "lastError": null,
+        "rateLimitHits24h": 0
+      },
+      {
+        "provider": "openai",
+        "label": "OpenAI",
+        "status": "degraded",
+        "hasCredentials": true,
+        "models": [
+          {
+            "id": "openai/gpt-5.2-pro",
+            "label": "GPT-5.2 Pro (Reasoning)",
+            "default": true
+          },
+          {
+            "id": "openai/gpt-5.2-codex",
+            "label": "GPT-5.2 Codex (Coding)"
+          },
+          {
+            "id": "openai/gpt-5.2-chat-latest",
+            "label": "GPT-5.2 Instant (Fast)"
+          },
+          {
+            "id": "openai/gpt-5.2",
+            "label": "GPT-5.2 Thinking"
+          },
+          {
+            "id": "openai/gpt-4o",
+            "label": "GPT-4o (Stable)"
+          }
+        ],
+        "lastChecked": "2026-03-01T21:53:44.730Z",
+        "lastError": "Auth cooldown: 21m remaining",
+        "rateLimitHits24h": 0
+      },
+      {
+        "provider": "google",
+        "label": "Google Gemini",
+        "status": "online",
+        "hasCredentials": true,
+        "models": [
+          {
+            "id": "google/gemini-3.1-pro-preview",
+            "label": "Gemini 3.1 Pro (Latest)",
+            "default": true
+          },
+          {
+            "id": "google/gemini-3-flash-preview",
+            "label": "Gemini 3.0 Flash (Fast)"
+          }
+        ],
+        "lastChecked": "2026-03-01T21:53:44.730Z",
+        "lastError": null,
+        "rateLimitHits24h": 0
+      }
+    ],
+    "agentChains": [
+      {
+        "agentId": "main",
+        "agentName": "HELM",
+        "primaryModel": "anthropic/claude-opus-4-6",
+        "primaryProvider": "anthropic",
+        "fallbacks": [
+          "anthropic/claude-sonnet-4-2",
+          "openai/gpt-5.2-pro",
+          "google/gemini-3.1-pro-preview"
+        ],
+        "currentModel": "anthropic/claude-opus-4-6",
+        "isOnFallback": false,
+        "lastFailoverAt": "2026-03-01T20:30:30.599Z",
+        "lastFailoverReason": "manual_failover"
+      },
+      {
+        "agentId": "eagle",
+        "agentName": "EAGLE",
+        "primaryModel": "openai/gpt-5.2-chat-latest",
+        "primaryProvider": "openai",
+        "fallbacks": [
+          "google/gemini-3.1-pro-preview",
+          "anthropic/claude-sonnet-4-2",
+          "google/gemini-3-flash-preview"
+        ],
+        "currentModel": "google/gemini-3.1-pro-preview",
+        "isOnFallback": true,
+        "lastFailoverAt": "2026-03-01T03:39:25.726Z",
+        "lastFailoverReason": "manual_failover"
+      },
+      {
+        "agentId": "anchor",
+        "agentName": "ANCHOR",
+        "primaryModel": "openai/gpt-5.2-pro",
+        "primaryProvider": "openai",
+        "fallbacks": [
+          "google/gemini-3.1-pro-preview",
+          "anthropic/claude-sonnet-4-2",
+          "google/gemini-3-flash-preview"
+        ],
+        "currentModel": "google/gemini-3.1-pro-preview",
+        "isOnFallback": true,
+        "lastFailoverAt": "2026-03-01T03:39:58.856Z",
+        "lastFailoverReason": "manual_failover"
+      },
+      {
+        "agentId": "beacon",
+        "agentName": "BEACON",
+        "primaryModel": "anthropic/claude-opus-4-6",
+        "primaryProvider": "anthropic",
+        "fallbacks": [
+          "openai/gpt-5.2-codex",
+          "anthropic/claude-sonnet-4-2",
+          "google/gemini-3.1-pro-preview"
+        ],
+        "currentModel": "anthropic/claude-opus-4-6",
+        "isOnFallback": false,
+        "lastFailoverAt": "2026-03-01T20:30:42.054Z",
+        "lastFailoverReason": "manual_failover"
+      },
+      {
+        "agentId": "compass",
+        "agentName": "COMPASS",
+        "primaryModel": "openai/gpt-5.2-pro",
+        "primaryProvider": "openai",
+        "fallbacks": [
+          "google/gemini-3.1-pro-preview",
+          "anthropic/claude-sonnet-4-2",
+          "google/gemini-3-flash-preview"
+        ],
+        "currentModel": "google/gemini-3.1-pro-preview",
+        "isOnFallback": true,
+        "lastFailoverAt": "2026-03-01T01:05:27.975Z",
+        "lastFailoverReason": "manual_failover"
+      },
+      {
+        "agentId": "signal",
+        "agentName": "SIGNAL",
+        "primaryModel": "openai/gpt-5.2-chat-latest",
+        "primaryProvider": "openai",
+        "fallbacks": [
+          "google/gemini-3.1-pro-preview",
+          "anthropic/claude-sonnet-4-2",
+          "google/gemini-3-flash-preview"
+        ],
+        "currentModel": "google/gemini-3.1-pro-preview",
+        "isOnFallback": true,
+        "lastFailoverAt": "2026-03-01T03:40:04.532Z",
+        "lastFailoverReason": "manual_failover"
+      },
+      {
+        "agentId": "spark",
+        "agentName": "SPARK",
+        "primaryModel": "openai/gpt-5.2-chat-latest",
+        "primaryProvider": "openai",
+        "fallbacks": [
+          "google/gemini-3.1-pro-preview",
+          "anthropic/claude-sonnet-4-2",
+          "google/gemini-3-flash-preview"
+        ],
+        "currentModel": "google/gemini-3.1-pro-preview",
+        "isOnFallback": true,
+        "lastFailoverAt": "2026-03-01T03:40:28.078Z",
+        "lastFailoverReason": "manual_failover"
+      }
+    ],
+    "failoverHistory": [
+      {
+        "timestamp": "2026-03-01T20:30:42.054Z",
+        "agentId": "beacon",
+        "agentName": "BEACON",
+        "fromModel": "openai/gpt-5.2-codex",
+        "toModel": "anthropic/claude-sonnet-4-2",
+        "reason": "manual_failover",
+        "automatic": false
+      },
+      {
+        "timestamp": "2026-03-01T20:30:30.599Z",
+        "agentId": "main",
+        "agentName": "HELM",
+        "fromModel": "openai/gpt-5.2-pro",
+        "toModel": "anthropic/claude-sonnet-4-2",
+        "reason": "manual_failover",
+        "automatic": false
+      },
+      {
+        "timestamp": "2026-03-01T15:39:37.390Z",
+        "agentId": "beacon",
+        "agentName": "BEACON",
+        "fromModel": "google/gemini-3.1-pro-preview",
+        "toModel": "openai/gpt-5.2-codex",
+        "reason": "manual_failover",
+        "automatic": false
+      },
+      {
+        "timestamp": "2026-03-01T15:39:33.882Z",
+        "agentId": "beacon",
+        "agentName": "BEACON",
+        "fromModel": "openai/gpt-5.2-codex",
+        "toModel": "google/gemini-3.1-pro-preview",
+        "reason": "manual_failover",
+        "automatic": false
+      },
+      {
+        "timestamp": "2026-03-01T15:39:29.240Z",
+        "agentId": "beacon",
+        "agentName": "BEACON",
+        "fromModel": "google/gemini-3.1-pro-preview",
+        "toModel": "openai/gpt-5.2-codex",
+        "reason": "manual_failover",
+        "automatic": false
+      },
+      {
+        "timestamp": "2026-03-01T15:39:28.247Z",
+        "agentId": "beacon",
+        "agentName": "BEACON",
+        "fromModel": "openai/gpt-5.2-codex",
+        "toModel": "google/gemini-3.1-pro-preview",
+        "reason": "manual_failover",
+        "automatic": false
+      },
+      {
+        "timestamp": "2026-03-01T15:39:22.421Z",
+        "agentId": "beacon",
+        "agentName": "BEACON",
+        "fromModel": "anthropic/claude-opus-4-6",
+        "toModel": "openai/gpt-5.2-codex",
+        "reason": "manual_failover",
+        "automatic": false
+      },
+      {
+        "timestamp": "2026-03-01T15:37:46.100Z",
+        "agentId": "main",
+        "agentName": "HELM",
+        "fromModel": "anthropic/claude-sonnet-4-2",
+        "toModel": "openai/gpt-5.2-pro",
+        "reason": "manual_failover",
+        "automatic": false
+      },
+      {
+        "timestamp": "2026-03-01T15:37:44.598Z",
+        "agentId": "main",
+        "agentName": "HELM",
+        "fromModel": "anthropic/claude-opus-4-6",
+        "toModel": "anthropic/claude-sonnet-4-2",
+        "reason": "manual_failover",
+        "automatic": false
+      },
+      {
+        "timestamp": "2026-03-01T15:09:55.521Z",
+        "agentId": "main",
+        "agentName": "HELM",
+        "fromModel": "anthropic/claude-opus-4-6",
+        "toModel": "anthropic/claude-opus-4-6",
+        "reason": "restore_primary",
+        "automatic": false
+      },
+      {
+        "timestamp": "2026-03-01T08:29:27.569Z",
+        "agentId": "beacon",
+        "agentName": "BEACON",
+        "fromModel": "openai/gpt-4o",
+        "toModel": "anthropic/claude-sonnet-4-2",
+        "reason": "manual_failover",
+        "automatic": false
+      },
+      {
+        "timestamp": "2026-03-01T08:29:26.299Z",
+        "agentId": "beacon",
+        "agentName": "BEACON",
+        "fromModel": "anthropic/claude-sonnet-4-2",
+        "toModel": "openai/gpt-4o",
+        "reason": "manual_failover",
+        "automatic": false
+      },
+      {
+        "timestamp": "2026-03-01T08:29:22.432Z",
+        "agentId": "beacon",
+        "agentName": "BEACON",
+        "fromModel": "google/gemini-3.1-pro-preview",
+        "toModel": "anthropic/claude-sonnet-4-2",
+        "reason": "manual_failover",
+        "automatic": false
+      },
+      {
+        "timestamp": "2026-03-01T08:29:20.364Z",
+        "agentId": "beacon",
+        "agentName": "BEACON",
+        "fromModel": "openai/gpt-5.2-codex",
+        "toModel": "google/gemini-3.1-pro-preview",
+        "reason": "manual_failover",
+        "automatic": false
+      },
+      {
+        "timestamp": "2026-03-01T08:29:19.798Z",
+        "agentId": "beacon",
+        "agentName": "BEACON",
+        "fromModel": "google/gemini-3.1-pro-preview",
+        "toModel": "openai/gpt-5.2-codex",
+        "reason": "manual_failover",
+        "automatic": false
+      },
+      {
+        "timestamp": "2026-03-01T08:29:18.315Z",
+        "agentId": "beacon",
+        "agentName": "BEACON",
+        "fromModel": "openai/gpt-5.2-codex",
+        "toModel": "google/gemini-3.1-pro-preview",
+        "reason": "manual_failover",
+        "automatic": false
+      },
+      {
+        "timestamp": "2026-03-01T08:29:17.582Z",
+        "agentId": "beacon",
+        "agentName": "BEACON",
+        "fromModel": "google/gemini-3.1-pro-preview",
+        "toModel": "openai/gpt-5.2-codex",
+        "reason": "manual_failover",
+        "automatic": false
+      },
+      {
+        "timestamp": "2026-03-01T08:29:16.715Z",
+        "agentId": "beacon",
+        "agentName": "BEACON",
+        "fromModel": "openai/gpt-5.2-codex",
+        "toModel": "google/gemini-3.1-pro-preview",
+        "reason": "manual_failover",
+        "automatic": false
+      },
+      {
+        "timestamp": "2026-03-01T08:29:15.882Z",
+        "agentId": "beacon",
+        "agentName": "BEACON",
+        "fromModel": "google/gemini-3.1-pro-preview",
+        "toModel": "openai/gpt-5.2-codex",
+        "reason": "manual_failover",
+        "automatic": false
+      },
+      {
+        "timestamp": "2026-03-01T08:29:14.599Z",
+        "agentId": "beacon",
+        "agentName": "BEACON",
+        "fromModel": "openai/gpt-5.2-codex",
+        "toModel": "google/gemini-3.1-pro-preview",
+        "reason": "manual_failover",
+        "automatic": false
+      },
+      {
+        "timestamp": "2026-03-01T08:29:12.600Z",
+        "agentId": "beacon",
+        "agentName": "BEACON",
+        "fromModel": "anthropic/claude-sonnet-4-2",
+        "toModel": "openai/gpt-5.2-codex",
+        "reason": "manual_failover",
+        "automatic": false
+      },
+      {
+        "timestamp": "2026-03-01T08:29:06.639Z",
+        "agentId": "beacon",
+        "agentName": "BEACON",
+        "fromModel": "openai/gpt-4o",
+        "toModel": "anthropic/claude-sonnet-4-2",
+        "reason": "manual_failover",
+        "automatic": false
+      },
+      {
+        "timestamp": "2026-03-01T08:29:01.790Z",
+        "agentId": "beacon",
+        "agentName": "BEACON",
+        "fromModel": "anthropic/claude-opus-4-6",
+        "toModel": "openai/gpt-4o",
+        "reason": "restore_primary",
+        "automatic": false
+      },
+      {
+        "timestamp": "2026-03-01T07:13:27.015Z",
+        "agentId": "beacon",
+        "agentName": "BEACON",
+        "fromModel": "openai/gpt-4o",
+        "toModel": "anthropic/claude-sonnet-4-2",
+        "reason": "manual_failover",
+        "automatic": false
+      },
+      {
+        "timestamp": "2026-03-01T07:13:18.623Z",
+        "agentId": "beacon",
+        "agentName": "BEACON",
+        "fromModel": "anthropic/claude-opus-4-6",
+        "toModel": "openai/gpt-4o",
+        "reason": "restore_primary",
+        "automatic": false
+      },
+      {
+        "timestamp": "2026-03-01T03:40:28.078Z",
+        "agentId": "spark",
+        "agentName": "SPARK",
+        "fromModel": "anthropic/claude-opus-4-6",
+        "toModel": "openai/gpt-5.2-codex",
+        "reason": "manual_failover",
+        "automatic": false
+      },
+      {
+        "timestamp": "2026-03-01T03:40:26.569Z",
+        "agentId": "spark",
+        "agentName": "SPARK",
+        "fromModel": "openai/gpt-5.2-codex",
+        "toModel": "anthropic/claude-opus-4-6",
+        "reason": "manual_failover",
+        "automatic": false
+      },
+      {
+        "timestamp": "2026-03-01T03:40:25.366Z",
+        "agentId": "spark",
+        "agentName": "SPARK",
+        "fromModel": "anthropic/claude-opus-4-6",
+        "toModel": "openai/gpt-5.2-codex",
+        "reason": "manual_failover",
+        "automatic": false
+      },
+      {
+        "timestamp": "2026-03-01T03:40:23.876Z",
+        "agentId": "spark",
+        "agentName": "SPARK",
+        "fromModel": "openai/gpt-5.2-codex",
+        "toModel": "anthropic/claude-opus-4-6",
+        "reason": "manual_failover",
+        "automatic": false
+      },
+      {
+        "timestamp": "2026-03-01T03:40:22.349Z",
+        "agentId": "spark",
+        "agentName": "SPARK",
+        "fromModel": "anthropic/claude-opus-4-6",
+        "toModel": "openai/gpt-5.2-codex",
+        "reason": "manual_failover",
+        "automatic": false
+      },
+      {
+        "timestamp": "2026-03-01T03:40:21.156Z",
+        "agentId": "spark",
+        "agentName": "SPARK",
+        "fromModel": "openai/gpt-5.2-codex",
+        "toModel": "anthropic/claude-opus-4-6",
+        "reason": "manual_failover",
+        "automatic": false
+      },
+      {
+        "timestamp": "2026-03-01T03:40:15.249Z",
+        "agentId": "spark",
+        "agentName": "SPARK",
+        "fromModel": "anthropic/claude-opus-4-6",
+        "toModel": "openai/gpt-5.2-codex",
+        "reason": "manual_failover",
+        "automatic": false
+      },
+      {
+        "timestamp": "2026-03-01T03:40:14.150Z",
+        "agentId": "spark",
+        "agentName": "SPARK",
+        "fromModel": "openai/gpt-5.2-codex",
+        "toModel": "anthropic/claude-opus-4-6",
+        "reason": "manual_failover",
+        "automatic": false
+      },
+      {
+        "timestamp": "2026-03-01T03:40:10.962Z",
+        "agentId": "spark",
+        "agentName": "SPARK",
+        "fromModel": "anthropic/claude-opus-4-6",
+        "toModel": "openai/gpt-5.2-codex",
+        "reason": "manual_failover",
+        "automatic": false
+      },
+      {
+        "timestamp": "2026-03-01T03:40:08.384Z",
+        "agentId": "spark",
+        "agentName": "SPARK",
+        "fromModel": "anthropic/claude-sonnet-4-2",
+        "toModel": "anthropic/claude-opus-4-6",
+        "reason": "manual_failover",
+        "automatic": false
+      },
+      {
+        "timestamp": "2026-03-01T03:40:04.532Z",
+        "agentId": "signal",
+        "agentName": "SIGNAL",
+        "fromModel": "openai/gpt-4o",
+        "toModel": "openai/gpt-5.2-turbo",
+        "reason": "manual_failover",
+        "automatic": false
+      },
+      {
+        "timestamp": "2026-03-01T03:39:58.856Z",
+        "agentId": "anchor",
+        "agentName": "ANCHOR",
+        "fromModel": "anthropic/claude-sonnet-4-2",
+        "toModel": "openai/gpt-5.2-high",
+        "reason": "manual_failover",
+        "automatic": false
+      },
+      {
+        "timestamp": "2026-03-01T03:39:25.726Z",
+        "agentId": "eagle",
+        "agentName": "EAGLE",
+        "fromModel": "anthropic/claude-sonnet-4-2",
+        "toModel": "openai/gpt-5.2-turbo",
+        "reason": "manual_failover",
+        "automatic": false
+      },
+      {
+        "timestamp": "2026-03-01T01:05:37.415Z",
+        "agentId": "beacon",
+        "agentName": "BEACON",
+        "fromModel": "anthropic/claude-sonnet-4-2",
+        "toModel": "openai/gpt-5.2-codex",
+        "reason": "manual_failover",
+        "automatic": false
+      },
+      {
+        "timestamp": "2026-03-01T01:05:36.280Z",
+        "agentId": "beacon",
+        "agentName": "BEACON",
+        "fromModel": "openai/gpt-5.2-codex",
+        "toModel": "anthropic/claude-sonnet-4-2",
+        "reason": "manual_failover",
+        "automatic": false
+      },
+      {
+        "timestamp": "2026-03-01T01:05:35.212Z",
+        "agentId": "beacon",
+        "agentName": "BEACON",
+        "fromModel": "anthropic/claude-sonnet-4-2",
+        "toModel": "openai/gpt-5.2-codex",
+        "reason": "manual_failover",
+        "automatic": false
+      },
+      {
+        "timestamp": "2026-03-01T01:05:34.198Z",
+        "agentId": "beacon",
+        "agentName": "BEACON",
+        "fromModel": "openai/gpt-5.2-codex",
+        "toModel": "anthropic/claude-sonnet-4-2",
+        "reason": "manual_failover",
+        "automatic": false
+      },
+      {
+        "timestamp": "2026-03-01T01:05:32.097Z",
+        "agentId": "beacon",
+        "agentName": "BEACON",
+        "fromModel": "anthropic/claude-sonnet-4-2",
+        "toModel": "openai/gpt-5.2-codex",
+        "reason": "manual_failover",
+        "automatic": false
+      },
+      {
+        "timestamp": "2026-03-01T01:05:31.024Z",
+        "agentId": "beacon",
+        "agentName": "BEACON",
+        "fromModel": "openai/gpt-5.2-codex",
+        "toModel": "anthropic/claude-sonnet-4-2",
+        "reason": "manual_failover",
+        "automatic": false
+      },
+      {
+        "timestamp": "2026-03-01T01:05:27.975Z",
+        "agentId": "compass",
+        "agentName": "COMPASS",
+        "fromModel": "anthropic/claude-opus-4-6",
+        "toModel": "openai/gpt-5.2-pro",
+        "reason": "manual_failover",
+        "automatic": false
+      },
+      {
+        "timestamp": "2026-03-01T01:05:26.209Z",
+        "agentId": "compass",
+        "agentName": "COMPASS",
+        "fromModel": "anthropic/claude-sonnet-4-2",
+        "toModel": "anthropic/claude-opus-4-6",
+        "reason": "manual_failover",
+        "automatic": false
+      },
+      {
+        "timestamp": "2026-03-01T01:05:11.040Z",
+        "agentId": "beacon",
+        "agentName": "BEACON",
+        "fromModel": "anthropic/claude-sonnet-4-2",
+        "toModel": "openai/gpt-5.2-codex",
+        "reason": "manual_failover",
+        "automatic": false
+      },
+      {
+        "timestamp": "2026-03-01T01:05:09.414Z",
+        "agentId": "beacon",
+        "agentName": "BEACON",
+        "fromModel": "openai/gpt-5.2-codex",
+        "toModel": "anthropic/claude-sonnet-4-2",
+        "reason": "manual_failover",
+        "automatic": false
+      },
+      {
+        "timestamp": "2026-03-01T01:05:08.718Z",
+        "agentId": "beacon",
+        "agentName": "BEACON",
+        "fromModel": "anthropic/claude-sonnet-4-2",
+        "toModel": "openai/gpt-5.2-codex",
+        "reason": "manual_failover",
+        "automatic": false
+      },
+      {
+        "timestamp": "2026-03-01T01:05:07.927Z",
+        "agentId": "beacon",
+        "agentName": "BEACON",
+        "fromModel": "openai/gpt-5.2-codex",
+        "toModel": "anthropic/claude-sonnet-4-2",
+        "reason": "manual_failover",
+        "automatic": false
+      }
+    ],
+    "autoFailoverEnabled": true,
+    "globalFallbackChain": [
+      "google/gemini-3.1-pro-preview",
+      "openai/gpt-5.2",
+      "google/gemini-3-flash-preview",
+      "openai/gpt-5.2-codex",
+      "openai/gpt-5.2-chat-latest",
+      "openai/gpt-4o",
+      "anthropic/claude-sonnet-4-2"
+    ],
+    "totalProvidersOnline": 3,
+    "totalModelsAvailable": 9
+  },
+  "spawning": {
+    "meta": {
+      "dailyBudget": 2000000,
+      "dailyUsed": 0,
+      "maxFleetSubAgents": 10,
+      "activeSubAgents": 3
+    },
+    "spawns": [
+      {
+        "spawnId": "BEACON-API-001",
+        "parentId": "beacon",
+        "name": "BEACON-API",
+        "fullName": "BEACON API Integration Specialist",
+        "task": "Build sanctions.network API wrapper with retry logic and OFAC XML parser",
+        "skillset": [
+          "api-integration",
+          "xml-parsing",
+          "error-handling"
+        ],
+        "model": "anthropic/claude-opus-4-6",
+        "fallbackModels": [
+          "openai/gpt-5.2-codex",
+          "google/gemini-3.1-pro-preview",
+          "openai/gpt-5.2",
+          "google/gemini-3-flash-preview",
+          "openai/gpt-4o",
+          "anthropic/claude-sonnet-4-2"
+        ],
+        "autonomyLevel": "A1",
+        "tokenBudget": 300000,
+        "tokensUsed": 0,
+        "deadline": "2026-03-04T23:59:00+08:00",
+        "status": "approved",
+        "progressPct": 0,
+        "lastProgressNote": null,
+        "requestedAt": "2026-03-01T10:00:00+08:00",
+        "approvedAt": "2026-03-01T10:00:05+08:00",
+        "approvedBy": "helm",
+        "bootedAt": null,
+        "completedAt": null,
+        "recalledAt": null,
+        "deliverables": [],
+        "operation": "LIGHTHOUSE"
+      },
+      {
+        "spawnId": "BEACON-UI-001",
+        "parentId": "beacon",
+        "name": "BEACON-UI",
+        "fullName": "BEACON UI Component Builder",
+        "task": "Build vessel search interface with risk scoring display components",
+        "skillset": [
+          "react",
+          "tailwind",
+          "ui-components"
+        ],
+        "model": "anthropic/claude-opus-4-6",
+        "fallbackModels": [
+          "openai/gpt-5.2-codex",
+          "google/gemini-3.1-pro-preview",
+          "openai/gpt-5.2-chat-latest",
+          "google/gemini-3-flash-preview",
+          "openai/gpt-4o",
+          "anthropic/claude-sonnet-4-2"
+        ],
+        "autonomyLevel": "A1",
+        "tokenBudget": 300000,
+        "tokensUsed": 0,
+        "deadline": "2026-03-07T23:59:00+08:00",
+        "status": "approved",
+        "progressPct": 0,
+        "lastProgressNote": null,
+        "requestedAt": "2026-03-01T10:00:10+08:00",
+        "approvedAt": "2026-03-01T04:06:56.006Z",
+        "approvedBy": "helm",
+        "bootedAt": null,
+        "completedAt": null,
+        "recalledAt": null,
+        "deliverables": [],
+        "operation": "LIGHTHOUSE"
+      },
+      {
+        "spawnId": "EAGLE-SCAN-001",
+        "parentId": "eagle",
+        "name": "EAGLE-SCAN",
+        "fullName": "EAGLE Deep Competitive Scanner",
+        "task": "Deep competitive analysis of Windward AI, Pole Star, and other maritime sanctions tools",
+        "skillset": [
+          "web-research",
+          "competitive-analysis"
+        ],
+        "model": "openai/gpt-5.2-chat-latest",
+        "fallbackModels": [
+          "google/gemini-3.1-pro-preview",
+          "openai/gpt-5.2",
+          "google/gemini-3-flash-preview",
+          "openai/gpt-4o",
+          "anthropic/claude-sonnet-4-2"
+        ],
+        "autonomyLevel": "A1",
+        "tokenBudget": 200000,
+        "tokensUsed": 0,
+        "deadline": "2026-03-05T23:59:00+08:00",
+        "status": "approved",
+        "progressPct": 0,
+        "lastProgressNote": null,
+        "requestedAt": "2026-03-01T10:00:15+08:00",
+        "approvedAt": "2026-03-01T04:07:14.338Z",
+        "approvedBy": "helm",
+        "bootedAt": null,
+        "completedAt": null,
+        "recalledAt": null,
+        "deliverables": [],
+        "operation": "LIGHTHOUSE"
+      }
+    ],
+    "byParent": {
+      "helm": {
+        "activeSpawns": 0,
+        "totalTokensToday": 0
+      },
+      "eagle": {
+        "activeSpawns": 0,
+        "totalTokensToday": 0
+      },
+      "anchor": {
+        "activeSpawns": 0,
+        "totalTokensToday": 0
+      },
+      "beacon": {
+        "activeSpawns": 0,
+        "totalTokensToday": 0
+      },
+      "compass": {
+        "activeSpawns": 0,
+        "totalTokensToday": 0
+      },
+      "signal": {
+        "activeSpawns": 0,
+        "totalTokensToday": 0
+      },
+      "spark": {
+        "activeSpawns": 0,
+        "totalTokensToday": 0
+      }
+    }
+  },
+  "_snapshot": {
+    "generatedAt": "2026-03-01T21:53:44.733Z",
+    "hostname": "Rizaldos-MacBook-Pro.local",
+    "version": "1.0"
+  }
+}

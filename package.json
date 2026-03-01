@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "snapshot": "npx tsx scripts/snapshot.ts",
+    "deploy": "npm run snapshot && npx vercel --prod",
+    "deploy:preview": "npm run snapshot && npx vercel"
   },
   "dependencies": {
     "next": "16.1.6",

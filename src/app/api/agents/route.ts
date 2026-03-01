@@ -3,9 +3,18 @@ import { NextRequest, NextResponse } from "next/server";
 export const dynamic = "force-dynamic";
 
 const WS_URL = "ws://127.0.0.1:18789";
-const AUTH_TOKEN = "7c80904c8e4ebd8a82dccb19451edc677d83b6f593ec3d0a9f3e321ff77495e1";
+const AUTH_TOKEN = process.env.NEXT_PUBLIC_GATEWAY_TOKEN || "";
+
+const IS_VERCEL = !!process.env.VERCEL;
 
 export async function POST(req: NextRequest) {
+  if (IS_VERCEL) {
+    return NextResponse.json(
+      { error: "Agent commands require the local gateway. Use the local dashboard.", cloudMode: true },
+      { status: 403 }
+    );
+  }
+
   try {
     const body = await req.json();
     const { agentId, message } = body;

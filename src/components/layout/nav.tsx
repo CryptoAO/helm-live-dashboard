@@ -4,11 +4,12 @@ import { usePathname } from "next/navigation";
 
 const NAV_ITEMS = [
   { href: "/", label: "Bridge", icon: "🚢", shortcut: "1" },
-  { href: "/pipeline", label: "Pipeline", icon: "💰", shortcut: "2" },
-  { href: "/projects", label: "Projects", icon: "📦", shortcut: "3" },
-  { href: "/fleet", label: "Fleet", icon: "🤖", shortcut: "4" },
+  { href: "/fleet", label: "Fleet", icon: "🤖", shortcut: "2" },
+  { href: "/pipeline", label: "Pipeline", icon: "💰", shortcut: "3" },
+  { href: "/projects", label: "Projects", icon: "📦", shortcut: "4" },
   { href: "/analytics", label: "Analytics", icon: "📊", shortcut: "5" },
   { href: "/warroom", label: "War Room", icon: "🏛️", shortcut: "6" },
+  { href: "/redundancy", label: "Redundancy", icon: "🛡️", shortcut: "7" },
 ];
 
 export function Nav() {

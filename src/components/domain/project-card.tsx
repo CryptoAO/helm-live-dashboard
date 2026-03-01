@@ -44,6 +44,31 @@ export function ProjectCard({ project, onClick, dashboardMonitoring }: ProjectCa
       className="rounded-lg border border-card-border bg-card-bg/80 p-4 hover:border-slate-600 transition-colors cursor-pointer"
       onClick={onClick}
     >
+      {/* Staleness alert — surfaces when project is approaching deadline with no progress */}
+      {project.isStale && (
+        <div className="mb-3 rounded-lg bg-red-500/10 border border-red-500/30 p-2">
+          <div className="flex items-center gap-2 text-[10px]">
+            <span className="text-red-400 font-bold">STALE</span>
+            {project.daysToDeadline !== undefined && (
+              <Badge variant="red">{project.daysToDeadline <= 0 ? "OVERDUE" : `${project.daysToDeadline}d left`}</Badge>
+            )}
+          </div>
+          <div className="text-[9px] text-red-300/70 mt-1">{project.staleReason}</div>
+        </div>
+      )}
+
+      {/* Process Phase Banner */}
+      {project.processPhase && !project.isStale && (
+        <div className="mb-3 rounded-lg bg-blue-500/10 border border-blue-500/30 p-2">
+          <div className="flex items-center gap-2 text-[10px]">
+            <span className="text-blue-400 font-bold">{project.processPhase}</span>
+            {project.processGate && (
+              <span className="text-blue-300/60">{project.processGate}</span>
+            )}
+          </div>
+        </div>
+      )}
+
       {/* Header */}
       <div className="flex items-start justify-between mb-3">
         <div className="flex-1 min-w-0">
@@ -53,6 +78,9 @@ export function ProjectCard({ project, onClick, dashboardMonitoring }: ProjectCa
             {mon && <Badge variant="blue">v{mon.version}</Badge>}
             {project.hasAppDirectory && (
               <span className="text-[9px] px-1.5 py-0 rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 font-bold">HAS CODE</span>
+            )}
+            {project.daysToDeadline !== undefined && project.daysToDeadline <= 14 && !project.isStale && (
+              <Badge variant="amber">{project.daysToDeadline}d to deadline</Badge>
             )}
           </div>
           <h3 className="text-sm font-semibold text-slate-200 truncate">{project.name}</h3>

@@ -22,7 +22,8 @@ function getWsUrl(): string | null {
   return null;
 }
 
-const AUTH_TOKEN = "7c80904c8e4ebd8a82dccb19451edc677d83b6f593ec3d0a9f3e321ff77495e1";
+// Auth token loaded from environment — never hardcode secrets in source
+const AUTH_TOKEN = process.env.NEXT_PUBLIC_GATEWAY_TOKEN || "";
 
 let reqSeq = 0;
 function nextId(): string {

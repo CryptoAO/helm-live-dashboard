@@ -15,7 +15,6 @@ const PROVIDER_ICONS: Record<string, string> = {
   anthropic: "🟠",
   openai: "🟢",
   google: "🔵",
-  xai: "⚡",
 };
 
 export function ProviderSwitcher() {

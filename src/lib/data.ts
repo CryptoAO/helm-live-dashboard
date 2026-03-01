@@ -1,10 +1,22 @@
 import fs from "fs";
 import path from "path";
 
-const OPENCLAW_DIR = path.join(
-  process.env.HOME || "/Users/rizaldomadanlo",
-  ".openclaw"
-);
+// Resolve OpenClaw dir: check multiple locations (native macOS, VM mount, fallback)
+function resolveOpenClawDir(): string {
+  const candidates = [
+    path.join(process.env.HOME || "", ".openclaw"),
+    "/Users/rizaldomadanlo/.openclaw",
+    // VM/Cowork mount path (when running snapshot in sandboxed environment)
+    path.join(process.env.HOME || "", "mnt", ".openclaw"),
+  ];
+  for (const c of candidates) {
+    try {
+      if (c && fs.existsSync(path.join(c, "openclaw.json"))) return c;
+    } catch { /* skip */ }
+  }
+  return candidates[0] || "/Users/rizaldomadanlo/.openclaw";
+}
+const OPENCLAW_DIR = resolveOpenClawDir();
 const SHARED_KB = path.join(OPENCLAW_DIR, "workspace", "shared-kb");
 const CRON_FILE = path.join(OPENCLAW_DIR, "cron", "jobs.json");
 const CONFIG_FILE = path.join(OPENCLAW_DIR, "openclaw.json");
@@ -88,6 +100,7 @@ export interface FlywheelItem {
   allStatusNotes: string[];
   stalenessHours: number | null;
   project: string;
+  projectName: string;
 }
 
 export interface ProjectDomain {
@@ -121,6 +134,13 @@ export interface ProjectInfo {
   totalTasks: number;
   progressPct: number;
   description: string;
+  nextDeadline?: string;
+  daysToDeadline?: number;
+  isStale?: boolean;
+  staleReason?: string;
+  lastActivity?: string;
+  processPhase?: string;
+  processGate?: string;
 }
 
 export interface ActivityEntry {
@@ -154,7 +174,7 @@ export interface IncomePipelineIdea {
   title: string;
   addedBy: string;
   addedDate: string;
-  status: "PROPOSED" | "REVIEW" | "IN_PROGRESS" | "SHIPPED" | "APPROVED" | "REJECTED" | "DEFERRED" | "PARKED" | "DEPRIORITIZED" | "GO" | "MERGED" | "PLANNING";
+  status: "PROPOSED" | "REVIEW" | "IN_PROGRESS" | "SHIPPED" | "APPROVED" | "REJECTED" | "DEFERRED" | "PARKED" | "DEPRIORITIZED" | "GO" | "MERGED" | "PLANNING" | "KILLED" | "NEW";
   market: string;
   potential: string;
   effort: string;
@@ -220,6 +240,30 @@ export interface CodeProposal {
   completedDate: string | null;
   gitCommit: string | null;
   actualTokens: string | null;
+}
+
+// Agent growth/leveling metrics
+export interface AgentGrowthMetrics {
+  agentId: string;
+  agentName: string;
+  // XP system - based on actual cron runs
+  totalRuns: number;        // lifetime total cron runs
+  totalTokens: number;      // lifetime total tokens used
+  successRate: number;      // percentage of successful runs (0-100)
+  avgResponseTime: number;  // average duration in seconds
+  // 7-day trends
+  runsThisWeek: number;
+  runsLastWeek: number;
+  weekOverWeekChange: number; // percentage change
+  // Daily activity for the last 7 days
+  dailyRuns: number[];      // 7 numbers
+  dailyLabels: string[];    // day names
+  // Computed level (1 run = 10 XP, level up every 100 XP)
+  level: number;
+  xp: number;
+  xpToNextLevel: number;
+  // Growth trend
+  trend: "rising" | "stable" | "declining" | "inactive";
 }
 
 // Dashboard improvement backlog types
@@ -328,7 +372,10 @@ export interface DashboardData {
   nightWatch: boolean;
   taskboard: TaskboardTask[];
   agentSparklines: AgentSparklineData[];
+  agentGrowth: AgentGrowthMetrics[];
   dashboardMonitoring: DashboardMonitoring;
+  redundancy: RedundancyData;
+  spawning: SpawningData;
 }
 
 export interface TaskboardTask {
@@ -660,8 +707,11 @@ function getFlywheelItems(): DashboardData["flywheel"] {
       const id = match[1];
       const block = match[2];
 
-      // Skip completed/archived items
-      if (block.includes("Completed:") || block.includes("\u2705")) continue;
+      // Skip completed/archived items — only skip if explicitly marked as CLOSED or has **Completed:** field
+      // Do NOT skip items that merely have ✅ in status notes (active items can have completed sub-steps)
+      const firstLine = block.split("\n")[0].trim();
+      if (block.match(/\*\*(?:Stage|Status):\*\*\s*CLOSED/) || block.match(/\*\*Completed:\*\*/)) continue;
+      if (firstLine.includes("✅") && !block.match(/\*\*Stage:\*\*\s*\d/)) continue;
 
       const rawTitle = block.split("\n")[0].trim();
       // Extract project tag from title: [MARLOW], [SYSTEM], [MULTI], etc.
@@ -676,6 +726,10 @@ function getFlywheelItems(): DashboardData["flywheel"] {
       const stage = stageMatch ? parseInt(stageMatch[1]) : 0;
       const stageName =
         stageMatch ? stageMatch[2].trim() : stageNames[stage] || "Unknown";
+
+      // Parse project name (from **Project:** field)
+      const projectNameMatch = block.match(/\*\*Project:\*\*\s*(.+)/);
+      const projectName = projectNameMatch ? projectNameMatch[1].trim() : "";
 
       // Parse priority
       const priorityMatch = block.match(/\*\*Priority:\*\*\s*(P\d)/);
@@ -780,6 +834,7 @@ function getFlywheelItems(): DashboardData["flywheel"] {
         allStatusNotes,
         stalenessHours,
         project,
+        projectName,
       });
     }
   }
@@ -918,11 +973,11 @@ function getProjects(flywheelItems: FlywheelItem[], taskboard: TaskboardTask[], 
       const content = readFileOrNull(path.join(PROJECTS_DIR, file));
       if (!content) continue;
 
-      // Parse frontmatter
-      const nameMatch = content.match(/^project:\s*(.+)/m);
-      const statusMatch = content.match(/^status:\s*(.+)/m);
-      const priorityMatch = content.match(/^priority:\s*(.+)/m);
-      const roleMatch = content.match(/^role:\s*(.+)/m);
+      // Parse frontmatter — support both YAML frontmatter (status: ACTIVE) and markdown bold (**Status:** ACTIVE)
+      const nameMatch = content.match(/^project:\s*(.+)/m) || content.match(/^#\s+(?:Project:\s*)?(.+)/m);
+      const statusMatch = content.match(/^status:\s*(.+)/m) || content.match(/\*\*Status:\*\*\s*(\w+)/);
+      const priorityMatch = content.match(/^priority:\s*(.+)/m) || content.match(/\*\*Priority:\*\*\s*(\w+)/);
+      const roleMatch = content.match(/^role:\s*(.+)/m) || content.match(/\*\*Lead Agent:\*\*\s*(.+)/m);
 
       // Extract flywheel tag
       const tagMatch = content.match(/All flywheel items for this project use the tag:\s*`(\w+)`/);
@@ -947,27 +1002,44 @@ function getProjects(flywheelItems: FlywheelItem[], taskboard: TaskboardTask[], 
         }
       }
 
-      // Count flywheel items for this project
-      const projectFwItems = flywheelItems.filter((fw) => fw.project === slug);
+      // Count flywheel items for this project — match by tag, projectName, title, or slug
+      const projectName = nameMatch ? nameMatch[1].trim() : file.replace(".md", "");
+      const slugLower = slug.toLowerCase();
+      const nameLower = projectName.toLowerCase().replace(/\s+/g, "");
+      const projectFwItems = flywheelItems.filter((fw) => {
+        if (fw.project.toLowerCase() === slugLower) return true;
+        if (fw.projectName && fw.projectName.toLowerCase().replace(/\s+/g, "") === nameLower) return true;
+        if (fw.projectName && slugLower.includes(fw.projectName.toLowerCase().replace(/\s+/g, ""))) return true;
+        if (fw.title.toLowerCase().replace(/\s+/g, "").includes(nameLower)) return true;
+        return false;
+      });
       const itemCount = projectFwItems.length;
       const fwIds = projectFwItems.map(fw => fw.id);
 
       // Find linked pipeline ideas — match by project name in title or slug
-      const projectName = nameMatch ? nameMatch[1].trim() : file.replace(".md", "");
       const linkedIdeas = ideas.filter(i => {
         const titleLower = i.title.toLowerCase();
-        const slugLower = slug.toLowerCase();
-        return titleLower.includes(slugLower) || titleLower.includes(projectName.toLowerCase().replace(/\s+/g, ""));
+        return titleLower.includes(slugLower) || titleLower.includes(nameLower);
       });
       const linkedIdeaIds = linkedIdeas.map(i => i.id);
 
-      // Find linked taskboard tasks — match by idea prefix (IDEA010 → IDEA-010)
+      // Find linked taskboard tasks — match by idea prefix using robust multi-prefix strategy
       const linkedTasks: string[] = [];
       for (const ideaId of linkedIdeaIds) {
-        const prefix = ideaId.replace("-", "").replace("IDEA", "IDEA");
-        const matching = taskboard.filter(t => t.id.toUpperCase().startsWith(prefix) || t.description.includes(ideaId));
+        const ideaPrefix = ideaId.replace("-", "").toUpperCase(); // "INC010"
+        const numericPart = ideaId.replace(/^[A-Z]+-/, ""); // "010"
+        const legacyPrefix = "IDEA" + numericPart; // "IDEA010"
+        const matching = taskboard.filter(t => {
+          const tid = t.id.toUpperCase();
+          return tid.startsWith(ideaPrefix) || tid.startsWith(legacyPrefix) ||
+                 t.description.includes(ideaId) || t.description.toUpperCase().includes(ideaPrefix);
+        });
         linkedTasks.push(...matching.map(t => t.id));
       }
+
+      // Also count [x] checkboxes from the project file itself as a fallback
+      const checkboxTotal = (content.match(/^- \[[ x]\]/gm) || []).length;
+      const checkboxDone = (content.match(/^- \[x\]/gm) || []).length;
 
       // Check for app directory
       const appSlug = slug.toLowerCase().replace(/_/g, "-");
@@ -1004,11 +1076,13 @@ function getProjects(flywheelItems: FlywheelItem[], taskboard: TaskboardTask[], 
         }
       }
 
-      // Compute progress from linked tasks
+      // Compute progress from linked tasks (fallback to [x] checkboxes in project file)
       const allLinkedTasks = taskboard.filter(t => linkedTasks.includes(t.id));
       const completedTasks = allLinkedTasks.filter(t => t.status === "DONE").length;
       const totalTasks = allLinkedTasks.length;
-      const progressPct = totalTasks > 0 ? Math.round((completedTasks / totalTasks) * 100) : 0;
+      const progressPct = totalTasks > 0
+        ? Math.round((completedTasks / totalTasks) * 100)
+        : (checkboxTotal > 0 ? Math.round((checkboxDone / checkboxTotal) * 100) : 0);
 
       // Parse description (first paragraph after frontmatter)
       const descMatch = content.match(/(?:^|\n\n)([A-Z][\s\S]*?)(?=\n\n|\n##|$)/);
@@ -1047,8 +1121,15 @@ function getProjects(flywheelItems: FlywheelItem[], taskboard: TaskboardTask[], 
                             fs.existsSync(path.join(APPS_DIR, idea.title.toLowerCase().replace(/\s+/g, "-")));
 
     // Find taskboard tasks linked to this idea
-    const ideaPrefix = idea.id.replace("-", "");
-    const linkedTasks = taskboard.filter(t => t.id.toUpperCase().startsWith(ideaPrefix) || t.description.includes(idea.id));
+    // Match tasks using multiple prefix strategies:
+    // INC-010 → INC010, but also IDEA010 (legacy format), and numeric part
+    const ideaPrefix = idea.id.replace("-", "").toUpperCase(); // "INC010"
+    const numericPart = idea.id.replace(/^[A-Z]+-/, ""); // "010"
+    const legacyPrefix = "IDEA" + numericPart; // "IDEA010"
+    const linkedTasks = taskboard.filter(t => {
+      const tid = t.id.toUpperCase();
+      return tid.startsWith(ideaPrefix) || tid.startsWith(legacyPrefix) || t.description.includes(idea.id) || t.description.toUpperCase().includes(ideaPrefix);
+    });
     const linkedTaskIds = linkedTasks.map(t => t.id);
     const completedTasks = linkedTasks.filter(t => t.status === "DONE").length;
     const totalTasks = linkedTasks.length;
@@ -1087,10 +1168,13 @@ function getProjects(flywheelItems: FlywheelItem[], taskboard: TaskboardTask[], 
   const systemCount = flywheelItems.filter((fw) => fw.project === "SYSTEM").length;
   if (systemCount > 0 || projects.length > 0) {
     const systemFwIds = flywheelItems.filter(fw => fw.project === "SYSTEM").map(fw => fw.id);
+    // HELM Fleet is SHIPPED (v3.0 live) with continuous improvement cycle
+    // Active SYSTEM flywheel items = still iterating, but product is shipped
+    const systemHasActiveFw = systemFwIds.length > 0 && flywheelItems.some(fw => fw.project === "SYSTEM" && fw.stage < 6);
     projects.push({
       name: "HELM Fleet (System)",
       slug: "SYSTEM",
-      status: "ACTIVE",
+      status: systemHasActiveFw ? "ACTIVE" : "SHIPPED",
       priority: "INFRASTRUCTURE",
       role: "Fleet Operations",
       itemCount: systemCount,
@@ -1103,8 +1187,87 @@ function getProjects(flywheelItems: FlywheelItem[], taskboard: TaskboardTask[], 
       completedTasks: 0,
       totalTasks: 0,
       progressPct: 0,
-      description: "Fleet infrastructure, tooling, and operational systems",
+      description: "Fleet infrastructure, tooling, and operational systems — v3.0 live, continuous improvement",
     });
+  }
+
+  // Compute staleness for each project — flag projects approaching deadlines with no progress
+  const now = new Date();
+  for (const project of projects) {
+    if (project.slug === "SYSTEM") continue; // System infra has its own monitoring
+
+    // Find the nearest deadline across all milestones
+    let nearestDeadline: string | undefined;
+    let nearestDays = Infinity;
+    for (const ms of project.milestones) {
+      const dlMatch = ms.deadline?.match(/(\d{4}-\d{2}-\d{2})/);
+      if (dlMatch) {
+        const dlDate = new Date(dlMatch[1]);
+        const days = Math.ceil((dlDate.getTime() - now.getTime()) / 86_400_000);
+        if (days < nearestDays) {
+          nearestDays = days;
+          nearestDeadline = dlMatch[1];
+        }
+      }
+    }
+
+    if (nearestDeadline) {
+      project.nextDeadline = nearestDeadline;
+      project.daysToDeadline = nearestDays;
+    }
+
+    // Check file modification time for last activity
+    const projectFile = path.join(PROJECTS_DIR, `${project.slug.toLowerCase()}.md`);
+    const modTime = fileModTime(projectFile);
+    if (modTime) {
+      project.lastActivity = modTime;
+    }
+
+    // Staleness conditions (improved — considers flywheel activity):
+    // 1. ACTIVE with no tasks, no flywheel items, and no linked ideas → truly stale
+    // 2. ACTIVE with deadline < 14d AND progress < 25% AND no active flywheel items → at risk
+    // 3. Project with overdue milestones
+    // NOTE: If a flywheel item is actively at S3+ and not stuck, the project is IN SPRINT, not stale
+    const isActiveProject = ["ACTIVE", "BUILDING", "APPROVED"].includes(project.status);
+    const hasOverdueMilestones = project.milestones.some(m => m.status === "overdue");
+    const activeFwItems = flywheelItems.filter(fw => project.flywheelItems.includes(fw.id) && fw.stage >= 3 && !fw.isStuck);
+    const hasActiveSprint = activeFwItems.length > 0;
+
+    if (isActiveProject && project.itemCount === 0 && project.totalTasks === 0 && project.linkedIdeaIds.length === 0) {
+      project.isStale = true;
+      project.staleReason = "No flywheel items, tasks, or linked ideas. Project has no active work stream.";
+    } else if (isActiveProject && nearestDays < 14 && project.progressPct < 25 && !hasActiveSprint) {
+      project.isStale = true;
+      project.staleReason = `Deadline in ${nearestDays}d with only ${project.progressPct}% progress. Needs immediate sprint.`;
+    } else if (hasOverdueMilestones && !hasActiveSprint) {
+      project.isStale = true;
+      project.staleReason = `Has overdue milestones. Needs HELM triage.`;
+    }
+
+    // Derive process phase from flywheel stage (per project-development-process.md)
+    // S1 → P0/P1, S2 → P2/P3, S3 → P4, S4 → P6, S5 → P5, S6 → P7
+    const projectFwItems = flywheelItems.filter(fw => project.flywheelItems.includes(fw.id));
+    if (projectFwItems.length > 0) {
+      const highestStage = Math.max(...projectFwItems.map(fw => fw.stage));
+      const phaseMap: Record<number, string> = {
+        1: "P0-P1: Ideation & Validation",
+        2: "P2-P3: Refinement & Planning",
+        3: "P4: Development",
+        4: "P6: Launch & Delivery",
+        5: "P5: Testing & Validation",
+        6: "P7: Post-Launch & Learning",
+      };
+      const gateMap: Record<number, string> = {
+        1: "Gate 0 passed",
+        2: "Gate 1 passed",
+        3: "Gate 3 passed — Building",
+        4: "Gate 4 passed — Shipping",
+        5: "Gate 4 — Validating",
+        6: "Gate 5 passed — Live",
+      };
+      project.processPhase = phaseMap[highestStage] || undefined;
+      project.processGate = gateMap[highestStage] || undefined;
+    }
   }
 
   return projects;
@@ -1113,7 +1276,7 @@ function getProjects(flywheelItems: FlywheelItem[], taskboard: TaskboardTask[], 
 const INCOME_PIPELINE_FILE = path.join(SHARED_KB, "income", "pipeline.md");
 const CONTENT_PLAN_FILE = path.join(SHARED_KB, "content", "daily-plan.md");
 
-const CRON_RUNS_FILE = path.join(OPENCLAW_DIR, "cron", "runs", "undefined.jsonl");
+const CRON_RUNS_DIR = path.join(OPENCLAW_DIR, "cron", "runs");
 
 interface CronRunRecord {
   ts: number;
@@ -1127,22 +1290,52 @@ interface CronRunRecord {
   usage?: { input_tokens: number; output_tokens: number; total_tokens: number };
 }
 
-function parseCronRuns(): CronRunRecord[] {
-  const raw = readFileOrNull(CRON_RUNS_FILE);
-  if (!raw) return [];
-  const records: CronRunRecord[] = [];
-  const lines = raw.trim().split("\n");
-  // Only parse last 200 lines for performance
-  const recentLines = lines.slice(-200);
-  for (const line of recentLines) {
-    if (!line.trim()) continue;
-    try {
-      const rec = JSON.parse(line);
-      if (rec.action === "finished" && rec.sessionKey) {
-        records.push(rec);
-      }
-    } catch { /* skip malformed lines */ }
+// Cache parsed cron runs for the duration of a single request cycle
+let _cronRunsCache: CronRunRecord[] | null = null;
+let _cronRunsCacheTs = 0;
+const CRON_RUNS_CACHE_TTL = 5_000; // 5 seconds
+
+function getAllCronRunFiles(): string[] {
+  try {
+    return fs.readdirSync(CRON_RUNS_DIR)
+      .filter(f => f.endsWith(".jsonl"))
+      .map(f => path.join(CRON_RUNS_DIR, f));
+  } catch {
+    return [];
   }
+}
+
+function parseCronRuns(): CronRunRecord[] {
+  // Return cached result if fresh
+  const now = Date.now();
+  if (_cronRunsCache && (now - _cronRunsCacheTs) < CRON_RUNS_CACHE_TTL) {
+    return _cronRunsCache;
+  }
+
+  const files = getAllCronRunFiles();
+  const records: CronRunRecord[] = [];
+  for (const file of files) {
+    const raw = readFileOrNull(file);
+    if (!raw) continue;
+    const lines = raw.trim().split("\n");
+    // Only parse last 500 lines per file for performance
+    const recentLines = lines.slice(-500);
+    for (const line of recentLines) {
+      if (!line.trim()) continue;
+      try {
+        const rec = JSON.parse(line);
+        if (rec.action === "finished" && rec.sessionKey) {
+          records.push(rec);
+        }
+      } catch { /* skip malformed lines */ }
+    }
+  }
+
+  // Sort by timestamp descending
+  records.sort((a, b) => (b.ts || 0) - (a.ts || 0));
+
+  _cronRunsCache = records;
+  _cronRunsCacheTs = now;
   return records;
 }
 
@@ -1213,10 +1406,10 @@ function getWarRoomFeed(): { entries: WarRoomEntry[]; lastActivityMs: number } {
     };
   });
 
-  // Sort by timestamp descending, limit to 50
+  // Sort by timestamp descending, limit to 200 (show all agents, not just recent)
   entries.sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime());
 
-  return { entries: entries.slice(0, 50), lastActivityMs };
+  return { entries: entries.slice(0, 200), lastActivityMs };
 }
 
 function getAgentActivityData(): {
@@ -1277,20 +1470,39 @@ function extractField(block: string, fieldName: string): string {
 
 function mapPipelineStatus(raw: string): IncomePipelineIdea["status"] {
   const upper = raw.toUpperCase().trim();
+
+  // Terminal states first (order matters)
   if (upper.startsWith("GO")) return "GO";
-  if (upper.includes("MERGED")) return "MERGED";
-  if (upper === "PROPOSED") return "PROPOSED";
-  if (upper === "REVIEW") return "REVIEW";
-  if (upper.includes("IN_PROGRESS") || upper.includes("IN PROGRESS")) return "IN_PROGRESS";
+  if (upper.includes("KILLED") || upper.includes("KILL")) return "KILLED";
+  if (upper.includes("MERGED") || upper.includes("FOLD")) return "MERGED";
   if (upper === "SHIPPED") return "SHIPPED";
-  if (upper.includes("APPROVED") || upper.includes("CLEARED")) return "APPROVED";
   if (upper === "REJECTED") return "REJECTED";
   if (upper === "DEFERRED") return "DEFERRED";
   if (upper === "PARKED") return "PARKED";
   if (upper === "DEPRIORITIZED") return "DEPRIORITIZED";
-  if (upper.includes("PLANNING") || upper.includes("BEACON") || upper.includes("COMPASS") || upper.includes("SIGNAL") || upper.includes("SPARK")) return "PLANNING";
-  // Review stage names as statuses (BEACON_PLAN, SPARK_GTM, SIGNAL_MARKET, etc.)
+  if (upper.includes("IN_PROGRESS") || upper.includes("IN PROGRESS")) return "IN_PROGRESS";
+  if (upper.includes("APPROVED") || upper.includes("CLEARED")) return "APPROVED";
+
+  // Review pipeline agent stages — check BEFORE "NEW"/"PROPOSED" since
+  // items can be "NEW — COMPASS_CHECK" or "PROPOSED — Advancing through review pipeline"
+  // These are actively IN REVIEW, not raw ideas sitting in Ideation.
+  // BEACON_PLAN and SPARK_GTM are late-stage review = PLANNING gate
+  if (upper.includes("BEACON_PLAN") || upper.includes("SPARK_GTM") || upper.includes("HELM_FINAL")) return "PLANNING";
+  // COMPASS_CHECK, ANCHOR_RISK, SIGNAL_MARKET = mid-stage review = REVIEW gate
+  if (upper.includes("COMPASS") || upper.includes("ANCHOR") || upper.includes("SIGNAL_MARKET")) return "REVIEW";
+  // HELM_REVIEW = early review = REVIEW gate
+  if (upper.includes("HELM_REVIEW") || upper === "REVIEW") return "REVIEW";
+  // Planning keyword
+  if (upper.includes("PLANNING")) return "PLANNING";
+  // Review stage agent name patterns (BEACON, SIGNAL, SPARK in status text)
+  if (upper.includes("BEACON") || upper.includes("SIGNAL") || upper.includes("SPARK")) return "PLANNING";
+  // Underscore patterns like AGENT_STAGE (but not IN_PROGRESS, already handled)
   if (upper.includes("_") && !upper.includes("IN_PROGRESS")) return "PLANNING";
+
+  // Truly new/unreviewed items stay in Ideation
+  if (upper.includes("NEW") && !upper.includes("RENEW")) return "NEW";
+  if (upper === "PROPOSED") return "PROPOSED";
+
   return "PROPOSED";
 }
 
@@ -1310,11 +1522,24 @@ function getIncomePipeline(): DashboardData["incomePipeline"] {
       const blockIndex = content.indexOf(rawBlock);
       const beforeBlock = content.substring(0, blockIndex);
 
-      if (beforeBlock.includes("## New Ideas") || beforeBlock.includes("## Unreviewed")) {
-        currentSection = "new";
-      } else if (beforeBlock.includes("## Parked") || beforeBlock.includes("## Deprioritized")) {
+      // Match section headers — only look for ## headings (not inline mentions)
+      // Pipeline.md uses: ## 🟢 GO / ACTIVE, ## 🟡 PLANNING, ## 🔵 PROPOSED, ## ⚪ DEFERRED, ## ❌ KILLED, ## Last Audit
+      const sectionHeaders = beforeBlock.match(/^## .+$/gm) || [];
+      const lastHeader = sectionHeaders.length > 0 ? sectionHeaders[sectionHeaders.length - 1].toLowerCase() : "";
+
+      if (lastHeader.includes("killed") || lastHeader.includes("rejected")) {
         currentSection = "parked";
-      } else if (beforeBlock.includes("## Active") || beforeBlock.includes("## Approved")) {
+      } else if (lastHeader.includes("deferred") || lastHeader.includes("parked") || lastHeader.includes("deprioritized")) {
+        currentSection = "parked";
+      } else if (lastHeader.includes("new") || lastHeader.includes("unreviewed") || lastHeader.includes("last audit")) {
+        currentSection = "new";
+      } else if (lastHeader.includes("go") || lastHeader.includes("active") || lastHeader.includes("approved")) {
+        currentSection = "active";
+      } else if (lastHeader.includes("planning")) {
+        currentSection = "active";
+      } else if (lastHeader.includes("proposed")) {
+        currentSection = "active";
+      } else {
         currentSection = "active";
       }
 
@@ -1324,6 +1549,8 @@ function getIncomePipeline(): DashboardData["incomePipeline"] {
 
       // Parse IDEA-XXX format: ### IDEA-010: MaritimeHub [GO — APPROVED ...]
       const ideaMatch = heading.match(/^(IDEA-\d{3}):\s*(.+)/);
+      // Parse INC-XXX format: ### INC-010 — MaritimeHub: Maritime Intelligence Platform
+      const incMatch = heading.match(/^(INC-\d{3}(?:-[A-Z]+)?)\s*(?:—|–|-)\s*(.+)/);
       // Parse date-titled new ideas: ### 2026-02-24 — STCW Phase 2 ...
       const dateMatch = heading.match(/^(\d{4}-\d{2}-\d{2})\s*(?:—|–|-)\s*(.+)/);
 
@@ -1334,6 +1561,9 @@ function getIncomePipeline(): DashboardData["incomePipeline"] {
       if (ideaMatch) {
         id = ideaMatch[1];
         title = ideaMatch[2].trim();
+      } else if (incMatch) {
+        id = incMatch[1];
+        title = incMatch[2].trim();
       } else if (dateMatch) {
         // Generate ID from title for new ideas
         addedDate = dateMatch[1];
@@ -1346,13 +1576,13 @@ function getIncomePipeline(): DashboardData["incomePipeline"] {
       // Extract fields with robust parsing (handles **Field:** patterns)
       const statusRaw = extractField(block, "Status");
       const market = extractField(block, "Market");
-      const potential = extractField(block, "Potential") || extractField(block, "Revenue potential");
+      const potential = extractField(block, "Potential") || extractField(block, "Revenue potential") || extractField(block, "Revenue Target");
       const effort = extractField(block, "Effort");
       const timeToFirst = extractField(block, "Time to first \\$");
-      const nextStep = extractField(block, "Next step");
+      const nextStep = extractField(block, "Next step") || extractField(block, "Next Action");
       const brand = extractField(block, "Brand");
       const merges = extractField(block, "Merges");
-      const deadline = extractField(block, "Phase 1 MVP deadline") || extractField(block, "Deadline");
+      const deadline = extractField(block, "Phase 1 MVP deadline") || extractField(block, "MVP Deadline") || extractField(block, "Deadline");
       const source = extractField(block, "Source");
       const yearCost = extractField(block, "Year 1 cost estimate");
 
@@ -1374,12 +1604,12 @@ function getIncomePipeline(): DashboardData["incomePipeline"] {
 
       // Check for merged-into info from title, heading bracket, and block
       let mergedInto: string | null = null;
-      if (status === "MERGED" || merges || title.toLowerCase().includes("merged into") || block.toLowerCase().includes("merged into")) {
-        const mergedMatch = title.match(/[Mm]erged into (IDEA-\d{3})/) || heading.match(/[Mm]erged into (IDEA-\d{3})/) || block.match(/[Mm]erged into (IDEA-\d{3})/);
+      if (status === "MERGED" || merges || title.toLowerCase().includes("merged into") || block.toLowerCase().includes("merged into") || block.toLowerCase().includes("folded into")) {
+        const mergedMatch = title.match(/(?:[Mm]erged|[Ff]olded) into ((?:IDEA|INC)-\d{3})/) || heading.match(/(?:[Mm]erged|[Ff]olded) into ((?:IDEA|INC)-\d{3})/) || block.match(/(?:[Mm]erged|[Ff]olded) into ((?:IDEA|INC)-\d{3})/);
         if (mergedMatch) mergedInto = mergedMatch[1];
         // Also check for parent merge reference
         if (!mergedInto && merges) {
-          const mergesIdea = merges.match(/(IDEA-\d{3})/);
+          const mergesIdea = merges.match(/((?:IDEA|INC)-\d{3})/);
           if (mergesIdea) mergedInto = null; // This idea is the parent, not the merged one
         }
       }
@@ -1454,8 +1684,19 @@ function getIncomePipeline(): DashboardData["incomePipeline"] {
   const newIdeaCount = ideas.filter(i => i.section === "new").length;
   const mergedCount = ideas.filter(i => i.status === "MERGED").length;
 
+  // Deduplicate by id — last writer wins, but suffix duplicates with a counter
+  const seenIds = new Map<string, number>();
+  const deduped = ideas.map(idea => {
+    const count = seenIds.get(idea.id) ?? 0;
+    seenIds.set(idea.id, count + 1);
+    if (count > 0) {
+      return { ...idea, id: `${idea.id}-${count}` };
+    }
+    return idea;
+  });
+
   return {
-    ideas,
+    ideas: deduped,
     totalIdeas: ideas.length,
     proposedCount,
     reviewCount,
@@ -1942,6 +2183,130 @@ function getDashboardMonitoring(cronJobs: CronJob[]): DashboardMonitoring {
   };
 }
 
+function getAgentGrowthMetrics(): AgentGrowthMetrics[] {
+  const runs = parseCronRuns();
+  const agentIds = Object.keys(AGENT_NAME_MAP);
+  const now = Date.now();
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const todayMs = today.getTime();
+
+  // Define date ranges: Feb 15-21 (last week), Feb 22-28 (this week)
+  const lastWeekStart = new Date(2026, 1, 15); // Feb 15
+  const lastWeekEnd = new Date(2026, 1, 22);  // Feb 22 00:00 (exclusive)
+  const thisWeekStart = new Date(2026, 1, 22); // Feb 22
+  const thisWeekEnd = new Date(2026, 1, 29);  // Feb 29 00:00 (exclusive)
+
+  const lastWeekStartMs = lastWeekStart.getTime();
+  const lastWeekEndMs = lastWeekEnd.getTime();
+  const thisWeekStartMs = thisWeekStart.getTime();
+  const thisWeekEndMs = thisWeekEnd.getTime();
+
+  const metrics: AgentGrowthMetrics[] = [];
+
+  for (const agentId of agentIds) {
+    // Filter runs for this agent
+    const agentRuns = runs.filter(
+      r => extractAgentFromSessionKey(r.sessionKey) === agentId
+    );
+
+    if (agentRuns.length === 0) {
+      // Inactive agent
+      metrics.push({
+        agentId,
+        agentName: AGENT_NAME_MAP[agentId] || agentId.toUpperCase(),
+        totalRuns: 0,
+        totalTokens: 0,
+        successRate: 0,
+        avgResponseTime: 0,
+        runsThisWeek: 0,
+        runsLastWeek: 0,
+        weekOverWeekChange: 0,
+        dailyRuns: [0, 0, 0, 0, 0, 0, 0],
+        dailyLabels: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+        level: 0,
+        xp: 0,
+        xpToNextLevel: 100,
+        trend: "inactive",
+      });
+      continue;
+    }
+
+    // Compute lifetime stats
+    const totalRuns = agentRuns.length;
+    const totalTokens = agentRuns.reduce((sum, r) => sum + (r.usage?.total_tokens || 0), 0);
+    const successRuns = agentRuns.filter(r => r.status === "ok").length;
+    const successRate = totalRuns > 0 ? Math.round((successRuns / totalRuns) * 100) : 0;
+    const avgResponseTime = totalRuns > 0
+      ? Math.round(agentRuns.reduce((sum, r) => sum + (r.durationMs || 0), 0) / totalRuns / 1000)
+      : 0;
+
+    // Count runs by week
+    const runsLastWeek = agentRuns.filter(r => r.ts >= lastWeekStartMs && r.ts < lastWeekEndMs).length;
+    const runsThisWeek = agentRuns.filter(r => r.ts >= thisWeekStartMs && r.ts < thisWeekEndMs).length;
+    const weekOverWeekChange = runsLastWeek > 0
+      ? Math.round(((runsThisWeek - runsLastWeek) / runsLastWeek) * 100)
+      : (runsThisWeek > 0 ? 100 : 0);
+
+    // Compute daily runs for last 7 days (Feb 22-28, which is this week)
+    const dailyRuns: number[] = [];
+    const dailyLabels: string[] = [];
+    const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+    for (let i = 0; i < 7; i++) {
+      const dayStart = new Date(thisWeekStart);
+      dayStart.setDate(dayStart.getDate() + i);
+      dayStart.setHours(0, 0, 0, 0);
+      const dayEnd = new Date(dayStart);
+      dayEnd.setDate(dayEnd.getDate() + 1);
+
+      const dayStartMs = dayStart.getTime();
+      const dayEndMs = dayEnd.getTime();
+      const dayRuns = agentRuns.filter(r => r.ts >= dayStartMs && r.ts < dayEndMs).length;
+
+      dailyRuns.push(dayRuns);
+      dailyLabels.push(dayNames[dayStart.getDay()]);
+    }
+
+    // Compute XP and level (1 run = 10 XP, level up every 100 XP)
+    const xp = (totalRuns * 10) % 100;
+    const level = Math.floor((totalRuns * 10) / 100);
+    const xpToNextLevel = 100 - xp;
+
+    // Determine trend based on week-over-week change
+    let trend: "rising" | "stable" | "declining" | "inactive";
+    if (runsThisWeek === 0) {
+      trend = "inactive";
+    } else if (weekOverWeekChange > 20) {
+      trend = "rising";
+    } else if (weekOverWeekChange < -20) {
+      trend = "declining";
+    } else {
+      trend = "stable";
+    }
+
+    metrics.push({
+      agentId,
+      agentName: AGENT_NAME_MAP[agentId] || agentId.toUpperCase(),
+      totalRuns,
+      totalTokens,
+      successRate,
+      avgResponseTime,
+      runsThisWeek,
+      runsLastWeek,
+      weekOverWeekChange,
+      dailyRuns,
+      dailyLabels,
+      level,
+      xp,
+      xpToNextLevel,
+      trend,
+    });
+  }
+
+  return metrics;
+}
+
 export function getDashboardData(): DashboardData {
   const flywheel = getFlywheelItems();
   const { lastActions, nextScheduled } = getAgentActivityData();
@@ -1995,11 +2360,14 @@ export function getDashboardData(): DashboardData {
 
   // Enrich pipeline ideas with responsible agent and linked taskboard tasks
   for (const idea of incomePipeline.ideas) {
-    // Find taskboard tasks linked to this idea (e.g., IDEA010-B1 → IDEA-010)
-    const ideaPrefix = idea.id.replace("-", "");
-    const linkedTasks = taskboard.filter(t =>
-      t.id.toUpperCase().startsWith(ideaPrefix) || t.description.includes(idea.id)
-    );
+    // Match both INC010 (new format) and IDEA010 (legacy format)
+    const ideaPrefix = idea.id.replace("-", "").toUpperCase();
+    const numericPart = idea.id.replace(/^[A-Z]+-/, "");
+    const legacyPrefix = "IDEA" + numericPart;
+    const linkedTasks = taskboard.filter(t => {
+      const tid = t.id.toUpperCase();
+      return tid.startsWith(ideaPrefix) || tid.startsWith(legacyPrefix) || t.description.includes(idea.id) || t.description.toUpperCase().includes(ideaPrefix);
+    });
     idea.taskboardTasks = linkedTasks.map(t => t.id);
 
     // Determine responsible agent based on status
@@ -2035,14 +2403,56 @@ export function getDashboardData(): DashboardData {
     }
   }
 
-  // Compute safety level
-  const cronErrors = cronJobs.filter(j => j.consecutiveErrors > 0).length;
+  // Compute safety level with actionable remediation (SOUL.md §8.3 — Proactive Behaviors)
+  const failedCronJobs = cronJobs.filter(j => j.consecutiveErrors > 0);
+  const cronErrors = failedCronJobs.length;
   const overdueAgents = enhancedAgents.filter(a => a.activityStatus === "overdue").length;
-  let safety: { level: "green" | "amber" | "red"; label: string; message: string };
+
+  // Build remediation actions per HELM Autonomy Framework (AGENTS.md):
+  // - T1: Run status checks (autonomous)
+  // - T2: Pause/reschedule cron jobs, flag overdue items (execute & notify)
+  const safetyActions: Array<{ id: string; label: string; description: string; severity: "info" | "warn" | "critical"; cronJobId?: string; agentId?: string; type: "retry_cron" | "reset_errors" | "delegate_helm" | "escalate" }> = [];
+
+  for (const job of failedCronJobs) {
+    const agentName = (job.agentId || "unknown").toUpperCase();
+    safetyActions.push({
+      id: `retry-${job.jobId}`,
+      label: `Retry ${job.name}`,
+      description: `${job.consecutiveErrors} consecutive errors on ${agentName}'s cron. Trigger immediate re-run.`,
+      severity: job.consecutiveErrors >= 3 ? "critical" : "warn",
+      cronJobId: job.jobId,
+      agentId: job.agentId,
+      type: "retry_cron",
+    });
+    if (job.consecutiveErrors >= 3) {
+      safetyActions.push({
+        id: `reset-${job.jobId}`,
+        label: `Reset ${job.name} errors`,
+        description: `Clear error counter and re-enable job. Per Fleet Captain Authority, HELM can reschedule cron jobs (T2).`,
+        severity: "warn",
+        cronJobId: job.jobId,
+        agentId: job.agentId,
+        type: "reset_errors",
+      });
+    }
+  }
+
+  // If there are unresolved errors, offer HELM delegation (SOUL.md delegation protocol)
+  if (cronErrors > 0) {
+    safetyActions.push({
+      id: "delegate-helm",
+      label: "Delegate to HELM",
+      description: `Route cron failures to HELM Command for triage. HELM will diagnose, reschedule, or escalate per priority rules.`,
+      severity: cronErrors >= 3 ? "critical" : "warn",
+      type: "delegate_helm",
+    });
+  }
+
+  let safety: { level: "green" | "amber" | "red"; label: string; message: string; actions?: typeof safetyActions };
   if (cronErrors > 3 || cases.high > 5) {
-    safety = { level: "red", label: "CRITICAL", message: `${cronErrors} cron errors · ${cases.high} high-priority cases` };
+    safety = { level: "red", label: "CRITICAL", message: `${cronErrors} cron errors · ${cases.high} high-priority cases`, actions: safetyActions };
   } else if (cronErrors > 0 || overdueAgents > 0) {
-    safety = { level: "amber", label: "WARNING", message: `${cronErrors} cron error${cronErrors !== 1 ? "s" : ""} · ${overdueAgents} agent${overdueAgents !== 1 ? "s" : ""} overdue` };
+    safety = { level: "amber", label: "WARNING", message: `${cronErrors} cron error${cronErrors !== 1 ? "s" : ""} · ${overdueAgents} agent${overdueAgents !== 1 ? "s" : ""} overdue`, actions: safetyActions };
   } else {
     safety = { level: "green", label: "ALL CLEAR", message: "Fleet nominal · All systems operational" };
   }
@@ -2087,6 +2497,277 @@ export function getDashboardData(): DashboardData {
     nightWatch,
     taskboard,
     agentSparklines: getAgentSparklines(),
+    agentGrowth: getAgentGrowthMetrics(),
     dashboardMonitoring: getDashboardMonitoring(cronJobs),
+    redundancy: getRedundancyData(),
+    spawning: getSpawningData(),
+  };
+}
+
+// ── AI Redundancy Data ──────────────────────────────────────────────
+export interface ProviderHealth {
+  provider: string;
+  label: string;
+  status: "online" | "degraded" | "offline" | "unknown";
+  hasCredentials: boolean;
+  models: { id: string; label: string; default?: boolean }[];
+  lastChecked: string | null;
+  lastError: string | null;
+  rateLimitHits24h: number;
+}
+
+export interface AgentFallbackChain {
+  agentId: string;
+  agentName: string;
+  primaryModel: string;
+  primaryProvider: string;
+  fallbacks: string[];
+  currentModel: string;
+  isOnFallback: boolean;
+  lastFailoverAt: string | null;
+  lastFailoverReason: string | null;
+}
+
+export interface FailoverEvent {
+  timestamp: string;
+  agentId: string;
+  agentName: string;
+  fromModel: string;
+  toModel: string;
+  reason: string;
+  automatic: boolean;
+}
+
+export interface RedundancyData {
+  providers: ProviderHealth[];
+  agentChains: AgentFallbackChain[];
+  failoverHistory: FailoverEvent[];
+  autoFailoverEnabled: boolean;
+  globalFallbackChain: string[];
+  totalProvidersOnline: number;
+  totalModelsAvailable: number;
+}
+
+function getRedundancyData(): RedundancyData {
+  // Read config
+  const configRaw = readFileOrNull(CONFIG_FILE);
+  const config = configRaw ? JSON.parse(configRaw) : {};
+  const agentList = config?.agents?.list || [];
+  const defaults = config?.agents?.defaults || {};
+  const globalFallbacks = defaults?.model?.fallbacks || [];
+
+  // Read provider state
+  const stateFile = path.join(OPENCLAW_DIR, "provider-state.json");
+  const stateRaw = readFileOrNull(stateFile);
+  const providerState = stateRaw ? JSON.parse(stateRaw) : {};
+  const availableProviders = providerState.availableProviders || {};
+
+  // Read failover log
+  const failoverLogFile = path.join(OPENCLAW_DIR, "logs", "failover.jsonl");
+  const failoverRaw = readFileOrNull(failoverLogFile);
+  const failoverHistory: FailoverEvent[] = [];
+  if (failoverRaw) {
+    for (const line of failoverRaw.trim().split("\n")) {
+      try { failoverHistory.push(JSON.parse(line)); } catch { /* skip */ }
+    }
+  }
+  failoverHistory.sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime());
+
+  // Check env for credentials
+  const envFile = path.join(OPENCLAW_DIR, ".env");
+  const envRaw = readFileOrNull(envFile) || "";
+  const hasOpenAI = (envRaw.includes("OPENAI_API_KEY=") && !envRaw.includes("OPENAI_API_KEY=\n"))
+    || !!(config?.auth?.profiles?.["openai-codex:default"])
+    || !!(config?.auth?.profiles?.["openai:default"]);
+  const hasAnthropic = !!(config?.auth?.profiles?.["anthropic:default"]);
+  const hasGoogle = !!(config?.skills?.entries?.["nano-banana-pro"]?.apiKey)
+    || !!(config?.auth?.profiles?.["google:default"]);
+
+  // Count rate limit hits from failover log (last 24h)
+  const now = Date.now();
+  const last24h = failoverHistory.filter(e => now - new Date(e.timestamp).getTime() < 86400000);
+  const rateLimitsByProvider: Record<string, number> = {};
+  for (const e of last24h) {
+    if (e.reason.includes("rate_limit") || e.reason.includes("429")) {
+      const prov = e.fromModel.split("/")[0];
+      rateLimitsByProvider[prov] = (rateLimitsByProvider[prov] || 0) + 1;
+    }
+  }
+
+  // Build provider health list (exclude xAI — no credentials)
+  const providers: ProviderHealth[] = [];
+  for (const [pid, pdata] of Object.entries(availableProviders)) {
+    if (pid === "xai") continue; // Removed — no credentials
+    const p = pdata as { label: string; models: Record<string, { label: string; default?: boolean }> };
+    const hasCreds = pid === "anthropic" ? hasAnthropic : pid === "openai" ? hasOpenAI : pid === "google" ? hasGoogle : false;
+    const rlHits = rateLimitsByProvider[pid] || 0;
+    providers.push({
+      provider: pid,
+      label: p.label,
+      status: hasCreds ? (rlHits > 5 ? "degraded" : "online") : "offline",
+      hasCredentials: hasCreds,
+      models: Object.entries(p.models).map(([mid, m]) => ({ id: mid, label: m.label, default: m.default })),
+      lastChecked: new Date().toISOString(),
+      lastError: rlHits > 0 ? `${rlHits} rate limit hits in last 24h` : null,
+      rateLimitHits24h: rlHits,
+    });
+  }
+
+  // Build per-agent fallback chains
+  const agentChains: AgentFallbackChain[] = agentList.map((a: { id: string; name: string; model?: { primary: string; fallbacks?: string[] } }) => {
+    const primaryModel = a.model?.primary || defaults?.model?.primary || "anthropic/claude-opus-4-6";
+    const primaryProvider = primaryModel.split("/")[0];
+    const agentFallbacks = a.model?.fallbacks || globalFallbacks;
+    // Filter out xAI models from fallback chains
+    const cleanFallbacks = agentFallbacks.filter((m: string) => !m.startsWith("xai/"));
+    return {
+      agentId: a.id,
+      agentName: a.name,
+      primaryModel,
+      primaryProvider,
+      fallbacks: cleanFallbacks,
+      currentModel: primaryModel, // Will be overridden if failover is active
+      isOnFallback: false,
+      lastFailoverAt: null,
+      lastFailoverReason: null,
+    };
+  });
+
+  // Enrich with failover history — but config primary is source of truth
+  // If the config primary was changed after the last failover event, the config wins.
+  for (const chain of agentChains) {
+    const lastEvent = failoverHistory.find(e => e.agentId === chain.agentId);
+    if (lastEvent) {
+      const configPrimary = chain.primaryModel; // Already read from config above
+      if (lastEvent.toModel === configPrimary) {
+        // Failover target matches current primary — agent is on-primary
+        chain.currentModel = configPrimary;
+        chain.isOnFallback = false;
+      } else if (lastEvent.fromModel !== configPrimary && lastEvent.toModel !== configPrimary) {
+        // Neither from nor to matches current config primary — config was changed since failover
+        // Config is source of truth — agent should be on its configured primary
+        chain.currentModel = configPrimary;
+        chain.isOnFallback = false;
+      } else {
+        // Genuine active failover — agent is on a non-primary model
+        chain.currentModel = lastEvent.toModel;
+        chain.isOnFallback = lastEvent.toModel !== configPrimary;
+      }
+      chain.lastFailoverAt = lastEvent.timestamp;
+      chain.lastFailoverReason = lastEvent.reason;
+    }
+  }
+
+  // Enrich with live provider-health.json (from HELM fleet monitoring)
+  const providerHealthFile = path.join(OPENCLAW_DIR, "workspace", "shared-kb", "fleet", "provider-health.json");
+  const phRaw = readFileOrNull(providerHealthFile);
+  if (phRaw) {
+    try {
+      const ph = JSON.parse(phRaw);
+      for (const [pid, pdata] of Object.entries(ph.providers || {})) {
+        const p = pdata as { status: string; cooldownRemaining?: string };
+        const match = providers.find(pr => pr.provider === pid);
+        if (match && p.status === "cooldown") {
+          match.status = "degraded";
+          match.lastError = `Auth cooldown: ${p.cooldownRemaining || "unknown"} remaining`;
+        }
+      }
+      for (const chain of agentChains) {
+        const primaryProv = chain.primaryProvider;
+        const provHealth = (ph.providers || {})[primaryProv] as { status: string } | undefined;
+        if (provHealth && provHealth.status === "cooldown") {
+          chain.isOnFallback = true;
+          for (const fb of chain.fallbacks) {
+            const fbProv = fb.split("/")[0];
+            const fbHealth = (ph.providers || {})[fbProv] as { status: string } | undefined;
+            if (!fbHealth || fbHealth.status === "active") {
+              chain.currentModel = fb;
+              break;
+            }
+          }
+        }
+      }
+    } catch { /* skip parse errors */ }
+  }
+
+  // Read auto-failover setting
+  const failoverConfigFile = path.join(OPENCLAW_DIR, "failover-config.json");
+  const failoverConfigRaw = readFileOrNull(failoverConfigFile);
+  const failoverConfig = failoverConfigRaw ? JSON.parse(failoverConfigRaw) : { autoFailoverEnabled: true };
+
+  return {
+    providers,
+    agentChains,
+    failoverHistory: failoverHistory.slice(0, 50),
+    autoFailoverEnabled: failoverConfig.autoFailoverEnabled ?? true,
+    globalFallbackChain: globalFallbacks.filter((m: string) => !m.startsWith("xai/")),
+    totalProvidersOnline: providers.filter(p => p.status === "online" || p.status === "degraded").length,
+    totalModelsAvailable: providers.reduce((sum, p) => sum + p.models.length, 0),
+  };
+}
+
+// ── Agent Spawning Data ──────────────────────────────────────────────
+export interface SpawnRequest {
+  spawnId: string;
+  parentId: string;
+  name: string;
+  fullName?: string;
+  task: string;
+  skillset: string[];
+  model: string;
+  fallbackModels?: string[];
+  autonomyLevel?: "A0" | "A1" | "A2" | "A3";
+  tokenBudget: number;
+  tokensUsed: number;
+  deadline: string;
+  status: "requested" | "approved" | "queued" | "booting" | "active" | "paused" | "completed" | "recalled" | "failed" | "stalled";
+  progressPct?: number;
+  lastProgressNote?: string | null;
+  requestedAt: string;
+  approvedAt: string | null;
+  approvedBy: string | null;
+  bootedAt?: string | null;
+  completedAt?: string | null;
+  recalledAt?: string | null;
+  deliverables?: string[];
+  operation?: string | null;
+}
+
+export interface SpawnMeta {
+  dailyBudget: number;
+  dailyUsed: number;
+  maxFleetSubAgents: number;
+  activeSubAgents: number;
+}
+
+export interface SpawningData {
+  meta: SpawnMeta;
+  spawns: SpawnRequest[];
+  byParent: Record<string, { activeSpawns: number; totalTokensToday: number }>;
+}
+
+function getSpawningData(): SpawningData {
+  const spawnQueueFile = path.join(SHARED_KB, "fleet", "spawn-queue.json");
+  const spawnUsageFile = path.join(SHARED_KB, "fleet", "spawn-usage.json");
+
+  const queueRaw = readFileOrNull(spawnQueueFile);
+  const usageRaw = readFileOrNull(spawnUsageFile);
+
+  const queue = queueRaw ? JSON.parse(queueRaw) : { meta: { dailyBudget: 2000000, dailyUsed: 0, maxFleetSubAgents: 10, activeSubAgents: 0 }, spawns: [] };
+  const usage = usageRaw ? JSON.parse(usageRaw) : { byParent: {} };
+
+  const activeSubs = (queue.spawns || []).filter((s: SpawnRequest) =>
+    s.status === "approved" || s.status === "active" || s.status === "queued"
+  ).length;
+
+  return {
+    meta: {
+      dailyBudget: queue.meta?.dailyBudget || 2000000,
+      dailyUsed: queue.meta?.dailyUsed || 0,
+      maxFleetSubAgents: queue.meta?.maxFleetSubAgents || 10,
+      activeSubAgents: activeSubs,
+    },
+    spawns: queue.spawns || [],
+    byParent: usage.byParent || {},
   };
 }

@@ -6,6 +6,35 @@ export const dynamic = "force-dynamic";
 
 const SHARED_KB = path.join(process.env.HOME || "/Users/rizaldomadanlo", ".openclaw", "workspace", "shared-kb");
 const PIPELINE_FILE = path.join(SHARED_KB, "income", "pipeline.md");
+const LOCK_FILE = PIPELINE_FILE + ".lock";
+
+// Simple file-based lock to prevent concurrent writes
+function acquireLock(maxWaitMs = 5000): boolean {
+  const start = Date.now();
+  while (Date.now() - start < maxWaitMs) {
+    try {
+      fs.writeFileSync(LOCK_FILE, String(process.pid), { flag: "wx" });
+      return true;
+    } catch {
+      // Lock exists — check if stale (> 30s)
+      try {
+        const stat = fs.statSync(LOCK_FILE);
+        if (Date.now() - stat.mtimeMs > 30_000) {
+          fs.unlinkSync(LOCK_FILE); // stale lock, remove
+          continue;
+        }
+      } catch { /* lock was released between check */ }
+      // Wait 50ms and retry
+      const end = Date.now() + 50;
+      while (Date.now() < end) { /* busy wait */ }
+    }
+  }
+  return false;
+}
+
+function releaseLock() {
+  try { fs.unlinkSync(LOCK_FILE); } catch { /* already released */ }
+}
 
 const REVIEW_STAGES = [
   "HELM_REVIEW", "COMPASS_CHECK", "ANCHOR_RISK", "SIGNAL_MARKET",
@@ -17,7 +46,16 @@ const STAGE_HOLDER: Record<string, string> = {
   SIGNAL_MARKET: "SIGNAL", BEACON_PLAN: "BEACON", SPARK_GTM: "SPARK", HELM_FINAL: "HELM"
 };
 
+const IS_VERCEL = !!process.env.VERCEL;
+
 export async function POST(req: NextRequest) {
+  if (IS_VERCEL) {
+    return NextResponse.json(
+      { error: "Pipeline controls are read-only on cloud deployment.", cloudMode: true },
+      { status: 403 }
+    );
+  }
+
   try {
     const body = await req.json();
     const { ideaId, action, assessment } = body;
@@ -30,11 +68,18 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Action must be 'advance' or 'bounce'" }, { status: 400 });
     }
 
+    // Acquire lock before reading/writing pipeline file
+    if (!acquireLock()) {
+      return NextResponse.json({ error: "Pipeline file is locked by another operation" }, { status: 409 });
+    }
+
+    try {
     // Read pipeline.md
     let content: string;
     try {
       content = fs.readFileSync(PIPELINE_FILE, "utf-8");
     } catch {
+      releaseLock();
       return NextResponse.json({ error: "Pipeline file not found" }, { status: 404 });
     }
 
@@ -139,8 +184,12 @@ export async function POST(req: NextRequest) {
 
     // Write back
     fs.writeFileSync(PIPELINE_FILE, content, "utf-8");
+    releaseLock();
 
     return NextResponse.json({ ok: true, ideaId, action, message: `${ideaId} ${action}d successfully` });
+    } finally {
+      releaseLock();
+    }
   } catch (error) {
     return NextResponse.json({ error: "Failed to update pipeline", details: String(error) }, { status: 500 });
   }
