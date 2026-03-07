@@ -76,6 +76,7 @@ export function ProjectCard({ project, onClick, dashboardMonitoring }: ProjectCa
             <Badge variant={statusVariant[project.status] || "gray"}>{project.status}</Badge>
             <Badge variant="gray">{project.priority}</Badge>
             {mon && <Badge variant="blue">v{mon.version}</Badge>}
+            {project.version && <Badge variant="blue">{project.version}</Badge>}
             {project.hasAppDirectory && (
               <span className="text-[9px] px-1.5 py-0 rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 font-bold">HAS CODE</span>
             )}
@@ -149,6 +150,35 @@ export function ProjectCard({ project, onClick, dashboardMonitoring }: ProjectCa
       {project.milestones.length > 0 && (
         <div className="border-t border-slate-800 pt-2 mt-2">
           <MilestoneTracker milestones={project.milestones} />
+        </div>
+      )}
+
+      {/* Live URL + Repo links */}
+      {(project.liveUrl || project.repoUrl) && (
+        <div className="border-t border-slate-800 pt-2 mt-2 flex items-center gap-2 flex-wrap">
+          {project.liveUrl && (
+            <a
+              href={project.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={e => e.stopPropagation()}
+              className="flex items-center gap-1.5 text-[10px] px-2.5 py-1 rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 hover:bg-emerald-500/25 transition-colors font-medium"
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              Live ↗
+            </a>
+          )}
+          {project.repoUrl && (
+            <a
+              href={project.repoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={e => e.stopPropagation()}
+              className="flex items-center gap-1.5 text-[10px] px-2.5 py-1 rounded-full bg-slate-700/50 text-slate-400 border border-slate-600/50 hover:bg-slate-700 transition-colors"
+            >
+              ⌥ Repo ↗
+            </a>
+          )}
         </div>
       )}
     </div>

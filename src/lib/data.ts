@@ -142,6 +142,9 @@ export interface ProjectInfo {
   lastActivity?: string;
   processPhase?: string;
   processGate?: string;
+  liveUrl?: string;
+  repoUrl?: string;
+  version?: string;
 }
 
 export interface ActivityEntry {
@@ -980,6 +983,9 @@ function getProjects(flywheelItems: FlywheelItem[], taskboard: TaskboardTask[], 
       const statusMatch = content.match(/^status:\s*(.+)/m) || content.match(/\*\*Status:\*\*\s*(\w+)/);
       const priorityMatch = content.match(/^priority:\s*(.+)/m) || content.match(/\*\*Priority:\*\*\s*(\w+)/);
       const roleMatch = content.match(/^role:\s*(.+)/m) || content.match(/\*\*Lead Agent:\*\*\s*(.+)/m);
+      const liveUrlMatch = content.match(/^liveUrl:\s*(.+)/m) || content.match(/\*\*Live:\*\*\s*(https?:\/\/\S+)/m) || content.match(/Live:\s*(https?:\/\/\S+)/m);
+      const repoUrlMatch = content.match(/^repoUrl:\s*(.+)/m) || content.match(/\*\*Repo:\*\*\s*(https?:\/\/\S+)/m);
+      const versionMatch = content.match(/^version:\s*(.+)/m) || content.match(/\*\*Version:\*\*\s*(.+)/m);
 
       // Extract flywheel tag
       const tagMatch = content.match(/All flywheel items for this project use the tag:\s*`(\w+)`/);
@@ -1096,6 +1102,9 @@ function getProjects(flywheelItems: FlywheelItem[], taskboard: TaskboardTask[], 
         status: statusMatch ? statusMatch[1].trim() : "UNKNOWN",
         priority: priorityMatch ? priorityMatch[1].trim() : "SECONDARY",
         role: roleMatch ? roleMatch[1].trim() : "",
+        liveUrl: liveUrlMatch ? liveUrlMatch[1].trim() : undefined,
+        repoUrl: repoUrlMatch ? repoUrlMatch[1].trim() : undefined,
+        version: versionMatch ? versionMatch[1].trim() : undefined,
         itemCount,
         domains,
         flywheelItems: fwIds,

@@ -126,6 +126,10 @@ export interface ProjectInfo {
   // Process phase tracking
   processPhase?: string; // e.g. "P4: Development"
   processGate?: string;  // e.g. "Gate 3 passed"
+  // Deployment links
+  liveUrl?: string;      // e.g. "https://maritimehub-web.vercel.app"
+  repoUrl?: string;      // e.g. "https://github.com/CryptoAO/maritimehub-web"
+  version?: string;      // e.g. "v1.0-alpha"
 }
 
 export interface ReviewHistoryEntry {
