@@ -51,6 +51,7 @@ export interface AgentInfo {
   nextScheduledName: string | null;
   nextScheduledTime: string | null;
   activityStatus: "active" | "recent" | "overdue" | "idle";
+  cronJobCount: number;
 }
 
 export interface CronJob {
@@ -481,6 +482,7 @@ function getAgents(): AgentInfo[] {
         nextScheduledName: null,
         nextScheduledTime: null,
         activityStatus: "idle",
+        cronJobCount: 0,
       });
     }
     return agents;
@@ -504,7 +506,7 @@ function getCronJobs(): CronJob[] {
       const lastMs = state?.lastRunAtMs as number | undefined;
 
       return {
-        jobId: j.jobId,
+        jobId: (j.jobId || j.id) as string,
         name: j.name,
         enabled: j.enabled,
         agentId: j.agentId,

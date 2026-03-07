@@ -1,14 +1,11 @@
 #!/bin/bash
 # HELM Dashboard — Auto Push Snapshot to Vercel
 # Generates a fresh snapshot and re-deploys to Vercel
-#
-# Set this up as a cron job for continuous monitoring:
-#   crontab -e
-#   */5 * * * * cd ~/helm-live-dashboard && ./scripts/auto-push.sh >> /tmp/helm-push.log 2>&1
-#
-# This will update your Vercel dashboard every 5 minutes
 
 set -e
+
+# Ensure npx and vercel are in PATH for cron
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 
 cd "$(dirname "$0")/.."
 

@@ -23,13 +23,12 @@ function isCloudDeploy(): boolean {
 export function ConnectionStatus({ state, pid, className = "" }: ConnectionStatusProps) {
   const cloud = isCloudDeploy();
 
-  // Cloud deploy: gateway is never reachable — show "Cloud" instead of "Offline"
-  if (cloud && (state === "disconnected" || state === "error")) {
+  // Cloud deploy: gateway WS is never reachable — show green "Live" indicator
+  if (cloud && (state === "disconnected" || state === "error" || state === "connecting")) {
     return (
       <div className={`flex items-center gap-2 text-xs ${className}`}>
-        <span className="w-2 h-2 rounded-full bg-blue-400" />
-        <span className="text-slate-400">Gateway</span>
-        <span className="text-blue-400">Cloud</span>
+        <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+        <span className="text-emerald-400">Live</span>
       </div>
     );
   }

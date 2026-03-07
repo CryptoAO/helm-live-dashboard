@@ -16,3 +16,4 @@ export { MilestoneTracker } from "./milestone-tracker";
 export { CodeProposalsPanel } from "./code-proposals-panel";
 export { ProviderSwitcher } from "./provider-switcher";
 export { AgentRPGCard } from "./agent-rpg-card";
+export { FleetGraph } from "./fleet-graph";

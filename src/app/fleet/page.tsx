@@ -4,7 +4,7 @@ import { useDashboard } from "@/hooks/use-dashboard";
 import { useGateway } from "@/hooks/use-gateway";
 import { PageHeader } from "@/components/layout/page-header";
 import { Card, Badge, Modal, AgentAvatar } from "@/components/shared";
-import { CronJobRow, Sparkline } from "@/components/domain";
+import { CronJobRow, Sparkline, FleetGraph } from "@/components/domain";
 import type { AgentInfo, AgentGrowthMetrics } from "@/lib/data/types";
 import { AGENT_COLORS } from "@/lib/data/types";
 import { AGENT_RPG_PROFILES, getCapabilityBarColor, getTierColor } from "@/lib/data/agent-profiles";
@@ -14,6 +14,7 @@ const AGENT_ORDER = ["main", "eagle", "anchor", "beacon", "compass", "signal", "
 export default function FleetPage() {
   const { data, loading, refresh } = useDashboard();
   const gateway = useGateway();
+  const [activeTab, setActiveTab] = useState<"map" | "agents">("map");
   const [currentIdx, setCurrentIdx] = useState(0);
   const [selectedAgent, setSelectedAgent] = useState<AgentInfo | null>(null);
   const [messageAgent, setMessageAgent] = useState<string>("");
@@ -92,6 +93,51 @@ export default function FleetPage() {
       />
 
       <div className="flex-1 overflow-y-auto p-4 md:p-6 space-y-4">
+
+        {/* Tab Bar */}
+        <div className="flex items-center gap-1 border-b border-slate-800 pb-2">
+          <button
+            onClick={() => setActiveTab("map")}
+            className={`px-4 py-1.5 text-xs font-medium rounded-t-lg transition-colors ${
+              activeTab === "map"
+                ? "text-blue-400 border-b-2 border-blue-400 bg-blue-500/10"
+                : "text-slate-500 hover:text-slate-300"
+            }`}
+          >
+            🗺 Fleet Map
+          </button>
+          <button
+            onClick={() => setActiveTab("agents")}
+            className={`px-4 py-1.5 text-xs font-medium rounded-t-lg transition-colors ${
+              activeTab === "agents"
+                ? "text-blue-400 border-b-2 border-blue-400 bg-blue-500/10"
+                : "text-slate-500 hover:text-slate-300"
+            }`}
+          >
+            🤖 Agents
+          </button>
+        </div>
+
+        {/* Fleet Map Tab */}
+        {activeTab === "map" && (
+          <div className="space-y-3">
+            <div className="flex items-center justify-between">
+              <div>
+                <div className="text-sm font-bold text-white">Fleet Relationship Map</div>
+                <div className="text-[10px] text-slate-500">7 agents · command hierarchy · data flows · live pulse status</div>
+              </div>
+              <div className="flex items-center gap-3 text-[10px] text-slate-500">
+                <span><span className="text-emerald-400 font-bold">{agents.filter(a => a.activityStatus === "active").length}</span> active</span>
+                <span><span className="text-white font-bold">{data.cronJobs.filter(j => j.enabled).length}</span> crons</span>
+              </div>
+            </div>
+            <FleetGraph agents={agents} cronJobs={data.cronJobs} />
+          </div>
+        )}
+
+        {/* Agents Tab */}
+        {activeTab === "agents" && (
+          <>
         {/* Agent Selector Strip — click any agent or use arrows */}
         <div className="flex items-center gap-2">
           <button onClick={goPrev} className="w-8 h-8 flex items-center justify-center rounded-lg border border-card-border text-slate-400 hover:text-white hover:border-slate-500 transition-colors text-lg">&larr;</button>
@@ -423,7 +469,7 @@ export default function FleetPage() {
                       {AGENT_ORDER.filter(id => id !== "main").map(agentId => {
                         const r = AGENT_RPG_PROFILES[agentId];
                         const agentSpawns = data.spawning.spawns.filter(
-                          s => s.parentId === agentId && !["completed", "recalled", "failed"].includes(s.status)
+                          s => s.parentId === agentId && !["completed", "recalled", "failed", "stalled"].includes(s.status)
                         );
                         const maxSubs = r?.tier === "S" ? 3 : r?.tier === "A" ? 2 : 1;
                         return (
@@ -438,7 +484,7 @@ export default function FleetPage() {
                             {agentSpawns.length > 0 && (
                               <div className="ml-4 border-l border-dashed border-slate-700/30 pl-3 space-y-0.5 mt-0.5">
                                 {agentSpawns.map(spawn => {
-                                  const statusIcon = spawn.status === "active" ? "🟢" : spawn.status === "approved" ? "🟡" : spawn.status === "queued" ? "⏳" : spawn.status === "paused" ? "⏸️" : "⚪";
+                                  const statusIcon = spawn.status === "active" ? "🟢" : spawn.status === "approved" ? "🟡" : spawn.status === "queued" ? "⏳" : spawn.status === "paused" ? "⏸️" : spawn.status === "stalled" ? "🔴" : spawn.status === "failed" ? "❌" : "⚪";
                                   return (
                                     <div key={spawn.spawnId} className="flex items-center gap-2 text-[9px]">
                                       <span>{statusIcon}</span>
@@ -496,9 +542,10 @@ export default function FleetPage() {
                       recalled: "text-slate-500 bg-slate-500/10 border-slate-500/30",
                       requested: "text-purple-400 bg-purple-500/10 border-purple-500/30",
                       failed: "text-red-400 bg-red-500/10 border-red-500/30",
+                      stalled: "text-red-400 bg-red-500/10 border-red-500/30",
                     };
                     const budgetPct = spawn.tokenBudget > 0 ? (spawn.tokensUsed / spawn.tokenBudget) * 100 : 0;
-                    const isActionable = ["requested", "queued", "approved", "active", "paused"].includes(spawn.status);
+                    const isActionable = ["requested", "queued", "approved", "active", "paused", "stalled"].includes(spawn.status);
                     return (
                       <div key={spawn.spawnId} className="bg-slate-800/40 rounded-lg p-3 border border-slate-700/30">
                         <div className="flex items-center justify-between mb-2">
@@ -605,6 +652,11 @@ export default function FleetPage() {
                                 }}
                                 className="text-[9px] px-2 py-1 rounded bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 hover:bg-cyan-500/30 transition-colors"
                               >Boot</button>
+                            )}
+                            {spawn.status === "stalled" && (
+                              <span className="text-[9px] px-2 py-1 rounded bg-red-500/10 text-red-400 border border-red-500/30">
+                                ⚠ Deadline passed — Recall or Re-queue
+                              </span>
                             )}
                             {spawn.status === "active" && (
                               <button
@@ -742,6 +794,8 @@ export default function FleetPage() {
             </button>
           </div>
         </Card>
+          </>
+        )}
       </div>
     </div>
   );
