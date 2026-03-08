@@ -1,15 +1,15 @@
 {
-  "timestamp": "2026-03-07T14:30:05.129Z",
+  "timestamp": "2026-03-08T00:15:15.106Z",
   "gateway": {
     "running": true,
     "pid": 31341,
     "uptime": null,
-    "lastLogEntry": "2026-03-07T14:29:26.397Z [telegram] sendMessage ok chat=-5220364947 message=3622"
+    "lastLogEntry": "2026-03-08T00:15:05.124Z [telegram] [default] starting provider (@DOO_Assistant_bot)"
   },
   "safety": {
     "level": "red",
     "label": "CRITICAL",
-    "message": "5 cron errors · 0 high-priority cases",
+    "message": "5 cron errors · 2 high-priority cases",
     "actions": [
       {
         "id": "retry-helm-morning-brief",
@@ -41,7 +41,7 @@
       {
         "id": "retry-a347bf42-0797-42ea-be62-701747412cb7",
         "label": "Retry HELM Self-Heal Monitor",
-        "description": "6 consecutive errors on MAIN's cron. Trigger immediate re-run.",
+        "description": "7 consecutive errors on MAIN's cron. Trigger immediate re-run.",
         "severity": "critical",
         "cronJobId": "a347bf42-0797-42ea-be62-701747412cb7",
         "agentId": "main",
@@ -80,12 +80,12 @@
       "name": "HELM",
       "workspace": "/Users/rizaldomadanlo/.openclaw/workspace",
       "telegramGroup": "-5220364947",
-      "lastMemoryUpdate": "2026-03-07T14:29:26.485Z",
+      "lastMemoryUpdate": "2026-03-08T00:15:11.086Z",
       "memorySnippet": "# 2026-03-07 — Daily Log\n## BEACON-API-001\n- 00:46 — Session started (spawn-agent.sh)\n## [00:58] Sub-Agent Force-Boot & Report Analysis\n- **Force-Booted Sub-Agents:** BEACON-API-001 and BEACON-UI-001 (PID 51752) were manually started after failing to boot from the standard queue.",
       "lastAction": "⚠️ INFRA CHECK | GW:no-pid | Cron:12/15 (3 missing nextRun) | Agents:1/1 (Sun...",
       "lastActionTime": "2026-02-22T12:00:44.874Z",
       "nextScheduledName": "HELM Self-Heal Monitor",
-      "nextScheduledTime": "2026-03-07T14:41:37.846Z",
+      "nextScheduledTime": "2026-03-07T22:00:00.000Z",
       "activityStatus": "active",
       "cronJobCount": 15
     },
@@ -100,7 +100,7 @@
       "lastActionTime": "2026-02-22T05:06:26.221Z",
       "nextScheduledName": "EAGLE Intelligence Scan",
       "nextScheduledTime": "2026-03-08T01:30:00.000Z",
-      "activityStatus": "active",
+      "activityStatus": "overdue",
       "cronJobCount": 1
     },
     {
@@ -114,7 +114,7 @@
       "lastActionTime": "2026-02-22T05:06:26.222Z",
       "nextScheduledName": null,
       "nextScheduledTime": null,
-      "activityStatus": "active",
+      "activityStatus": "idle",
       "cronJobCount": 1
     },
     {
@@ -128,7 +128,7 @@
       "lastActionTime": "2026-02-23T00:39:34.010Z",
       "nextScheduledName": "BEACON Daily Deadline Reminder - Dionson Appeal",
       "nextScheduledTime": "2026-03-08T01:00:00.000Z",
-      "activityStatus": "active",
+      "activityStatus": "overdue",
       "cronJobCount": 7
     },
     {
@@ -142,7 +142,7 @@
       "lastActionTime": "2026-02-22T23:37:45.294Z",
       "nextScheduledName": null,
       "nextScheduledTime": null,
-      "activityStatus": "active",
+      "activityStatus": "idle",
       "cronJobCount": 4
     },
     {
@@ -151,12 +151,12 @@
       "workspace": "/Users/rizaldomadanlo/.openclaw/workspaces/signal",
       "telegramGroup": "-5266583066",
       "lastMemoryUpdate": "2026-03-07T13:30:28.319Z",
-      "memorySnippet": "# SIGNAL Heartbeat Log — 2026-03-06\n## Status Check 10:45 PHT\n1. **Pending Drafts Review:**\n   - ✅ **MARINA Advisory v2.9:** Updated with Advisory No. 2026-08 and DMW Refusal Right. (Drafted 10:15)\n   - ✅ **FLASH ALERT:** Hormuz Closure & Strikes. (Drafted Yesterday 19:35)",
+      "memorySnippet": null,
       "lastAction": "SIGNAL Daily Status — 2026-02-24 (Tue 09:40)",
       "lastActionTime": "2026-02-24T01:40:40.715Z",
       "nextScheduledName": null,
       "nextScheduledTime": null,
-      "activityStatus": "active",
+      "activityStatus": "idle",
       "cronJobCount": 1
     },
     {
@@ -170,7 +170,7 @@
       "lastActionTime": "2026-02-22T23:37:45.302Z",
       "nextScheduledName": null,
       "nextScheduledTime": null,
-      "activityStatus": "active",
+      "activityStatus": "idle",
       "cronJobCount": 4
     }
   ],
@@ -602,11 +602,11 @@
       "agentId": "main",
       "schedule": "*/30 6-22 * * *",
       "timezone": "Asia/Manila",
-      "nextRunAt": "2026-03-07T14:41:37.846Z",
-      "lastRunAt": "2026-03-07T13:40:37.825Z",
+      "nextRunAt": "2026-03-07T22:00:00.000Z",
+      "lastRunAt": "2026-03-07T14:41:37.923Z",
       "lastStatus": "error",
-      "lastDurationMs": 60021,
-      "consecutiveErrors": 6,
+      "lastDurationMs": 60023,
+      "consecutiveErrors": 7,
       "deliveryTo": "-5220364947"
     },
     {
@@ -639,21 +639,66 @@
     }
   ],
   "cases": {
-    "total": 0,
-    "high": 0,
+    "total": 2,
+    "high": 2,
     "medium": 0,
     "low": 0,
-    "content": null
+    "content": null,
+    "activeCases": [
+      {
+        "id": "CASE_APPEAL_2026-03-01",
+        "title": "Legal Case Update: Appeal (Unnamed Complainant vs. MMAN Dionson)",
+        "deadline": "2026-03-09",
+        "daysUntil": 1,
+        "risk": "HIGH",
+        "claims": "USD 11,364.15 + PHP 200k",
+        "status": "URGENT",
+        "weakness": "The \"Twin Notice Rule\" (Due Process). Without signed proof of NTE and Notice of Dismissal, we lose on procedural grounds (nominal damages)."
+      },
+      {
+        "id": "DIONSON-APPEAL-DEFENSE-BRIEF",
+        "title": "DEFENSE BRIEF: Unnamed Complainant vs. MMAN Dionson",
+        "deadline": null,
+        "daysUntil": null,
+        "risk": "HIGH",
+        "claims": null,
+        "status": "MONITORING",
+        "weakness": null
+      }
+    ]
   },
   "manning": {
     "fillRate": null,
     "vessels": null,
-    "content": null
+    "content": null,
+    "crewAlerts": [
+      {
+        "code": "C102",
+        "issue": "C102 (CRITICAL): Passport expires March 10, 2026 (3 days). Still no update on renewal or repatriation.",
+        "severity": "CRITICAL",
+        "daysUntil": 2,
+        "detail": "**C102 (CRITICAL):** Passport expires **March 10, 2026** (3 days). Still no update on renewal or repatriation."
+      },
+      {
+        "code": "C104",
+        "issue": "C104 (Non-Compliant): Contract expires March 26, 2026. SIRB has been expired since Dec 1, 2025.",
+        "severity": "CRITICAL",
+        "daysUntil": 18,
+        "detail": "**C104 (Non-Compliant):** Contract expires March 26, 2026. SIRB has been expired since Dec 1, 2025."
+      },
+      {
+        "code": "C101",
+        "issue": "C101 (Overdue): Contract expired Feb 27, 2026.",
+        "severity": "CRITICAL",
+        "daysUntil": -9,
+        "detail": "**C101 (Overdue):** Contract expired Feb 27, 2026."
+      }
+    ]
   },
   "intel": {
-    "lastDigest": "/Users/rizaldomadanlo/.openclaw/workspace/shared-kb/intel/2026-03-07-intel-digest.md",
-    "lastUpdate": "2026-03-07T01:33:07.503Z",
-    "content": "## [PRIORITY: HIGH] — MARINA Heightens Monitoring Amid US-Iran Tensions\n**Source:** MARINA Official / Philstar\n**Date:** March 3, 2026 (Monitored March 7, 2026)\n**Confidence:** HIGH\n**Summary:** MARINA has issued a directive for heightened security and monitoring of Philippine-Registered Overseas Fleet (PROF) vessels operating in or transiting the Middle East due to escalating US-Iran hostilities.\n**First-Principles Analysis:** Geopolitical risk in key maritime chokepoints directly impacts vessel safety and crew security. For a manning-heavy nation like the Philippines, this necessitates immediate advisory updates and risk assessment for all active deployments in the region.\n**Impact:** Direct operational risk for vessels with Filipino crew in the Middle East. Potential for DMW-imposed deployment bans or \"high-risk zone\" designations which affect insurance, wages, and routing.\n**Recommended Action:** ANCHOR to verify if any managed vessels are currently in the Persian Gulf/Gulf of Oman. SIGNAL to prepare advisory drafts for principals.\n\n## [PRIORITY: MEDIUM] — Philippines Wins IMO HTW Chairmanship\n**Source:** MARINA Official\n**Date:** February 27, 2026 (Relevant for March Policy)\n**Confidence:** HIGH\n**Summary:** Atty. Sharon De Chavez-Aledo (PH Maritime Attaché) has been elected Chair of the IMO Sub-Committee on Human Element, Training and Watchkeeping (HTW), defeating candidates from the US and Greece.\n**First-Principles Analysis:** The Philippines now holds the gavel for global standards on seafarer training and certification. This is a massive strategic leverage point for the country's manning industry.\n**Impact:** Long-term influence on STCW revisions and \"Green Shipping\" crew standards. Positions the PH as a policy leader, not just a labor provider.\n**Recommended Action:** COMPASS to analyze how this chairmanship might influence future DMW/MARINA training regulations.\n\n## [PRIORITY: MEDIUM] — MARINA, JSMEA Renew Partnership\n**Source:** MARINA Official\n**Date:** March 6, 2026\n**Confidence:** HIGH\n**Summary:** MARINA renewed its MOU with the Japan Ship Machinery and Equipment Association (JSMEA) to expand cooperation on shipping market data and technology.\n**First-Principles Analysis:** Strengthening ties with Japanese principals and technology providers secures the pipeline for vessel modernization and training support.\n**Impact:** Potential for new technical training programs or technology-driven manning requirements from Japanese principals.\n**Recommended Action:** ANCHOR to monitor if this leads to specific training requirements for crew on Japanese-owned vessels.\n"
+    "lastDigest": "/Users/rizaldomadanlo/.openclaw/workspace/shared-kb/intel/2026-03-08-intel-digest.md",
+    "lastUpdate": null,
+    "content": null
   },
   "deadlines": {
     "entries": [],
@@ -680,7 +725,7 @@
         "deadline": "2026-03-09",
         "created": "2026-03-07 09:20",
         "lastAdvanced": "2026-03-07 18:10 (Stage 2 → Stage 3)",
-        "daysUntilDeadline": 2,
+        "daysUntilDeadline": 1,
         "isStuck": false,
         "statusNotes": [
           "[07 18:10] ✅ **ADVANCED S2 → S3:** HELM Discussion & Refinement complete. Two-track implementation delegated:",
@@ -707,177 +752,36 @@
           "[07 09:20] 🆕 **NEW ITEM:** Triggered by MARINA Advisory regarding US-Iran tension zones.",
           "--"
         ],
-        "stalenessHours": 4,
+        "stalenessHours": 14,
         "project": "MARLOW",
         "projectName": "Marlow Navigation Philippines"
       }
     ]
   },
-  "activity": [
-    {
-      "time": "21:42",
-      "agent": "HELM",
-      "agentId": "main",
-      "action": "MaritimeHub AIS Debugging (21:42 PHT)",
-      "sortKey": 1302
-    },
-    {
-      "time": "21:40",
-      "agent": "HELM",
-      "agentId": "main",
-      "action": "❌ HELM Self-Heal Monitor (60s)",
-      "sortKey": 1300
-    },
-    {
-      "time": "21:00",
-      "agent": "HELM",
-      "agentId": "main",
-      "action": "[21:00-22:00] Evening Session — QMD Installed & AIS Debug",
-      "sortKey": 1260
-    },
-    {
-      "time": "19:00",
-      "agent": "HELM",
-      "agentId": "main",
-      "action": "1. **Split mega-jobs** — EOD Recap split into `helm-eod-recap` (Haiku, 300s) + `helm-arena-scoring` (Sonnet, 300s, 19:00",
-      "sortKey": 1140
-    },
-    {
-      "time": "18:47",
-      "agent": "HELM",
-      "agentId": "main",
-      "action": "STANDING DIRECTIVE — DOO (2026-03-PHT)",
-      "sortKey": 1127
-    },
-    {
-      "time": "18:47",
-      "agent": "HELM",
-      "agentId": "main",
-      "action": "Standing Directive Logged (18:47 PHT)",
-      "sortKey": 1127
-    },
-    {
-      "time": "18:45",
-      "agent": "COMPASS",
-      "agentId": "compass",
-      "action": "❌ COMPASS Monthly Report Builder — Phase 1 (600s)",
-      "sortKey": 1125
-    },
-    {
-      "time": "18:10",
-      "agent": "HELM",
-      "agentId": "main",
-      "action": "✅ HELM Flywheel Advance (119s)",
-      "sortKey": 1090
-    },
-    {
-      "time": "18:00",
-      "agent": "HELM",
-      "agentId": "main",
-      "action": "[18:00-19:00] Fleet Infrastructure Hardening Session",
-      "sortKey": 1080
-    },
-    {
-      "time": "18:00",
-      "agent": "EAGLE",
-      "agentId": "eagle",
-      "action": "❌ EAGLE Intelligence Scan (90s)",
-      "sortKey": 1080
-    },
-    {
-      "time": "17:59",
-      "agent": "HELM",
-      "agentId": "main",
-      "action": "❌ HELM Morning Briefing (120s)",
-      "sortKey": 1079
-    },
-    {
-      "time": "17:42",
-      "agent": "BEACON",
-      "agentId": "beacon",
-      "action": "✅ BEACON Daily Deadline Check (9s)",
-      "sortKey": 1062
-    },
-    {
-      "time": "17:41",
-      "agent": "HELM",
-      "agentId": "main",
-      "action": "✅ HELM Infrastructure Healthcheck (75s)",
-      "sortKey": 1061
-    },
-    {
-      "time": "17:28",
-      "agent": "HELM",
-      "agentId": "main",
-      "action": "[17:28] HELM Manual Takeover: MaritimeHub Finalized & Deployed",
-      "sortKey": 1048
-    },
-    {
-      "time": "11:22",
-      "agent": "BEACON",
-      "agentId": "beacon",
-      "action": "✅ BEACON Income Pipeline Review (102s)",
-      "sortKey": 682
-    },
-    {
-      "time": "10:30",
-      "agent": "BEACON",
-      "agentId": "beacon",
-      "action": "✅ BEACON Escalation Monitor (64s)",
-      "sortKey": 630
-    },
-    {
-      "time": "09:52",
-      "agent": "BEACON",
-      "agentId": "beacon",
-      "action": "✅ BEACON Regulatory Compliance Scanner (54s)",
-      "sortKey": 592
-    },
-    {
-      "time": "09:00",
-      "agent": "BEACON",
-      "agentId": "beacon",
-      "action": "✅ BEACON Daily Deadline Reminder - Dionson Appeal (41s)",
-      "sortKey": 540
-    },
-    {
-      "time": "06:59",
-      "agent": "EAGLE",
-      "agentId": "eagle",
-      "action": ": Generated 0700 morning intelligence digest and saved to `shared-kb/intel/2026-03-07-0700-morning-digest.md`.",
-      "sortKey": 419
-    },
-    {
-      "time": "06:00",
-      "agent": "HELM",
-      "agentId": "main",
-      "action": "Daily re-index cron added:** `7187abf0` — fires 06:00 PHT, Haiku, 60s, delivery=none",
-      "sortKey": 360
-    }
-  ],
+  "activity": [],
   "watchdog": {
-    "lastRun": "2026-03-07 21:30:32 PST",
+    "lastRun": "2026-03-07 23:31:13 PST",
     "lastEntries": [
-      "[2026-03-07 21:30:13 PST] OK: Gateway running (PID: 31341)",
-      "[2026-03-07 21:30:13 PST] OK: Gateway health endpoint responding on port 18789",
-      "[2026-03-07 21:30:14 PST] OK: Telegram provider entries found in log (1174)",
-      "[2026-03-07 21:30:14 PST] INFO: gateway.log = 3MB, gateway.err.log = 4MB",
-      "[2026-03-07 21:30:14 PST] INFO: Disk available = 226GB",
-      "[2026-03-07 21:30:14 PST] OK: Config file is valid JSON",
-      "[2026-03-07 21:30:14 PST] WARN: Cron jobs with repeated failures:\\nHELM Self-Heal Monitor: 4 consecutive errors",
-      "[2026-03-07 21:30:15 PST] OK: All 5 shared-kb symlinks valid",
-      "[2026-03-07 21:30:15 PST] FAIL: Dashboard not running on port 3000",
-      "[2026-03-07 21:30:22 PST] FAIL: Dashboard restart failed",
-      "[2026-03-07 21:30:23 PST] WARN: 1 stale process(es) found (non-gateway openclaw/vercel)",
-      "[2026-03-07 21:30:23 PST] WARN: HELM Morning Briefing last run failed",
-      "[2026-03-07 21:30:24 PST] WARN: EAGLE Intelligence Scan last run failed",
-      "[2026-03-07 21:30:24 PST] WARN: HELM End of Day Recap last run failed",
-      "[2026-03-07 21:30:25 PST] WARN: BEACON Newsletter Content Builder last run failed",
-      "[2026-03-07 21:30:26 PST] WARN: HELM Self-Heal Monitor has 4 consecutive errors",
-      "[2026-03-07 21:30:30 PST] WARN: HELM Self-Heal Monitor last run failed",
-      "[2026-03-07 21:30:31 PST] WARN: Cron health: 5/14 jobs have errors",
-      "[2026-03-07 21:30:32 PST] OK: Snapshot fresh (updated 0 minutes ago)",
-      "[2026-03-07 21:30:32 PST] ========== Watchdog Run Complete =========="
+      "[2026-03-07 23:30:56 PST] ========== Watchdog Run Start ==========",
+      "[2026-03-07 23:30:57 PST] OK: Gateway running (PID: 31341)",
+      "[2026-03-07 23:30:57 PST] OK: Gateway health endpoint responding on port 18789",
+      "[2026-03-07 23:30:57 PST] OK: Telegram provider entries found in log (1239)",
+      "[2026-03-07 23:30:57 PST] INFO: gateway.log = 3MB, gateway.err.log = 4MB",
+      "[2026-03-07 23:30:57 PST] INFO: Disk available = 224GB",
+      "[2026-03-07 23:30:57 PST] OK: Config file is valid JSON",
+      "[2026-03-07 23:30:57 PST] WARN: Cron jobs with repeated failures:\\nHELM Self-Heal Monitor: 7 consecutive errors",
+      "[2026-03-07 23:30:58 PST] OK: All 5 shared-kb symlinks valid",
+      "[2026-03-07 23:30:58 PST] FAIL: Dashboard not running on port 3000",
+      "[2026-03-07 23:31:04 PST] FAIL: Dashboard restart failed",
+      "[2026-03-07 23:31:05 PST] WARN: 4 stale process(es) found (non-gateway openclaw/vercel)",
+      "[2026-03-07 23:31:05 PST] WARN: HELM Morning Briefing last run failed",
+      "[2026-03-07 23:31:06 PST] WARN: EAGLE Intelligence Scan last run failed",
+      "[2026-03-07 23:31:09 PST] WARN: BEACON Newsletter Content Builder last run failed",
+      "[2026-03-07 23:31:10 PST] WARN: HELM Self-Heal Monitor has 7 consecutive errors",
+      "[2026-03-07 23:31:11 PST] WARN: HELM Self-Heal Monitor last run failed",
+      "[2026-03-07 23:31:12 PST] WARN: Cron health: 4/14 jobs have errors",
+      "[2026-03-07 23:31:13 PST] OK: Snapshot fresh (updated 1 minutes ago)",
+      "[2026-03-07 23:31:13 PST] ========== Watchdog Run Complete =========="
     ]
   },
   "projects": [
@@ -918,6 +822,60 @@
       "progressPct": 0,
       "description": "",
       "lastActivity": "2026-03-01T04:54:34.169Z"
+    },
+    {
+      "name": "MaritimeHub",
+      "slug": "MARITIMEHUB",
+      "status": "SHIPPED",
+      "priority": "PRIMARY",
+      "role": "Founder / Product Owner",
+      "liveUrl": "https://maritimehub-web.vercel.app",
+      "repoUrl": "https://github.com/CryptoAO/maritimehub-web",
+      "version": "v1.0-alpha",
+      "itemCount": 0,
+      "domains": [
+        {
+          "domain": "Frontend / UI",
+          "priority": "P1",
+          "leadAgent": "compass",
+          "supportingAgents": [
+            "signal"
+          ]
+        },
+        {
+          "domain": "Backend / API",
+          "priority": "P1",
+          "leadAgent": "beacon",
+          "supportingAgents": [
+            "compass"
+          ]
+        },
+        {
+          "domain": "Content / Copy",
+          "priority": "P2",
+          "leadAgent": "signal",
+          "supportingAgents": [
+            "spark"
+          ]
+        },
+        {
+          "domain": "Legal / ToS",
+          "priority": "P2",
+          "leadAgent": "beacon",
+          "supportingAgents": [
+            "—"
+          ]
+        }
+      ],
+      "flywheelItems": [],
+      "taskboardTasks": [],
+      "linkedIdeaIds": [],
+      "hasAppDirectory": false,
+      "milestones": [],
+      "completedTasks": 0,
+      "totalTasks": 0,
+      "progressPct": 69,
+      "description": "MaritimeHub is a maritime intelligence web platform providing vessel tracking, war risk zone alerts, PSC inspection history, port guides, crew-change risk dashboards, and sanctions screening. Built wi"
     },
     {
       "name": "MaritimeHub Sprint Plan - MVP (Mar 9 Deadline)",
@@ -1016,7 +974,7 @@
       "progressPct": 0,
       "description": "Rizaldo serves as Director of Operations at Marlow Navigation Philippines, Inc. — a maritime manning and crewing organization with global stakeholders. This is currently the primary project in the HEL",
       "nextDeadline": "2026-03-09",
-      "daysToDeadline": 2,
+      "daysToDeadline": 1,
       "processPhase": "P4: Development",
       "processGate": "Gate 3 passed — Building"
     },
@@ -3241,7 +3199,7 @@
       "category": "HEALTH"
     }
   ],
-  "fleetIdleMinutes": 119,
+  "fleetIdleMinutes": 704,
   "incomePipeline": {
     "ideas": [],
     "totalIdeas": 0,
@@ -3259,11 +3217,11 @@
   "contentPlan": [],
   "founderInbox": [],
   "resourceMode": {
-    "mode": "CONSERVATION",
-    "pct": 0,
-    "todayCrons": 17
+    "mode": "FULL_POWER",
+    "pct": 100,
+    "todayCrons": 0
   },
-  "nightWatch": true,
+  "nightWatch": false,
   "taskboard": [
     {
       "id": "SYS-ARENA",
@@ -3551,22 +3509,22 @@
       "agentId": "main",
       "agentName": "HELM",
       "daily": [
-        32,
         8,
         2,
         5,
         5,
         3,
-        9
+        9,
+        0
       ],
       "labels": [
-        "Sun",
         "Mon",
         "Tue",
         "Wed",
         "Thu",
         "Fri",
-        "Sat"
+        "Sat",
+        "Sun"
       ]
     },
     {
@@ -3574,21 +3532,21 @@
       "agentName": "EAGLE",
       "daily": [
         0,
-        0,
         1,
         2,
         2,
         2,
-        2
+        2,
+        0
       ],
       "labels": [
-        "Sun",
         "Mon",
         "Tue",
         "Wed",
         "Thu",
         "Fri",
-        "Sat"
+        "Sat",
+        "Sun"
       ]
     },
     {
@@ -3604,35 +3562,35 @@
         0
       ],
       "labels": [
-        "Sun",
         "Mon",
         "Tue",
         "Wed",
         "Thu",
         "Fri",
-        "Sat"
+        "Sat",
+        "Sun"
       ]
     },
     {
       "agentId": "beacon",
       "agentName": "BEACON",
       "daily": [
-        1,
         3,
         1,
         5,
         4,
         6,
-        6
+        6,
+        0
       ],
       "labels": [
-        "Sun",
         "Mon",
         "Tue",
         "Wed",
         "Thu",
         "Fri",
-        "Sat"
+        "Sat",
+        "Sun"
       ]
     },
     {
@@ -3648,13 +3606,13 @@
         0
       ],
       "labels": [
-        "Sun",
         "Mon",
         "Tue",
         "Wed",
         "Thu",
         "Fri",
-        "Sat"
+        "Sat",
+        "Sun"
       ]
     },
     {
@@ -3670,13 +3628,13 @@
         0
       ],
       "labels": [
-        "Sun",
         "Mon",
         "Tue",
         "Wed",
         "Thu",
         "Fri",
-        "Sat"
+        "Sat",
+        "Sun"
       ]
     },
     {
@@ -3692,13 +3650,13 @@
         0
       ],
       "labels": [
-        "Sun",
         "Mon",
         "Tue",
         "Wed",
         "Thu",
         "Fri",
-        "Sat"
+        "Sat",
+        "Sun"
       ]
     }
   ],
@@ -4392,7 +4350,7 @@
             "label": "Claude Sonnet 4.2"
           }
         ],
-        "lastChecked": "2026-03-07T14:30:05.358Z",
+        "lastChecked": "2026-03-08T00:15:15.537Z",
         "lastError": null,
         "rateLimitHits24h": 0
       },
@@ -4424,7 +4382,7 @@
             "label": "GPT-4o (Stable)"
           }
         ],
-        "lastChecked": "2026-03-07T14:30:05.358Z",
+        "lastChecked": "2026-03-08T00:15:15.538Z",
         "lastError": null,
         "rateLimitHits24h": 0
       },
@@ -4444,7 +4402,7 @@
             "label": "Gemini 3.0 Flash (Fast)"
           }
         ],
-        "lastChecked": "2026-03-07T14:30:05.358Z",
+        "lastChecked": "2026-03-08T00:15:15.538Z",
         "lastError": null,
         "rateLimitHits24h": 0
       }
@@ -5136,7 +5094,7 @@
     }
   },
   "_snapshot": {
-    "generatedAt": "2026-03-07T14:30:05.359Z",
+    "generatedAt": "2026-03-08T00:15:15.541Z",
     "hostname": "Rizaldos-MacBook-Pro.local",
     "version": "1.0"
   }

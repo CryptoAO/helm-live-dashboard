@@ -437,8 +437,14 @@ export interface DashboardData {
   safety: SafetyLevel;
   agents: AgentInfo[];
   cronJobs: CronJob[];
-  cases: { total: number; high: number; medium: number; low: number; content: string | null };
-  manning: { fillRate: string | null; vessels: number | null; content: string | null };
+  cases: {
+    total: number; high: number; medium: number; low: number; content: string | null;
+    activeCases: { id: string; title: string; deadline: string | null; daysUntil: number | null; risk: string; claims: string | null; status: string; weakness: string | null; }[];
+  };
+  manning: {
+    fillRate: string | null; vessels: number | null; content: string | null;
+    crewAlerts: { code: string; issue: string; severity: "CRITICAL" | "HIGH" | "MEDIUM"; daysUntil: number | null; detail: string; }[];
+  };
   intel: { lastDigest: string | null; lastUpdate: string | null; content: string | null };
   deadlines: { entries: DeadlineEntry[]; totalNext7: number; totalNext30: number; content: string | null };
   weekPrep: { weekLabel: string | null; items: WeekPrepItem[]; content: string | null };

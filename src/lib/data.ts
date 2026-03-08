@@ -321,11 +321,19 @@ export interface DashboardData {
     medium: number;
     low: number;
     content: string | null;
+    activeCases: {
+      id: string; title: string; deadline: string | null; daysUntil: number | null;
+      risk: string; claims: string | null; status: string; weakness: string | null;
+    }[];
   };
   manning: {
     fillRate: string | null;
     vessels: number | null;
     content: string | null;
+    crewAlerts: {
+      code: string; issue: string; severity: "CRITICAL" | "HIGH" | "MEDIUM";
+      daysUntil: number | null; detail: string;
+    }[];
   };
   intel: {
     lastDigest: string | null;
@@ -529,23 +537,76 @@ function getCronJobs(): CronJob[] {
 }
 
 function getCasesSummary() {
-  const tracker = readFileOrNull(path.join(SHARED_KB, "cases", "case-tracker.md"));
+  const CASES_DIR = path.join(SHARED_KB, "cases");
+  const tracker = readFileOrNull(path.join(CASES_DIR, "case-tracker.md"));
   let total = 0, high = 0, medium = 0, low = 0;
 
+  // Parse legacy tracker format
   if (tracker) {
-    // Format: **Total Active Cases:** 9 | **HIGH Risk:** 3 | **MEDIUM Risk:** 4 | **LOW Risk:** 2
     const totalMatch = tracker.match(/Total Active Cases[:\s*]+(\d+)/i);
     const highMatch = tracker.match(/\*\*HIGH Risk:\*\*\s*(\d+)/);
     const medMatch = tracker.match(/\*\*MEDIUM Risk:\*\*\s*(\d+)/);
     const lowMatch = tracker.match(/\*\*LOW Risk:\*\*\s*(\d+)/);
-
     if (totalMatch) total = parseInt(totalMatch[1]);
     if (highMatch) high = parseInt(highMatch[1]);
     if (medMatch) medium = parseInt(medMatch[1]);
     if (lowMatch) low = parseInt(lowMatch[1]);
   }
 
-  return { total, high, medium, low, content: tracker };
+  // Also scan individual case files for structured data
+  const activeCases: {
+    id: string; title: string; deadline: string | null; daysUntil: number | null;
+    risk: string; claims: string | null; status: string; weakness: string | null;
+  }[] = [];
+
+  try {
+    const files = fs.readdirSync(CASES_DIR).filter((f: string) =>
+      f.endsWith(".md") && !f.includes("tracker") && !f.includes("escalation") && !f.includes("digest") && !f.includes("regulatory")
+    );
+    const now = new Date();
+    for (const file of files) {
+      const content = readFileOrNull(path.join(CASES_DIR, file));
+      if (!content) continue;
+
+      const titleMatch = content.match(/^#\s+(.+)/m);
+      const deadlineMatch = content.match(/\*\*Deadline[:\*]+\s*([0-9]{4}-[0-9]{2}-[0-9]{2}|[A-Z][a-z]+ \d+, \d{4})/);
+      const riskMatch = content.match(/\*\*Risk[^:]*:\*\*\s*(\w+)/i) || content.match(/Risk Assessment[:\*]+\s*(\w+)/i);
+      const claimsMatch = content.match(/\*\*Claims?[:\*]+\s*([^\n]+)/i);
+      const weaknessMatch = content.match(/\*\*Critical Weakness[:\*]+\s*([^\n]+)/i);
+
+      let deadline: string | null = null;
+      let daysUntil: number | null = null;
+      if (deadlineMatch) {
+        deadline = deadlineMatch[1];
+        try {
+          const dl = new Date(deadline);
+          if (!isNaN(dl.getTime())) daysUntil = Math.ceil((dl.getTime() - now.getTime()) / 86400000);
+        } catch { /* ignore */ }
+      }
+
+      const risk = riskMatch ? riskMatch[1].toUpperCase() : "UNKNOWN";
+      activeCases.push({
+        id: file.replace(".md", "").toUpperCase(),
+        title: titleMatch ? titleMatch[1].trim() : file.replace(".md", ""),
+        deadline,
+        daysUntil,
+        risk,
+        claims: claimsMatch ? claimsMatch[1].trim() : null,
+        status: daysUntil !== null && daysUntil <= 2 ? "URGENT" : daysUntil !== null && daysUntil <= 7 ? "ACTIVE" : "MONITORING",
+        weakness: weaknessMatch ? weaknessMatch[1].trim() : null,
+      });
+    }
+  } catch { /* ignore */ }
+
+  // If we found cases from files, update counts
+  if (activeCases.length > 0) {
+    total = Math.max(total, activeCases.length);
+    high = Math.max(high, activeCases.filter(c => c.risk === "HIGH").length);
+    medium = Math.max(medium, activeCases.filter(c => c.risk === "MEDIUM").length);
+    low = Math.max(low, activeCases.filter(c => c.risk === "LOW").length);
+  }
+
+  return { total, high, medium, low, content: tracker, activeCases };
 }
 
 function getManningStatus() {
@@ -554,14 +615,61 @@ function getManningStatus() {
   let vessels: number | null = null;
 
   if (manning) {
-    // Format: | **Fill rate** | **94.9%** |  OR  | Total vessels | 14 |
     const frMatch = manning.match(/(\d+\.?\d*)%/);
     const vMatch = manning.match(/Total vessels\s*\|\s*(\d+)/i);
     if (frMatch) fillRate = frMatch[1] + "%";
     if (vMatch) vessels = parseInt(vMatch[1]);
   }
 
-  return { fillRate, vessels, content: manning };
+  // Scan latest crewing status files for crew alerts
+  const CREWING_DIR = path.join(SHARED_KB, "crewing");
+  const crewAlerts: {
+    code: string; issue: string; severity: "CRITICAL" | "HIGH" | "MEDIUM";
+    daysUntil: number | null; detail: string;
+  }[] = [];
+
+  try {
+    const files = fs.readdirSync(CREWING_DIR)
+      .filter((f: string) => f.startsWith("status-") && f.endsWith(".md"))
+      .sort().reverse(); // latest first
+
+    const latestFile = files[0];
+    if (latestFile) {
+      const content = readFileOrNull(path.join(CREWING_DIR, latestFile));
+      if (content) {
+        const now = new Date();
+        // Parse crew issues — look for C1xx pattern
+        const crewLines = content.match(/\*?\*?(C\d{3})[^\n]*/g) || [];
+        for (const line of crewLines) {
+          const codeMatch = line.match(/(C\d{3})/);
+          if (!codeMatch) continue;
+          const code = codeMatch[1];
+          const isCritical = line.toUpperCase().includes("CRITICAL") || line.toUpperCase().includes("EXPIRES") || line.toUpperCase().includes("EXPIRED");
+          const isHigh = line.toUpperCase().includes("NON-COMPLIANT") || line.toUpperCase().includes("OVERDUE") || line.toUpperCase().includes("FAIL");
+
+          // Try to extract date
+          const dateMatch = line.match(/(\w+ \d+, \d{4}|March \d+|March \d+, \d{4}|\d{4}-\d{2}-\d{2})/);
+          let daysUntil: number | null = null;
+          if (dateMatch) {
+            try {
+              const d = new Date(dateMatch[1]);
+              if (!isNaN(d.getTime())) daysUntil = Math.ceil((d.getTime() - now.getTime()) / 86400000);
+            } catch { /* ignore */ }
+          }
+
+          crewAlerts.push({
+            code,
+            issue: line.replace(/\*\*/g, "").replace(/^\*/, "").trim().substring(0, 120),
+            severity: isCritical ? "CRITICAL" : isHigh ? "HIGH" : "MEDIUM",
+            daysUntil,
+            detail: line.trim(),
+          });
+        }
+      }
+    }
+  } catch { /* ignore */ }
+
+  return { fillRate, vessels, content: manning, crewAlerts };
 }
 
 function getIntelStatus() {

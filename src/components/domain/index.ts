@@ -17,3 +17,6 @@ export { CodeProposalsPanel } from "./code-proposals-panel";
 export { ProviderSwitcher } from "./provider-switcher";
 export { AgentRPGCard } from "./agent-rpg-card";
 export { FleetGraph } from "./fleet-graph";
+export { DOOPriorityCard } from "./doo-priority-card";
+export { LegalCasePanel } from "./legal-case-panel";
+export { CrewingAlertsPanel } from "./crewing-alerts-panel";

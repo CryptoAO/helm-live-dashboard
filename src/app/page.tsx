@@ -4,7 +4,7 @@ import { useDashboard } from "@/hooks/use-dashboard";
 import { useGateway } from "@/hooks/use-gateway";
 import { PageHeader } from "@/components/layout/page-header";
 import { Card, Badge, MetricBox, Modal } from "@/components/shared";
-import { SafetyBanner, AgentCard, CronJobRow, PipelineCard, FlywheelStage, ActivityItem, FlywheelDetail, TaskboardPanel, Sparkline, ProviderSwitcher } from "@/components/domain";
+import { SafetyBanner, AgentCard, CronJobRow, PipelineCard, FlywheelStage, ActivityItem, FlywheelDetail, TaskboardPanel, Sparkline, ProviderSwitcher, DOOPriorityCard, LegalCasePanel, CrewingAlertsPanel } from "@/components/domain";
 
 const STAGE_NAMES = ["Ideate", "Refine", "Build", "Ship", "Validate", "Learn"];
 
@@ -92,6 +92,18 @@ export default function BridgePage() {
           reviewCount={data.incomePipeline.reviewCount}
           contentCount={data.contentPlan.length}
         />
+
+        {/* DOO Operations Command Row */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+          <DOOPriorityCard
+            cases={data.cases}
+            manning={data.manning}
+            deadlines={data.deadlines}
+            flywheel={data.flywheel}
+          />
+          <LegalCasePanel cases={data.cases} />
+          <CrewingAlertsPanel manning={data.manning} />
+        </div>
 
         {/* KPI Strip */}
         <div className="grid grid-cols-3 md:grid-cols-6 gap-2">
