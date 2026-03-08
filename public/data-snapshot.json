@@ -1,34 +1,16 @@
 {
-  "timestamp": "2026-03-08T00:15:15.106Z",
+  "timestamp": "2026-03-08T01:30:05.867Z",
   "gateway": {
     "running": true,
     "pid": 31341,
     "uptime": null,
-    "lastLogEntry": "2026-03-08T00:15:05.124Z [telegram] [default] starting provider (@DOO_Assistant_bot)"
+    "lastLogEntry": "2026-03-08T01:24:53.418Z [health-monitor] [whatsapp:default] health-monitor: restarting (reason: stopped)"
   },
   "safety": {
-    "level": "red",
-    "label": "CRITICAL",
-    "message": "5 cron errors · 2 high-priority cases",
+    "level": "amber",
+    "label": "WARNING",
+    "message": "3 cron errors · 0 agents overdue",
     "actions": [
-      {
-        "id": "retry-helm-morning-brief",
-        "label": "Retry HELM Morning Briefing",
-        "description": "2 consecutive errors on MAIN's cron. Trigger immediate re-run.",
-        "severity": "warn",
-        "cronJobId": "helm-morning-brief",
-        "agentId": "main",
-        "type": "retry_cron"
-      },
-      {
-        "id": "retry-eagle-intel-scan",
-        "label": "Retry EAGLE Intelligence Scan",
-        "description": "2 consecutive errors on EAGLE's cron. Trigger immediate re-run.",
-        "severity": "warn",
-        "cronJobId": "eagle-intel-scan",
-        "agentId": "eagle",
-        "type": "retry_cron"
-      },
       {
         "id": "retry-840292b1-c48c-473a-ac96-c93af549b70c",
         "label": "Retry BEACON Newsletter Content Builder",
@@ -41,7 +23,7 @@
       {
         "id": "retry-a347bf42-0797-42ea-be62-701747412cb7",
         "label": "Retry HELM Self-Heal Monitor",
-        "description": "7 consecutive errors on MAIN's cron. Trigger immediate re-run.",
+        "description": "9 consecutive errors on MAIN's cron. Trigger immediate re-run.",
         "severity": "critical",
         "cronJobId": "a347bf42-0797-42ea-be62-701747412cb7",
         "agentId": "main",
@@ -80,12 +62,12 @@
       "name": "HELM",
       "workspace": "/Users/rizaldomadanlo/.openclaw/workspace",
       "telegramGroup": "-5220364947",
-      "lastMemoryUpdate": "2026-03-08T00:15:11.086Z",
+      "lastMemoryUpdate": "2026-03-08T01:27:02.982Z",
       "memorySnippet": "# 2026-03-07 — Daily Log\n## BEACON-API-001\n- 00:46 — Session started (spawn-agent.sh)\n## [00:58] Sub-Agent Force-Boot & Report Analysis\n- **Force-Booted Sub-Agents:** BEACON-API-001 and BEACON-UI-001 (PID 51752) were manually started after failing to boot from the standard queue.",
       "lastAction": "⚠️ INFRA CHECK | GW:no-pid | Cron:12/15 (3 missing nextRun) | Agents:1/1 (Sun...",
       "lastActionTime": "2026-02-22T12:00:44.874Z",
-      "nextScheduledName": "HELM Self-Heal Monitor",
-      "nextScheduledTime": "2026-03-07T22:00:00.000Z",
+      "nextScheduledName": "HELM Infrastructure Healthcheck",
+      "nextScheduledTime": "2026-03-08T02:10:00.000Z",
       "activityStatus": "active",
       "cronJobCount": 15
     },
@@ -94,13 +76,13 @@
       "name": "EAGLE",
       "workspace": "/Users/rizaldomadanlo/.openclaw/workspaces/eagle",
       "telegramGroup": "-5163923779",
-      "lastMemoryUpdate": "2026-03-07T13:54:27.977Z",
+      "lastMemoryUpdate": "2026-03-08T01:30:00.034Z",
       "memorySnippet": "# 2026-03-07\n- 06:59: Generated 0700 morning intelligence digest and saved to `shared-kb/intel/2026-03-07-0700-morning-digest.md`.\n- Wrote [INCOME] idea to `shared-kb/income/pipeline.md` (Japanese Market Maritime Tech Integration Training).\n- Highlighted MARINA Advisory 2026-08 (heightened monitoring in Middle East) as MEDIUM priority, continuing watch from Feb 28 P0 alert.",
       "lastAction": "EAGLE Intelligence Scan Complete — 2026-02-22",
       "lastActionTime": "2026-02-22T05:06:26.221Z",
       "nextScheduledName": "EAGLE Intelligence Scan",
       "nextScheduledTime": "2026-03-08T01:30:00.000Z",
-      "activityStatus": "overdue",
+      "activityStatus": "active",
       "cronJobCount": 1
     },
     {
@@ -108,13 +90,13 @@
       "name": "ANCHOR",
       "workspace": "/Users/rizaldomadanlo/.openclaw/workspaces/anchor",
       "telegramGroup": "-1003839397317",
-      "lastMemoryUpdate": "2026-03-07T13:54:31.558Z",
+      "lastMemoryUpdate": "2026-03-08T01:19:48.487Z",
       "memorySnippet": null,
       "lastAction": "ANCHOR Crewing Status — Sunday, Feb 22, 2026",
       "lastActionTime": "2026-02-22T05:06:26.222Z",
       "nextScheduledName": null,
       "nextScheduledTime": null,
-      "activityStatus": "idle",
+      "activityStatus": "active",
       "cronJobCount": 1
     },
     {
@@ -122,13 +104,13 @@
       "name": "BEACON",
       "workspace": "/Users/rizaldomadanlo/.openclaw/workspaces/beacon",
       "telegramGroup": "-5214300239",
-      "lastMemoryUpdate": "2026-03-07T13:54:38.009Z",
-      "memorySnippet": null,
+      "lastMemoryUpdate": "2026-03-08T01:19:58.723Z",
+      "memorySnippet": "# BEACON Daily Log — 2026-03-08 (Sunday)\n## Case Updates\n- **09:10** — DOO confirmed Dionson Appeal is DONE. Both the appeal filing and all action items (Twin Notice, counsel confirmation, hearing prep) completed. Case marked closed in case-tracker.md.\n## Notes\n- No other active cases at this time.",
       "lastAction": "Connection error.",
       "lastActionTime": "2026-02-23T00:39:34.010Z",
-      "nextScheduledName": "BEACON Daily Deadline Reminder - Dionson Appeal",
-      "nextScheduledTime": "2026-03-08T01:00:00.000Z",
-      "activityStatus": "overdue",
+      "nextScheduledName": "BEACON Regulatory Compliance Scanner",
+      "nextScheduledTime": "2026-03-08T01:35:00.000Z",
+      "activityStatus": "active",
       "cronJobCount": 7
     },
     {
@@ -136,13 +118,13 @@
       "name": "COMPASS",
       "workspace": "/Users/rizaldomadanlo/.openclaw/workspaces/compass",
       "telegramGroup": "-5118264846",
-      "lastMemoryUpdate": "2026-03-07T13:54:51.724Z",
+      "lastMemoryUpdate": "2026-03-08T01:20:00.652Z",
       "memorySnippet": null,
       "lastAction": "Completed task",
       "lastActionTime": "2026-02-22T23:37:45.294Z",
       "nextScheduledName": null,
       "nextScheduledTime": null,
-      "activityStatus": "idle",
+      "activityStatus": "active",
       "cronJobCount": 4
     },
     {
@@ -150,13 +132,13 @@
       "name": "SIGNAL",
       "workspace": "/Users/rizaldomadanlo/.openclaw/workspaces/signal",
       "telegramGroup": "-5266583066",
-      "lastMemoryUpdate": "2026-03-07T13:30:28.319Z",
+      "lastMemoryUpdate": "2026-03-08T01:20:02.396Z",
       "memorySnippet": null,
       "lastAction": "SIGNAL Daily Status — 2026-02-24 (Tue 09:40)",
       "lastActionTime": "2026-02-24T01:40:40.715Z",
       "nextScheduledName": null,
       "nextScheduledTime": null,
-      "activityStatus": "idle",
+      "activityStatus": "active",
       "cronJobCount": 1
     },
     {
@@ -164,13 +146,13 @@
       "name": "SPARK",
       "workspace": "/Users/rizaldomadanlo/.openclaw/workspaces/spark",
       "telegramGroup": "-5050865804",
-      "lastMemoryUpdate": "2026-03-07T13:30:35.931Z",
+      "lastMemoryUpdate": "2026-03-08T01:20:14.795Z",
       "memorySnippet": null,
       "lastAction": "Completed task",
       "lastActionTime": "2026-02-22T23:37:45.302Z",
       "nextScheduledName": null,
       "nextScheduledTime": null,
-      "activityStatus": "idle",
+      "activityStatus": "active",
       "cronJobCount": 4
     }
   ],
@@ -182,11 +164,11 @@
       "agentId": "main",
       "schedule": "30 6 * * *",
       "timezone": "Asia/Manila",
-      "nextRunAt": "2026-03-07T22:30:00.000Z",
-      "lastRunAt": "2026-03-07T09:59:34.512Z",
-      "lastStatus": "error",
-      "lastDurationMs": 120034,
-      "consecutiveErrors": 2,
+      "nextRunAt": "2026-03-08T22:30:00.000Z",
+      "lastRunAt": "2026-03-08T00:14:55.441Z",
+      "lastStatus": "ok",
+      "lastDurationMs": 42977,
+      "consecutiveErrors": 0,
       "deliveryTo": "-5220364947"
     },
     {
@@ -197,10 +179,10 @@
       "schedule": "30 9,17 * * *",
       "timezone": "UTC",
       "nextRunAt": "2026-03-08T01:30:00.000Z",
-      "lastRunAt": "2026-03-07T10:00:47.974Z",
-      "lastStatus": "error",
-      "lastDurationMs": 90018,
-      "consecutiveErrors": 2,
+      "lastRunAt": "2026-03-08T01:17:09.016Z",
+      "lastStatus": "ok",
+      "lastDurationMs": 85793,
+      "consecutiveErrors": 0,
       "deliveryTo": "-5163923779"
     },
     {
@@ -280,10 +262,10 @@
       "agentId": "main",
       "schedule": "10 9,18 * * *",
       "timezone": "Asia/Manila",
-      "nextRunAt": "2026-03-08T01:10:00.000Z",
-      "lastRunAt": "2026-03-07T10:10:00.027Z",
+      "nextRunAt": "2026-03-08T10:10:00.000Z",
+      "lastRunAt": "2026-03-08T01:10:00.028Z",
       "lastStatus": "ok",
-      "lastDurationMs": 118666,
+      "lastDurationMs": 29892,
       "consecutiveErrors": 0,
       "deliveryTo": "-5220364947"
     },
@@ -574,10 +556,10 @@
       "agentId": "beacon",
       "schedule": "0 9 4-9 3 *",
       "timezone": "Asia/Manila",
-      "nextRunAt": "2026-03-08T01:00:00.000Z",
-      "lastRunAt": "2026-03-07T01:00:00.348Z",
+      "nextRunAt": "2026-03-09T01:00:00.000Z",
+      "lastRunAt": "2026-03-08T01:00:00.026Z",
       "lastStatus": "ok",
-      "lastDurationMs": 41253,
+      "lastDurationMs": 6212,
       "consecutiveErrors": 0,
       "deliveryTo": "-5214300239"
     },
@@ -602,11 +584,11 @@
       "agentId": "main",
       "schedule": "*/30 6-22 * * *",
       "timezone": "Asia/Manila",
-      "nextRunAt": "2026-03-07T22:00:00.000Z",
-      "lastRunAt": "2026-03-07T14:41:37.923Z",
+      "nextRunAt": "2026-03-08T02:17:38.504Z",
+      "lastRunAt": "2026-03-08T01:16:38.478Z",
       "lastStatus": "error",
-      "lastDurationMs": 60023,
-      "consecutiveErrors": 7,
+      "lastDurationMs": 60026,
+      "consecutiveErrors": 9,
       "deliveryTo": "-5220364947"
     },
     {
@@ -630,20 +612,20 @@
       "agentId": "main",
       "schedule": "0 6 * * *",
       "timezone": "Asia/Manila",
-      "nextRunAt": "2026-03-07T22:00:00.000Z",
-      "lastRunAt": null,
-      "lastStatus": null,
-      "lastDurationMs": null,
+      "nextRunAt": "2026-03-08T22:00:00.000Z",
+      "lastRunAt": "2026-03-08T00:16:38.444Z",
+      "lastStatus": "ok",
+      "lastDurationMs": 30797,
       "consecutiveErrors": 0,
       "deliveryTo": null
     }
   ],
   "cases": {
     "total": 2,
-    "high": 2,
+    "high": 1,
     "medium": 0,
     "low": 0,
-    "content": null,
+    "content": "# Case Tracker — BEACON Legal\n\n## Closed / Resolved Cases\n\n### DIONSON APPEAL\n- **Case:** Complainant vs. MMAN Dionson\n- **Forum:** NLRC (Appeal)\n- **Claims:** USD 11,364.15 + PHP 200,000\n- **Deadline:** March 9, 2026 — Appeal filing\n- **Status:** ✅ CLOSED — Confirmed done by DOO (March 8, 2026)\n- **Notes:** Defense brief completed. Twin Notice compliance verified. Appeal documents filed.\n\n---\n\n## Active Cases\n\n_No active cases at this time._\n",
     "activeCases": [
       {
         "id": "CASE_APPEAL_2026-03-01",
@@ -657,12 +639,12 @@
       },
       {
         "id": "DIONSON-APPEAL-DEFENSE-BRIEF",
-        "title": "DEFENSE BRIEF: Unnamed Complainant vs. MMAN Dionson",
-        "deadline": null,
-        "daysUntil": null,
-        "risk": "HIGH",
+        "title": "Dionson Appeal — Defense Brief",
+        "deadline": "2026-03-09",
+        "daysUntil": 1,
+        "risk": "UNKNOWN",
         "claims": null,
-        "status": "MONITORING",
+        "status": "URGENT",
         "weakness": null
       }
     ]
@@ -674,24 +656,24 @@
     "crewAlerts": [
       {
         "code": "C102",
-        "issue": "C102 (CRITICAL): Passport expires March 10, 2026 (3 days). Still no update on renewal or repatriation.",
+        "issue": "C102 CRITICAL: Passport expires 2026-03-10. Action memo included.",
         "severity": "CRITICAL",
         "daysUntil": 2,
-        "detail": "**C102 (CRITICAL):** Passport expires **March 10, 2026** (3 days). Still no update on renewal or repatriation."
+        "detail": "C102 CRITICAL: Passport expires 2026-03-10. Action memo included."
       },
       {
         "code": "C104",
-        "issue": "C104 (Non-Compliant): Contract expires March 26, 2026. SIRB has been expired since Dec 1, 2025.",
-        "severity": "CRITICAL",
-        "daysUntil": 18,
-        "detail": "**C104 (Non-Compliant):** Contract expires March 26, 2026. SIRB has been expired since Dec 1, 2025."
+        "issue": "C104: SIRB non-compliant. Renewal pathway documented.",
+        "severity": "HIGH",
+        "daysUntil": null,
+        "detail": "C104: SIRB non-compliant. Renewal pathway documented."
       },
       {
         "code": "C101",
-        "issue": "C101 (Overdue): Contract expired Feb 27, 2026.",
-        "severity": "CRITICAL",
-        "daysUntil": -9,
-        "detail": "**C101 (Overdue):** Contract expired Feb 27, 2026."
+        "issue": "C101: Contract overdue. Decision tree included.",
+        "severity": "HIGH",
+        "daysUntil": null,
+        "detail": "C101: Contract overdue. Decision tree included."
       }
     ]
   },
@@ -728,11 +710,12 @@
         "daysUntilDeadline": 1,
         "isStuck": false,
         "statusNotes": [
+          "[08 09:10] 🚨 **STUCK — 15h ELAPSED, DEADLINE 39H AWAY:** No progress from ANCHOR or BEACON+SIGNAL since [07 18:10] delegation. CRITICAL: C102 passport expires MARCH 10 (48h window). ANCHOR crewing action summary NOT received. BEACON legal advisory NOT received. SIGNAL draft noted as produced (18:34 [07]) but not logged as ready for review. **ESCALATION REQUIRED to Rizaldo — P1 deadline risk.**",
           "[07 18:10] ✅ **ADVANCED S2 → S3:** HELM Discussion & Refinement complete. Two-track implementation delegated:",
-          "- **TRACK A — Emergency Crewing [ANCHOR, deadline: 2026-03-09 EOD, T2]:**",
-          "- C102 passport expires MARCH 10 (48h window). ACTION: Initiate emergency passport extension or repatriation protocol NOW."
+          "- **TRACK A — Emergency Crewing [ANCHOR, deadline: 2026-03-09 EOD, T2]:**"
         ],
         "allStatusNotes": [
+          "[08 09:10] 🚨 **STUCK — 15h ELAPSED, DEADLINE 39H AWAY:** No progress from ANCHOR or BEACON+SIGNAL since [07 18:10] delegation. CRITICAL: C102 passport expires MARCH 10 (48h window). ANCHOR crewing action summary NOT received. BEACON legal advisory NOT received. SIGNAL draft noted as produced (18:34 [07]) but not logged as ready for review. **ESCALATION REQUIRED to Rizaldo — P1 deadline risk.**",
           "[07 18:10] ✅ **ADVANCED S2 → S3:** HELM Discussion & Refinement complete. Two-track implementation delegated:",
           "- **TRACK A — Emergency Crewing [ANCHOR, deadline: 2026-03-09 EOD, T2]:**",
           "- C102 passport expires MARCH 10 (48h window). ACTION: Initiate emergency passport extension or repatriation protocol NOW.",
@@ -752,36 +735,86 @@
           "[07 09:20] 🆕 **NEW ITEM:** Triggered by MARINA Advisory regarding US-Iran tension zones.",
           "--"
         ],
-        "stalenessHours": 14,
+        "stalenessHours": 15,
         "project": "MARLOW",
         "projectName": "Marlow Navigation Philippines"
       }
     ]
   },
-  "activity": [],
+  "activity": [
+    {
+      "time": "09:17",
+      "agent": "EAGLE",
+      "agentId": "eagle",
+      "action": "✅ EAGLE Intelligence Scan (86s)",
+      "sortKey": 557
+    },
+    {
+      "time": "09:16",
+      "agent": "HELM",
+      "agentId": "main",
+      "action": "❌ HELM Self-Heal Monitor (60s)",
+      "sortKey": 556
+    },
+    {
+      "time": "09:10",
+      "agent": "BEACON",
+      "agentId": "beacon",
+      "action": "** — DOO confirmed Dionson Appeal is DONE. Both the appeal filing and all action items (Twin Notice, counsel confirmatio",
+      "sortKey": 550
+    },
+    {
+      "time": "09:10",
+      "agent": "HELM",
+      "agentId": "main",
+      "action": "✅ HELM Flywheel Advance (30s)",
+      "sortKey": 550
+    },
+    {
+      "time": "09:00",
+      "agent": "BEACON",
+      "agentId": "beacon",
+      "action": "✅ BEACON Daily Deadline Reminder - Dionson Appeal (6s)",
+      "sortKey": 540
+    },
+    {
+      "time": "08:16",
+      "agent": "HELM",
+      "agentId": "main",
+      "action": "✅ QMD Daily Re-Index (31s)",
+      "sortKey": 496
+    },
+    {
+      "time": "08:14",
+      "agent": "HELM",
+      "agentId": "main",
+      "action": "✅ HELM Morning Briefing (43s)",
+      "sortKey": 494
+    }
+  ],
   "watchdog": {
-    "lastRun": "2026-03-07 23:31:13 PST",
+    "lastRun": "2026-03-08 09:14:47 PST",
     "lastEntries": [
-      "[2026-03-07 23:30:56 PST] ========== Watchdog Run Start ==========",
-      "[2026-03-07 23:30:57 PST] OK: Gateway running (PID: 31341)",
-      "[2026-03-07 23:30:57 PST] OK: Gateway health endpoint responding on port 18789",
-      "[2026-03-07 23:30:57 PST] OK: Telegram provider entries found in log (1239)",
-      "[2026-03-07 23:30:57 PST] INFO: gateway.log = 3MB, gateway.err.log = 4MB",
-      "[2026-03-07 23:30:57 PST] INFO: Disk available = 224GB",
-      "[2026-03-07 23:30:57 PST] OK: Config file is valid JSON",
-      "[2026-03-07 23:30:57 PST] WARN: Cron jobs with repeated failures:\\nHELM Self-Heal Monitor: 7 consecutive errors",
-      "[2026-03-07 23:30:58 PST] OK: All 5 shared-kb symlinks valid",
-      "[2026-03-07 23:30:58 PST] FAIL: Dashboard not running on port 3000",
-      "[2026-03-07 23:31:04 PST] FAIL: Dashboard restart failed",
-      "[2026-03-07 23:31:05 PST] WARN: 4 stale process(es) found (non-gateway openclaw/vercel)",
-      "[2026-03-07 23:31:05 PST] WARN: HELM Morning Briefing last run failed",
-      "[2026-03-07 23:31:06 PST] WARN: EAGLE Intelligence Scan last run failed",
-      "[2026-03-07 23:31:09 PST] WARN: BEACON Newsletter Content Builder last run failed",
-      "[2026-03-07 23:31:10 PST] WARN: HELM Self-Heal Monitor has 7 consecutive errors",
-      "[2026-03-07 23:31:11 PST] WARN: HELM Self-Heal Monitor last run failed",
-      "[2026-03-07 23:31:12 PST] WARN: Cron health: 4/14 jobs have errors",
-      "[2026-03-07 23:31:13 PST] OK: Snapshot fresh (updated 1 minutes ago)",
-      "[2026-03-07 23:31:13 PST] ========== Watchdog Run Complete =========="
+      "[2026-03-08 09:14:30 PST] OK: Gateway running (PID: 31341)",
+      "[2026-03-08 09:14:30 PST] OK: Gateway health endpoint responding on port 18789",
+      "[2026-03-08 09:14:30 PST] OK: Telegram provider entries found in log (1246)",
+      "[2026-03-08 09:14:30 PST] INFO: gateway.log = 3MB, gateway.err.log = 4MB",
+      "[2026-03-08 09:14:30 PST] INFO: Disk available = 224GB",
+      "[2026-03-08 09:14:31 PST] OK: Config file is valid JSON",
+      "[2026-03-08 09:14:31 PST] OK: Daily config backup → /Users/rizaldomadanlo/.openclaw/backups/openclaw-20260308.json",
+      "[2026-03-08 09:14:31 PST] OK: Daily cron jobs backup → /Users/rizaldomadanlo/.openclaw/backups/cron-jobs-20260308.json",
+      "[2026-03-08 09:14:31 PST] WARN: Cron jobs with repeated failures:\\nHELM Self-Heal Monitor: 8 consecutive errors",
+      "[2026-03-08 09:14:32 PST] OK: All 5 shared-kb symlinks valid",
+      "[2026-03-08 09:14:32 PST] FAIL: Dashboard not running on port 3000",
+      "[2026-03-08 09:14:38 PST] FAIL: Dashboard restart failed",
+      "[2026-03-08 09:14:39 PST] WARN: 7 stale process(es) found (non-gateway openclaw/vercel)",
+      "[2026-03-08 09:14:39 PST] WARN: EAGLE Intelligence Scan last run failed",
+      "[2026-03-08 09:14:40 PST] WARN: BEACON Newsletter Content Builder last run failed",
+      "[2026-03-08 09:14:41 PST] WARN: HELM Self-Heal Monitor has 8 consecutive errors",
+      "[2026-03-08 09:14:42 PST] WARN: HELM Self-Heal Monitor last run failed",
+      "[2026-03-08 09:14:43 PST] WARN: Cron health: 3/14 jobs have errors",
+      "[2026-03-08 09:14:47 PST] OK: Snapshot fresh (updated 14 minutes ago)",
+      "[2026-03-08 09:14:47 PST] ========== Watchdog Run Complete =========="
     ]
   },
   "projects": [
@@ -998,6 +1031,61 @@
     }
   ],
   "warRoom": [
+    {
+      "id": "agent:eagle:cron:eagle-intel-scan:run:fe7a798a-4077-438d-99d6-bfd0de62e900",
+      "agentId": "eagle",
+      "agentName": "EAGLE",
+      "summary": "**SCAN RESULTS (Quick-Check Mode, 09:17 Sunday March 8)**",
+      "timestamp": "2026-03-08T01:18:34.811Z",
+      "durationMs": 85793,
+      "tokensUsed": 29455,
+      "status": "ok",
+      "category": "INTEL"
+    },
+    {
+      "id": "agent:main:cron:helm-flywheel-advance:run:3b23e5bb-39a4-4351-9eee-90fe1f395f8a",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "---",
+      "timestamp": "2026-03-08T01:10:29.943Z",
+      "durationMs": 29892,
+      "tokensUsed": 29530,
+      "status": "ok",
+      "category": "INCOME"
+    },
+    {
+      "id": "agent:beacon:cron:dbb4bcce-64e0-4871-93d9-3d3e8639b77d:run:631f9d1a-6817-417d-8311-925d311fc5a7",
+      "agentId": "beacon",
+      "agentName": "BEACON",
+      "summary": "🔴 **DIONSON APPEAL — 1 DAY REMAINING**",
+      "timestamp": "2026-03-08T01:00:06.264Z",
+      "durationMs": 6212,
+      "tokensUsed": 20932,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
+    {
+      "id": "agent:main:cron:7187abf0-3a55-418f-8c42-a630c510c48b:run:7f1126ba-138a-46c3-a06f-eb32f086a321",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "QMD INDEX OK | 477 files indexed",
+      "timestamp": "2026-03-08T00:17:09.306Z",
+      "durationMs": 30797,
+      "tokensUsed": 26208,
+      "status": "ok",
+      "category": "HEALTH"
+    },
+    {
+      "id": "agent:main:cron:helm-morning-brief:run:a2b6ad31-3882-4a6d-b52f-3fff14e8ba18",
+      "agentId": "main",
+      "agentName": "HELM",
+      "summary": "Now I have all the data. Let me generate the morning briefing:",
+      "timestamp": "2026-03-08T00:17:09.295Z",
+      "durationMs": 42977,
+      "tokensUsed": 34926,
+      "status": "ok",
+      "category": "FLYWHEEL"
+    },
     {
       "id": "agent:main:cron:a347bf42-0797-42ea-be62-701747412cb7:run:c3d0f7e0-14bc-4ccc-b994-d34775f2c242",
       "agentId": "main",
@@ -3142,64 +3230,9 @@
       "tokensUsed": 48978,
       "status": "ok",
       "category": "INCOME"
-    },
-    {
-      "id": "agent:anchor:cron:undefined:run:a5433e7d-8c21-4bf0-a7c9-c4a5ffd68c02",
-      "agentId": "anchor",
-      "agentName": "ANCHOR",
-      "summary": "**ANCHOR Evening Status — Mon Feb 23, 2026**",
-      "timestamp": "2026-02-23T11:15:13.234Z",
-      "durationMs": 13210,
-      "tokensUsed": 17333,
-      "status": "ok",
-      "category": "CREWING"
-    },
-    {
-      "id": "agent:main:cron:undefined:run:2e5dbde2-ce88-4711-91ee-fca52fb265d2",
-      "agentId": "main",
-      "agentName": "HELM",
-      "summary": "⚓ **HELM END OF DAY RECAP** Monday, 23 February 2026 — 18:45 PHT",
-      "timestamp": "2026-02-23T10:45:32.521Z",
-      "durationMs": 32501,
-      "tokensUsed": 46848,
-      "status": "ok",
-      "category": "INCOME"
-    },
-    {
-      "id": "agent:main:cron:undefined:run:2e5dbde2-ce88-4711-91ee-fca52fb265d2",
-      "agentId": "main",
-      "agentName": "HELM",
-      "summary": "⚠️ **INFRA CHECK — 18:10 PHT — ISSUES DETECTED**",
-      "timestamp": "2026-02-23T10:10:29.157Z",
-      "durationMs": 29129,
-      "tokensUsed": 43413,
-      "status": "ok",
-      "category": "HEALTH"
-    },
-    {
-      "id": "agent:main:cron:undefined:run:2e5dbde2-ce88-4711-91ee-fca52fb265d2",
-      "agentId": "main",
-      "agentName": "HELM",
-      "summary": "Pipeline is moving. COMPASS completed reviews and advanced items. Current state:",
-      "timestamp": "2026-02-23T09:30:23.098Z",
-      "durationMs": 23059,
-      "tokensUsed": 40775,
-      "status": "ok",
-      "category": "INCOME"
-    },
-    {
-      "id": "agent:main:cron:undefined:run:2e5dbde2-ce88-4711-91ee-fca52fb265d2",
-      "agentId": "main",
-      "agentName": "HELM",
-      "summary": "⚠️ **INFRA CHECK — 16:10 PHT — MINOR ISSUES**",
-      "timestamp": "2026-02-23T08:10:30.839Z",
-      "durationMs": 30821,
-      "tokensUsed": 38846,
-      "status": "ok",
-      "category": "HEALTH"
     }
   ],
-  "fleetIdleMinutes": 704,
+  "fleetIdleMinutes": 12,
   "incomePipeline": {
     "ideas": [],
     "totalIdeas": 0,
@@ -3217,9 +3250,9 @@
   "contentPlan": [],
   "founderInbox": [],
   "resourceMode": {
-    "mode": "FULL_POWER",
-    "pct": 100,
-    "todayCrons": 0
+    "mode": "BALANCED",
+    "pct": 58,
+    "todayCrons": 5
   },
   "nightWatch": false,
   "taskboard": [
@@ -3515,7 +3548,7 @@
         5,
         3,
         9,
-        0
+        3
       ],
       "labels": [
         "Mon",
@@ -3537,7 +3570,7 @@
         2,
         2,
         2,
-        0
+        1
       ],
       "labels": [
         "Mon",
@@ -3581,7 +3614,7 @@
         4,
         6,
         6,
-        0
+        1
       ],
       "labels": [
         "Mon",
@@ -3664,9 +3697,9 @@
     {
       "agentId": "main",
       "agentName": "HELM",
-      "totalRuns": 150,
-      "totalTokens": 4372083,
-      "successRate": 91,
+      "totalRuns": 153,
+      "totalTokens": 4462747,
+      "successRate": 92,
       "avgResponseTime": 38,
       "runsThisWeek": 70,
       "runsLastWeek": 0,
@@ -3690,17 +3723,17 @@
         "Sat"
       ],
       "level": 15,
-      "xp": 0,
-      "xpToNextLevel": 100,
+      "xp": 30,
+      "xpToNextLevel": 70,
       "trend": "rising"
     },
     {
       "agentId": "eagle",
       "agentName": "EAGLE",
-      "totalRuns": 28,
-      "totalTokens": 1082519,
+      "totalRuns": 29,
+      "totalTokens": 1111974,
       "successRate": 93,
-      "avgResponseTime": 49,
+      "avgResponseTime": 51,
       "runsThisWeek": 19,
       "runsLastWeek": 0,
       "weekOverWeekChange": 100,
@@ -3723,8 +3756,8 @@
         "Sat"
       ],
       "level": 2,
-      "xp": 80,
-      "xpToNextLevel": 20,
+      "xp": 90,
+      "xpToNextLevel": 10,
       "trend": "rising"
     },
     {
@@ -3763,10 +3796,10 @@
     {
       "agentId": "beacon",
       "agentName": "BEACON",
-      "totalRuns": 31,
-      "totalTokens": 1174283,
+      "totalRuns": 32,
+      "totalTokens": 1195215,
       "successRate": 84,
-      "avgResponseTime": 55,
+      "avgResponseTime": 53,
       "runsThisWeek": 5,
       "runsLastWeek": 0,
       "weekOverWeekChange": 100,
@@ -3789,8 +3822,8 @@
         "Sat"
       ],
       "level": 3,
-      "xp": 10,
-      "xpToNextLevel": 90,
+      "xp": 20,
+      "xpToNextLevel": 80,
       "trend": "rising"
     },
     {
@@ -4350,7 +4383,7 @@
             "label": "Claude Sonnet 4.2"
           }
         ],
-        "lastChecked": "2026-03-08T00:15:15.537Z",
+        "lastChecked": "2026-03-08T01:30:06.151Z",
         "lastError": null,
         "rateLimitHits24h": 0
       },
@@ -4382,7 +4415,7 @@
             "label": "GPT-4o (Stable)"
           }
         ],
-        "lastChecked": "2026-03-08T00:15:15.538Z",
+        "lastChecked": "2026-03-08T01:30:06.151Z",
         "lastError": null,
         "rateLimitHits24h": 0
       },
@@ -4402,7 +4435,7 @@
             "label": "Gemini 3.0 Flash (Fast)"
           }
         ],
-        "lastChecked": "2026-03-08T00:15:15.538Z",
+        "lastChecked": "2026-03-08T01:30:06.151Z",
         "lastError": null,
         "rateLimitHits24h": 0
       }
@@ -5094,7 +5127,7 @@
     }
   },
   "_snapshot": {
-    "generatedAt": "2026-03-08T00:15:15.541Z",
+    "generatedAt": "2026-03-08T01:30:06.154Z",
     "hostname": "Rizaldos-MacBook-Pro.local",
     "version": "1.0"
   }

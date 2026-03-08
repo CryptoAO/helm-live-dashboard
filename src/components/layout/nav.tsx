@@ -1,19 +1,35 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
 const NAV_ITEMS = [
   { href: "/", label: "Bridge", icon: "🚢", shortcut: "1" },
   { href: "/fleet", label: "Fleet", icon: "🤖", shortcut: "2" },
-  { href: "/pipeline", label: "Pipeline", icon: "💰", shortcut: "3" },
-  { href: "/projects", label: "Projects", icon: "📦", shortcut: "4" },
-  { href: "/analytics", label: "Analytics", icon: "📊", shortcut: "5" },
-  { href: "/warroom", label: "War Room", icon: "🏛️", shortcut: "6" },
-  { href: "/redundancy", label: "Redundancy", icon: "🛡️", shortcut: "7" },
+  { href: "/decisions", label: "Decisions", icon: "🎯", shortcut: "3", badge: true },
+  { href: "/pipeline", label: "Pipeline", icon: "💰", shortcut: "4" },
+  { href: "/projects", label: "Projects", icon: "📦", shortcut: "5" },
+  { href: "/analytics", label: "Analytics", icon: "📊", shortcut: "6" },
+  { href: "/warroom", label: "War Room", icon: "🏛️", shortcut: "7" },
+  { href: "/redundancy", label: "Redundancy", icon: "🛡️", shortcut: "8" },
 ];
 
 export function Nav() {
   const pathname = usePathname();
+  const [pendingCount, setPendingCount] = useState<number | null>(null);
+
+  useEffect(() => {
+    fetch("/api/decisions").then(r => r.json()).then(d => {
+      setPendingCount(d.pending ?? null);
+    }).catch(() => {});
+    // Refresh every 2 min
+    const t = setInterval(() => {
+      fetch("/api/decisions").then(r => r.json()).then(d => {
+        setPendingCount(d.pending ?? null);
+      }).catch(() => {});
+    }, 120000);
+    return () => clearInterval(t);
+  }, []);
 
   return (
     <>
@@ -36,9 +52,23 @@ export function Nav() {
                     : "text-slate-500 hover:text-slate-300 hover:bg-slate-800/50 border border-transparent"
                 }`}
               >
-                <span className="text-base">{item.icon}</span>
+                <span className="text-base relative">
+                  {item.icon}
+                  {item.badge && pendingCount !== null && pendingCount > 0 && (
+                    <span className="absolute -top-1 -right-1 text-[8px] font-bold bg-red-500 text-white rounded-full w-3.5 h-3.5 flex items-center justify-center leading-none">
+                      {pendingCount > 9 ? "9+" : pendingCount}
+                    </span>
+                  )}
+                </span>
                 <span className="hidden lg:block font-medium">{item.label}</span>
-                <span className="hidden lg:block ml-auto text-[9px] text-slate-700 font-mono">{item.shortcut}</span>
+                {item.badge && pendingCount !== null && pendingCount > 0 && (
+                  <span className="hidden lg:block ml-auto text-[9px] font-bold bg-red-500/20 text-red-400 border border-red-500/30 px-1 rounded-full">
+                    {pendingCount}
+                  </span>
+                )}
+                {(!item.badge || !pendingCount) && (
+                  <span className="hidden lg:block ml-auto text-[9px] text-slate-700 font-mono">{item.shortcut}</span>
+                )}
               </Link>
             );
           })}
@@ -61,7 +91,14 @@ export function Nav() {
                   active ? "text-blue-400" : "text-slate-600"
                 }`}
               >
-                <span className="text-lg">{item.icon}</span>
+                <span className="text-lg relative">
+                  {item.icon}
+                  {item.badge && pendingCount !== null && pendingCount > 0 && (
+                    <span className="absolute -top-1 -right-1 text-[8px] font-bold bg-red-500 text-white rounded-full w-3.5 h-3.5 flex items-center justify-center leading-none">
+                      {pendingCount > 9 ? "9+" : pendingCount}
+                    </span>
+                  )}
+                </span>
                 <span className="text-[9px]">{item.label}</span>
               </Link>
             );
